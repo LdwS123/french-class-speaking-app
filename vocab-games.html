@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeux de vocabulaire - Francais</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="page-games">
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <section class="hero compact">
+      <div class="hero-copy">
+        <div class="eyebrow">Vocabulaire • jeux • revision</div>
+        <h1>La salle de jeux du vocabulaire</h1>
+        <p>
+          Une page separee pour reviser apres le reveal du sujet : flashcards, quiz a choix multiple
+          et pack de mots par theme. Tu peux travailler tous les sujets, seulement les sujets deja vus
+          ou juste le sujet actuel.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-secondary" href="./index.html">Retour aux sujets</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <article class="stat-card">
+          <span class="stat-label">Mots connus</span>
+          <strong class="stat-value" id="knownWords">0</strong>
+          <span class="stat-foot">reponses reussies enregistrees</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Source</span>
+          <strong class="stat-value" id="activePoolLabel">Tous</strong>
+          <span class="stat-foot">banque de mots active</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="layout games-layout">
+      <section class="topic-panel">
+        <article class="panel-card">
+          <div class="filter-row">
+            <div>
+              <h3>Choisir la banque de mots</h3>
+              <p class="subhelp">Tu peux filtrer les jeux selon tes besoins de classe.</p>
+            </div>
+            <select id="poolSelect" class="select-box">
+              <option value="seen">Sujets deja vus</option>
+              <option value="current">Sujet actuel</option>
+              <option value="all">Tous les sujets</option>
+            </select>
+          </div>
+        </article>
+
+        <article class="panel-card game-card">
+          <div class="game-head">
+            <h3>Jeu 1 • Flashcards</h3>
+            <button class="btn btn-secondary small" id="nextFlashBtn">Mot suivant</button>
+          </div>
+          <div class="flashcard" id="flashcard">
+            <div class="flash-meta" id="flashMeta">Pret</div>
+            <div class="flash-front" id="flashFront">Clique sur "Mot suivant"</div>
+            <div class="flash-back" id="flashBack">La traduction apparaitra ici.</div>
+          </div>
+          <div class="side-actions">
+            <button class="btn btn-primary small" id="revealFlashBtn">Voir la traduction</button>
+            <button class="btn btn-secondary small" id="knowFlashBtn">Je connais ce mot</button>
+          </div>
+        </article>
+
+        <article class="panel-card game-card">
+          <div class="game-head">
+            <h3>Jeu 2 • Quiz rapide</h3>
+            <button class="btn btn-secondary small" id="newQuizBtn">Nouvelle question</button>
+          </div>
+          <p class="quiz-question" id="quizQuestion">Lance une question pour commencer.</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-result" id="quizResult">Score: <span id="quizScore">0</span> / <span id="quizTotal">0</span></p>
+        </article>
+      </section>
+
+      <aside class="side-panel">
+        <article class="panel-card game-card">
+          <div class="game-head">
+            <h3>Jeu 3 • Pack du theme</h3>
+            <button class="btn btn-secondary small" id="newPackBtn">Nouveau pack</button>
+          </div>
+          <p class="subhelp" id="packTitle">Le pack s'affichera ici.</p>
+          <div class="chip-wrap" id="packWords"></div>
+          <div class="coach-list" id="packTasks"></div>
+        </article>
+
+        <article class="panel-card">
+          <h3>Utilisation en classe</h3>
+          <ul class="clean-list">
+            <li>Flashcards: echauffement rapide.</li>
+            <li>Quiz: competition simple par binome.</li>
+            <li>Pack du theme: parler avec 3 ou 4 mots imposes.</li>
+          </ul>
+        </article>
+      </aside>
+    </section>
+  </main>
+
+  <script src="./topics-data.js"></script>
+  <script src="./vocab-games.js"></script>
+</body>
+</html>
