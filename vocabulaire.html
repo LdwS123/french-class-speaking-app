@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francais Oral - Vocabulaire</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="page-vocab">
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link is-active" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link" href="./methode.html">Expressions</a>
+        <a class="nav-link" href="./vocab-games.html">Jeux</a>
+      </nav>
+    </header>
+
+    <section class="hero compact">
+      <div class="hero-copy">
+        <span class="eyebrow">Mots clairs</span>
+        <div class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </div>
+        <h1>La grande banque de vocabulaire</h1>
+        <p>
+          Cherche un mot en francais ou en anglais, puis filtre si tu veux aller plus vite.
+        </p>
+      </div>
+      <div class="hero-stats">
+        <article class="stat-card">
+          <span class="stat-label">Total</span>
+          <strong class="stat-value" id="vocabTotal">0</strong>
+          <span class="stat-foot">mots affiches</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Themes</span>
+          <strong class="stat-value" id="categoryCount">0</strong>
+          <span class="stat-foot">categories disponibles</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="layout games-layout">
+      <section class="topic-panel">
+        <article class="panel-card">
+          <div class="search-stack">
+            <div>
+              <h3>Recherche</h3>
+              <p class="subhelp">Tu peux chercher en francais ou en anglais.</p>
+            </div>
+            <input id="searchInput" class="search-input" type="search" placeholder="ex: budget, stress, phone, homework">
+            <div class="filter-row">
+              <select id="categoryFilter" class="select-box"></select>
+              <select id="levelFilter" class="select-box">
+                <option value="ALL">Tous les niveaux</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="C1">C1</option>
+              </select>
+            </div>
+          </div>
+        </article>
+
+        <div class="explorer-grid" id="vocabGrid"></div>
+      </section>
+
+      <aside class="side-panel">
+        <article class="panel-card">
+          <h3>Mode simple</h3>
+          <ul class="clean-list">
+            <li>1. Cherche un mot.</li>
+            <li>2. Garde 3 ou 4 mots.</li>
+            <li>3. Reutilise-les a l'oral.</li>
+          </ul>
+        </article>
+
+        <article class="panel-card">
+          <h3>Conseil simple</h3>
+          <p class="subhelp">
+            Si tu cherches en anglais, tu peux retrouver tres vite le mot francais utile.
+          </p>
+        </article>
+      </aside>
+    </section>
+  </main>
+
+  <script src="./topics-data.js"></script>
+  <script src="./vocab-explorer.js"></script>
+</body>
+</html>

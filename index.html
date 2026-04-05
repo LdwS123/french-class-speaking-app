@@ -3,231 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actu & Vocab - Pioche de classe</title>
+  <title>Francais Oral - Accueil</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body class="page-home">
+<body class="page-landing">
   <div class="bg-orb orb-one"></div>
   <div class="bg-orb orb-two"></div>
 
   <main class="shell">
-    <section class="hero">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link is-active" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link" href="./methode.html">Expressions</a>
+        <a class="nav-link" href="./vocab-games.html">Jeux</a>
+      </nav>
+    </header>
+
+    <section class="hero landing-hero">
       <div class="hero-copy">
+        <span class="eyebrow">Cours de francais oral</span>
         <div class="flag-line" aria-hidden="true">
           <span class="flag-blue"></span>
           <span class="flag-white"></span>
           <span class="flag-red"></span>
         </div>
-        <h1>La grande pioche de sujets pour parler en francais</h1>
+        <h1>Un vrai site pour ton cours de francais oral</h1>
         <p>
-          Une version beaucoup plus riche pour le cours : plus de sujets, un reveal surprise,
-          tout le vocabulaire du theme a chaque tirage, un modele de phrase rapide, un mini timer,
-          et une page speciale de jeux de vocabulaire.
+          Une page = une mission claire. Tu choisis ce dont tu as besoin :
+          un sujet, des mots, des expressions ou un jeu.
         </p>
         <div class="hero-actions">
-          <button class="btn btn-primary" id="randomBtn">Tirer un sujet</button>
-          <button class="btn btn-secondary" id="unseenBtn">Sujet pas encore vu</button>
-          <a class="btn btn-secondary" href="./vocab-games.html">Jeux de vocabulaire</a>
+          <a class="btn btn-primary" href="./sujets.html">Commencer</a>
+          <a class="btn btn-secondary" href="./vocabulaire.html">Explorer les mots</a>
         </div>
         <div class="clarity-strip">
           <div class="clarity-step">
             <strong>1</strong>
-            <span>Lis la question</span>
+            <span>Tire un sujet</span>
           </div>
           <div class="clarity-step">
             <strong>2</strong>
-            <span>Prends une position</span>
+            <span>Choisis tes mots</span>
           </div>
           <div class="clarity-step">
             <strong>3</strong>
-            <span>Utilise les mots utiles</span>
+            <span>Utilise un modele</span>
           </div>
           <div class="clarity-step">
             <strong>4</strong>
-            <span>Donne un exemple</span>
+            <span>Finis avec un jeu</span>
           </div>
         </div>
       </div>
 
       <div class="hero-stats">
         <article class="stat-card">
+          <span class="stat-label">Pages</span>
+          <strong class="stat-value">5</strong>
+          <span class="stat-foot">pages utiles</span>
+        </article>
+        <article class="stat-card">
           <span class="stat-label">Sujets</span>
-          <strong class="stat-value" id="totalTopics">0</strong>
-          <span class="stat-foot">themes disponibles</span>
+          <strong class="stat-value">37</strong>
+          <span class="stat-foot">themes de conversation</span>
         </article>
         <article class="stat-card">
-          <span class="stat-label">Progression</span>
-          <strong class="stat-value" id="seenTopics">0</strong>
-          <span class="stat-foot">sujets deja decouverts</span>
-        </article>
-        <article class="stat-card">
-          <span class="stat-label">Vocab du sujet</span>
-          <strong class="stat-value" id="currentWordCount">0</strong>
-          <span class="stat-foot">mots affiches a chaque reveal</span>
-        </article>
-        <article class="stat-card">
-          <span class="stat-label">Mini timer</span>
-          <strong class="stat-value" id="timerDisplay">00:45</strong>
-          <div class="timer-buttons">
-            <button class="tiny-btn" data-seconds="30">30s</button>
-            <button class="tiny-btn" data-seconds="45">45s</button>
-            <button class="tiny-btn" data-seconds="60">60s</button>
-            <button class="tiny-btn" data-action="stop">Stop</button>
-          </div>
+          <span class="stat-label">Vocabulaire</span>
+          <strong class="stat-value">400+</strong>
+          <span class="stat-foot">mots FR + EN a reutiliser</span>
         </article>
       </div>
     </section>
 
-    <section class="layout">
-      <section class="topic-panel">
-        <div class="topic-cover" id="topicCover">
-          <div class="cover-badge">Mode surprise</div>
-          <h2>Le sujet apparait seulement au moment du tirage</h2>
-          <p>
-            Pas de spoiler a l'avance. Quand tu tires un theme, la question, la mission,
-            tout le vocabulaire et le plan de reponse apparaissent en meme temps.
-          </p>
+    <section class="landing-grid">
+      <article class="feature-card">
+        <h2>1. Sujets</h2>
+        <p>Une pioche de conversation avec question, mission, exemples et vocabulaire du theme.</p>
+        <a class="btn btn-primary wide" href="./sujets.html">Ouvrir la page sujets</a>
+      </article>
+
+      <article class="feature-card">
+        <h2>2. Expressions</h2>
+        <p>Des structures de reponse, des transitions et des mini modeles tres simples.</p>
+        <a class="btn btn-primary wide" href="./methode.html">Voir les expressions</a>
+      </article>
+
+      <article class="feature-card">
+        <h2>3. Jeux</h2>
+        <p>Un sprint de vocabulaire et quelques outils rapides pour memoriser.</p>
+        <a class="btn btn-primary wide" href="./vocab-games.html">Lancer les jeux</a>
+      </article>
+
+      <article class="feature-card">
+        <h2>4. Outils bonus</h2>
+        <p>Si tu veux aller plus loin, ouvre la grande page de vocabulaire du site.</p>
+        <div class="hero-actions">
+          <a class="btn btn-secondary" href="./vocabulaire.html">Vocabulaire</a>
         </div>
-
-        <div class="topic-head">
-          <div class="topic-meta">
-            <span class="pill" id="topicCategory">Sujet surprise</span>
-            <span class="pill" id="topicDate">Pret</span>
-          </div>
-          <div class="topic-progress">
-            <span id="rouletteText">Appuie sur "Tirer un sujet".</span>
-          </div>
-        </div>
-
-        <h2 class="topic-title" id="topicTitle">La pioche attend le prochain reveal</h2>
-        <p class="topic-lead" id="topicLead">
-          Tire un sujet pour afficher une question orale claire, du vocabulaire FR + EN et un vrai plan
-          de prise de parole pour la classe.
-        </p>
-
-        <div class="card-grid two">
-          <article class="panel-card emphasis">
-            <h3>1. Lis la question</h3>
-            <p id="topicQuestion">Quel sujet va tomber cette fois ?</p>
-          </article>
-          <article class="panel-card">
-            <h3>2. Ce que tu dois faire</h3>
-            <p id="topicMission">Tu recevras une mission simple des le reveal.</p>
-            <p class="subhelp" id="topicGoalEn">English goal: you will get a simple speaking target.</p>
-          </article>
-        </div>
-
-        <article class="panel-card">
-          <h3>3. Modele express pour repondre</h3>
-          <div class="chip-wrap" id="builderList"></div>
-        </article>
-
-        <div class="card-grid two">
-          <article class="panel-card liaison-card">
-            <h3>4. Mode liaisons</h3>
-            <p class="subhelp">Quand tu vois <strong>_</strong>, colle les sons. Lis la phrase d'un seul souffle.</p>
-            <div class="coach-list" id="liaisonList"></div>
-          </article>
-          <article class="panel-card">
-            <h3>5. Exemples de phrases</h3>
-            <div class="coach-list" id="phraseExamples"></div>
-          </article>
-        </div>
-
-        <article class="panel-card section-note">
-          <h3>6. Les mots du sujet</h3>
-          <p class="subhelp">Commence avec B1 si tu veux faire simple. Ajoute B2 pour etre plus naturel. Utilise C1 seulement si tu es a l'aise.</p>
-        </article>
-
-        <div class="card-grid three">
-          <article class="panel-card">
-            <h3>B1 • Simple</h3>
-            <div class="chip-wrap" id="b1List"></div>
-          </article>
-          <article class="panel-card">
-            <h3>B2 • Plus fort</h3>
-            <div class="chip-wrap" id="b2List"></div>
-          </article>
-          <article class="panel-card">
-            <h3>C1 • Nuance</h3>
-            <div class="chip-wrap" id="c1List"></div>
-          </article>
-        </div>
-
-        <div class="card-grid two">
-          <article class="panel-card">
-            <h3>7. Regles rapides</h3>
-            <div class="chip-wrap" id="rulesList"></div>
-          </article>
-          <article class="panel-card">
-            <h3>8. Debuts de phrase utiles</h3>
-            <div class="chip-wrap" id="starterList"></div>
-          </article>
-        </div>
-
-        <div class="card-grid two">
-          <article class="panel-card">
-            <h3>9. Aide en anglais</h3>
-            <div class="coach-list" id="coachList"></div>
-          </article>
-          <article class="panel-card">
-            <h3>10. Idees pour continuer</h3>
-            <div class="chip-wrap" id="anglesList"></div>
-          </article>
-        </div>
-      </section>
-
-      <aside class="side-panel">
-        <article class="panel-card">
-          <h3>Parcours clair</h3>
-          <ul class="clean-list">
-            <li>1. Lis la question pendant 10 a 15 secondes.</li>
-            <li>2. Choisis ton opinion.</li>
-            <li>3. Utilise 1 mot B1 et 1 mot B2 minimum.</li>
-            <li>4. Donne une raison et un exemple.</li>
-          </ul>
-        </article>
-
-        <article class="panel-card">
-          <h3>Defi bonus</h3>
-          <strong class="challenge-mode" id="bonusMode">Surprise</strong>
-          <p class="subhelp" id="bonusText">Le defi apparait en meme temps que le sujet.</p>
-        </article>
-
-        <article class="panel-card">
-          <h3>Progression</h3>
-          <div class="progress-row">
-            <span>Decouverts</span>
-            <strong id="progressLabel">0 / 0</strong>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <p class="subhelp" id="remainingText">La pioche est prete.</p>
-          <div class="side-actions">
-            <button class="btn btn-secondary small" id="resetBtn">Reinitialiser la progression</button>
-            <button class="btn btn-secondary small" id="fullscreenBtn">Plein ecran</button>
-          </div>
-        </article>
-
-        <article class="panel-card">
-          <h3>Derniers sujets vus</h3>
-          <div class="recent-list" id="recentList"></div>
-        </article>
-
-        <article class="panel-card">
-          <h3>Suite logique</h3>
-          <p class="subhelp">
-            Quand le sujet est fini, ouvre la page <strong>Jeux de vocabulaire</strong> pour revoir
-            les mots du sujet actuel, des sujets deja vus ou de toute la banque de vocabulaire.
-          </p>
-          <a class="btn btn-primary wide" href="./vocab-games.html">Ouvrir la page de jeux</a>
-        </article>
-      </aside>
+      </article>
     </section>
   </main>
-
-  <script src="./topics-data.js"></script>
-  <script src="./app.js"></script>
 </body>
 </html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francais Oral - Expressions</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="page-method">
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link is-active" href="./methode.html">Expressions</a>
+        <a class="nav-link" href="./vocab-games.html">Jeux</a>
+      </nav>
+    </header>
+
+    <section class="hero compact">
+      <div class="hero-copy">
+        <span class="eyebrow">Boite a expressions</span>
+        <div class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </div>
+        <h1>Les expressions utiles pour parler</h1>
+        <p>
+          Commence avec la formule simple, puis prends quelques expressions naturelles.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="refreshComboBtn" type="button">Nouvelles expressions</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <article class="stat-card">
+          <span class="stat-label">Familles</span>
+          <strong class="stat-value" id="expressionFamilyCount">0</strong>
+          <span class="stat-foot">groupes utiles</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Expressions</span>
+          <strong class="stat-value" id="expressionCount">0</strong>
+          <span class="stat-foot">a reutiliser a l'oral</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <div class="section-head">
+        <div>
+          <h2>Formule simple</h2>
+          <p class="subhelp">Une structure facile pour presque tous les sujets.</p>
+        </div>
+      </div>
+      <div class="coach-list">
+        <div class="coach-step"><strong>1.</strong> Je pense que...</div>
+        <div class="coach-step"><strong>2.</strong> Parce que...</div>
+        <div class="coach-step"><strong>3.</strong> Par exemple...</div>
+        <div class="coach-step"><strong>4.</strong> Au final...</div>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <div class="section-head">
+        <div>
+          <h2>Expressions en francais</h2>
+          <p class="subhelp">Prends seulement 2 ou 3 expressions pour ta reponse.</p>
+        </div>
+      </div>
+      <div class="chip-wrap">
+        <span class="chip">Je pense que...</span>
+        <span class="chip">A mon avis...</span>
+        <span class="chip">Pour moi...</span>
+        <span class="chip">Par exemple...</span>
+        <span class="chip">Oui, mais...</span>
+        <span class="chip">Au final...</span>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <div class="section-head">
+        <div>
+          <h2>Expressions plus naturelles</h2>
+          <p class="subhelp">Pour reconnaitre des tournures plus françaises.</p>
+        </div>
+      </div>
+      <div class="coach-list">
+        <div class="coach-step"><strong>1.</strong> C'est l'hopital qui se fout de la charite. : quand quelqu'un critique un defaut qu'il a lui-meme.</div>
+        <div class="coach-step"><strong>2.</strong> Tourner autour du pot. : ne pas dire les choses clairement.</div>
+        <div class="coach-step"><strong>3.</strong> Ca ne tient pas debout. : ce n'est pas credible.</div>
+        <div class="coach-step"><strong>4.</strong> En avoir marre. : etre fatigue ou agace.</div>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <div class="game-head">
+        <h2>Jeu expressions</h2>
+        <button class="btn btn-secondary small" id="newExpressionGameBtn" type="button">Nouvelle question</button>
+      </div>
+      <p class="quiz-question" id="expressionGameQuestion">Lis l'expression et trouve le bon sens.</p>
+      <div class="quiz-options" id="expressionGameOptions"></div>
+      <p class="quiz-result" id="expressionGameFeedback">Score: <span id="expressionGameScore">0</span> / <span id="expressionGameTotal">0</span></p>
+    </section>
+
+    <section class="panel-card">
+      <div class="section-head">
+        <div>
+          <h2>Pack du moment</h2>
+          <p class="subhelp">Quelques expressions a reutiliser tout de suite.</p>
+        </div>
+      </div>
+      <div class="expression-combo">
+        <div class="chip-wrap" id="survivalCombo"></div>
+        <div class="coach-list" id="survivalModel"></div>
+      </div>
+    </section>
+
+    <section class="section-stack">
+      <div class="section-head">
+        <div>
+          <h2>Banque d'expressions</h2>
+          <p class="subhelp">Choisis seulement 2 ou 3 expressions par reponse.</p>
+        </div>
+      </div>
+      <div class="expression-bank-grid" id="expressionGrid"></div>
+    </section>
+  </main>
+
+  <script src="./topics-data.js"></script>
+  <script src="./expressions.js"></script>
+</body>
+</html>

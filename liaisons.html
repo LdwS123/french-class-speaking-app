@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francais Oral - Liaisons</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="page-liaisons">
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link" href="./methode.html">Expressions</a>
+        <a class="nav-link" href="./vocab-games.html">Jeux</a>
+      </nav>
+    </header>
+
+    <section class="hero compact">
+      <div class="hero-copy">
+        <div class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </div>
+        <h1>Les liaisons essentielles</h1>
+        <p>
+          Une page simple pour s'entrainer a lire a voix haute. Quand tu vois <strong>_</strong>,
+          colle les sons. Lis les phrases lentement, puis plus vite.
+        </p>
+      </div>
+      <div class="hero-stats">
+        <article class="stat-card">
+          <span class="stat-label">Serie</span>
+          <strong class="stat-value" id="liaisonTopicTitle">Sujet du jour</strong>
+          <span class="stat-foot">phrases du theme courant</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="layout games-layout">
+      <section class="topic-panel">
+        <article class="panel-card liaison-card">
+          <div class="game-head">
+            <h3>Serie principale</h3>
+            <button class="btn btn-secondary small" id="newLiaisonSetBtn">Nouvelle serie</button>
+          </div>
+          <div class="coach-list" id="liaisonDrillList"></div>
+        </article>
+
+        <article class="panel-card">
+          <h3>Phrases a dire</h3>
+          <div class="coach-list" id="liaisonPhraseList"></div>
+        </article>
+      </section>
+
+      <aside class="side-panel">
+        <article class="panel-card">
+          <h3>Regles utiles</h3>
+          <ul class="clean-list">
+            <li>Les_etudiants</li>
+            <li>Vous_avez</li>
+            <li>Ils_ont</li>
+            <li>Dans_un debat</li>
+          </ul>
+        </article>
+
+        <article class="panel-card">
+          <h3>Conseil</h3>
+          <p class="subhelp">
+            Lis d'abord tres lentement. Ensuite, lis la phrase d'un seul souffle sans t'arreter.
+          </p>
+        </article>
+      </aside>
+    </section>
+  </main>
+
+  <script src="./topics-data.js"></script>
+  <script src="./liaisons.js"></script>
+</body>
+</html>

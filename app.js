@@ -22,7 +22,6 @@ const elements = {
   topicMission: document.getElementById("topicMission"),
   topicGoalEn: document.getElementById("topicGoalEn"),
   builderList: document.getElementById("builderList"),
-  liaisonList: document.getElementById("liaisonList"),
   phraseExamples: document.getElementById("phraseExamples"),
   b1List: document.getElementById("b1List"),
   b2List: document.getElementById("b2List"),
@@ -99,18 +98,6 @@ function renderCoach(target, items) {
   )).join("");
 }
 
-function formatLiaisonText(text) {
-  return text
-    .replaceAll("_", '<span class="liaison-mark">_</span>')
-    .replace(/(^|>)([^<]+)/g, (match, prefix, content) => `${prefix}${content.replace(/\b([A-Za-zÀ-ÿ]+(?:<span class="liaison-mark">_<\/span>[A-Za-zÀ-ÿ]+)+)\b/g, '<span class="liaison-piece">$1</span>')}`);
-}
-
-function renderLiaisons(items) {
-  elements.liaisonList.innerHTML = items.map((item, index) => (
-    `<div class="coach-step"><strong>${index + 1}.</strong> ${formatLiaisonText(item)}</div>`
-  )).join("");
-}
-
 function renderPhraseExamples(items) {
   elements.phraseExamples.innerHTML = items.map((item, index) => (
     `<div class="coach-step"><strong>Phrase ${index + 1}.</strong> ${item}</div>`
@@ -179,12 +166,6 @@ function renderWaitingState() {
   elements.topicMission.textContent = "Tu recevras une mission simple des le reveal.";
   elements.topicGoalEn.textContent = "English goal: you will get a simple speaking target.";
   renderVocab(elements.builderList, BUILDER.slice(0, 4));
-  renderLiaisons([
-    "Les_etudiants ont une idee.",
-    "Vous_avez un exemple.",
-    "Ils_ont une opinion differente.",
-    "Dans_un debat, on ecoute."
-  ]);
   renderPhraseExamples([
     "Je pense que ce sujet est important pour les jeunes.",
     "Parce que dans la vie quotidienne, on voit souvent ce probleme.",
@@ -226,12 +207,6 @@ function renderTopic(topic) {
   elements.topicMission.textContent = topic.mission;
   elements.topicGoalEn.textContent = `English goal: ${topic.goalEn}`;
   renderVocab(elements.builderList, BUILDER);
-  renderLiaisons([
-    `Les_etudiants ont souvent un avis sur ${topic.title.toLowerCase()}.`,
-    "Vous_avez peut-etre le meme probleme.",
-    "Ils_ont aussi un exemple personnel.",
-    `Dans_un debat sur ${topic.category.toLowerCase()}, on peut nuancer.`
-  ]);
   renderPhraseExamples([
     `Je pense que ${topic.title.toLowerCase()} est un sujet important.`,
     "Parce que dans la vie quotidienne, cela change beaucoup de choses.",

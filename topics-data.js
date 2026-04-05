@@ -13,6 +13,170 @@ window.FrenchClassData = {
     "Donc...|So...",
     "En general...|In general..."
   ],
+  expressionBanks: [
+    {
+      id: "opinion",
+      title: "Donner son opinion",
+      tip: "Pour commencer vite et parler sans bloquer.",
+      items: [
+        "Je pense que...|I think that...",
+        "A mon avis...|In my opinion...",
+        "Pour moi...|For me...",
+        "Je trouve que...|I find that...",
+        "Selon moi...|According to me...",
+        "Personnellement...|Personally..."
+      ]
+    },
+    {
+      id: "nuance",
+      title: "Nuancer",
+      tip: "Pour montrer que ta reponse est plus fine.",
+      items: [
+        "Cela depend.|It depends.",
+        "Pas toujours.|Not always.",
+        "Oui, mais...|Yes, but...",
+        "Dans certains cas...|In some cases...",
+        "D'un cote..., mais de l'autre...|On one hand..., but on the other...",
+        "Ce n'est pas si simple.|It is not that simple."
+      ]
+    },
+    {
+      id: "agreement",
+      title: "Etre d'accord",
+      tip: "Pour reagir dans un debat ou en binome.",
+      items: [
+        "Je suis d'accord.|I agree.",
+        "Je suis assez d'accord.|I mostly agree.",
+        "Tu as raison.|You are right.",
+        "C'est vrai.|That is true.",
+        "Je comprends cette idee.|I understand that idea.",
+        "Je partage cet avis.|I share that opinion."
+      ]
+    },
+    {
+      id: "disagreement",
+      title: "Ne pas etre d'accord",
+      tip: "Pour repondre poliment sans etre trop direct.",
+      items: [
+        "Je ne suis pas d'accord.|I do not agree.",
+        "Je ne pense pas.|I do not think so.",
+        "Pas vraiment.|Not really.",
+        "Je vois les choses autrement.|I see it differently.",
+        "Je ne suis pas sur.|I am not sure.",
+        "Je comprends, mais...|I understand, but..."
+      ]
+    },
+    {
+      id: "reason",
+      title: "Donner une raison",
+      tip: "Pour expliquer pourquoi tu penses cela.",
+      items: [
+        "Parce que...|Because...",
+        "Car...|Because...",
+        "Le probleme, c'est que...|The problem is that...",
+        "La raison principale, c'est...|The main reason is...",
+        "Cela s'explique par...|This can be explained by...",
+        "C'est important parce que...|It is important because..."
+      ]
+    },
+    {
+      id: "example",
+      title: "Donner un exemple",
+      tip: "Pour rendre ta reponse plus concrete.",
+      items: [
+        "Par exemple...|For example...",
+        "Dans mon ecole...|At my school...",
+        "Dans ma ville...|In my city...",
+        "Dans la vie quotidienne...|In everyday life...",
+        "Prenons un exemple simple...|Let's take a simple example...",
+        "Je peux prendre mon cas.|I can use my own case."
+      ]
+    },
+    {
+      id: "comparison",
+      title: "Comparer",
+      tip: "Pour opposer deux idees ou deux situations.",
+      items: [
+        "C'est plus... que...|It is more... than...",
+        "C'est moins... que...|It is less... than...",
+        "Comme aux Etats-Unis...|Like in the United States...",
+        "Par rapport a...|Compared with...",
+        "Au contraire...|On the contrary...",
+        "En revanche...|On the other hand..."
+      ]
+    },
+    {
+      id: "conclusion",
+      title: "Conclure",
+      tip: "Pour finir clairement meme avec une reponse courte.",
+      items: [
+        "Donc...|So...",
+        "Au final...|In the end...",
+        "Pour conclure...|To conclude...",
+        "En resume...|In summary...",
+        "En bref...|In short...",
+        "Le plus important, c'est...|The most important thing is..."
+      ]
+    },
+    {
+      id: "fillers",
+      title: "Gagner du temps",
+      tip: "Pour respirer et garder la parole quelques secondes de plus.",
+      items: [
+        "Voyons...|Let's see...",
+        "Comment dire...|How can I say...",
+        "Je cherche mes mots...|I am looking for my words...",
+        "Ce que je veux dire, c'est...|What I mean is...",
+        "En fait...|Actually...",
+        "Alors...|So..."
+      ]
+    },
+    {
+      id: "idioms",
+      title: "Expressions francaises imagees",
+      tip: "Des expressions plus naturelles ou plus colorees a reconnaitre.",
+      items: [
+        "C'est l'hopital qui se fout de la charite.|That's the pot calling the kettle black.",
+        "Tourner autour du pot.|To beat around the bush.",
+        "Ca ne tient pas debout.|That does not make sense.",
+        "En avoir marre.|To be fed up.",
+        "Mettre la charrue avant les boeufs.|To put the cart before the horse.",
+        "Avoir un coup de coeur.|To really love something."
+      ]
+    }
+  ],
+  phrasePuzzles: [
+    {
+      hint: "Opinion simple",
+      translation: "I think this topic is important for students.",
+      parts: ["Je pense que", "ce sujet", "est important", "pour les etudiants."]
+    },
+    {
+      hint: "Nuance",
+      translation: "It depends, because each student has a different situation.",
+      parts: ["Cela depend", "parce que", "chaque etudiant", "a une situation differente."]
+    },
+    {
+      hint: "Exemple",
+      translation: "For example, at my university, many students work after class.",
+      parts: ["Par exemple,", "dans mon universite,", "beaucoup d'etudiants", "travaillent apres les cours."]
+    },
+    {
+      hint: "Conclusion",
+      translation: "In the end, the most important thing is to keep a good balance.",
+      parts: ["Au final,", "le plus important,", "c'est de garder", "un bon equilibre."]
+    },
+    {
+      hint: "Desaccord poli",
+      translation: "I understand, but I see things differently.",
+      parts: ["Je comprends,", "mais", "je vois", "les choses autrement."]
+    },
+    {
+      hint: "Comparaison",
+      translation: "Compared with a face-to-face class, online class is more flexible.",
+      parts: ["Par rapport a", "un cours en presentiel,", "le cours en ligne", "est plus flexible."]
+    }
+  ],
   topics: [
     {
       id: "telephones-classe",

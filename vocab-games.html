@@ -11,17 +11,39 @@
   <div class="bg-orb orb-two"></div>
 
   <main class="shell">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link" href="./methode.html">Expressions</a>
+        <a class="nav-link is-active" href="./vocab-games.html">Jeux</a>
+      </nav>
+    </header>
+
     <section class="hero compact">
       <div class="hero-copy">
-        <div class="eyebrow">Vocabulaire • jeux • revision</div>
-        <h1>La salle de jeux du vocabulaire</h1>
+        <span class="eyebrow">Jeux rapides</span>
+        <div class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </div>
+        <h1>Les jeux simples pour revoir</h1>
         <p>
-          Une page separee pour reviser apres le reveal du sujet : flashcards, quiz a choix multiple
-          et pack de mots par theme. Tu peux travailler tous les sujets, seulement les sujets deja vus
-          ou juste le sujet actuel.
+          Cette page sert seulement a jouer. Le sprint est le jeu principal, puis tu peux
+          faire un mini-jeu de prepositions et finir avec une mission expressions.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-secondary" href="./index.html">Retour aux sujets</a>
+          <a class="btn btn-secondary" href="./sujets.html">Retour aux sujets</a>
         </div>
       </div>
       <div class="hero-stats">
@@ -29,6 +51,11 @@
           <span class="stat-label">Mots connus</span>
           <strong class="stat-value" id="knownWords">0</strong>
           <span class="stat-foot">reponses reussies enregistrees</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Serie max</span>
+          <strong class="stat-value" id="sprintBest">0</strong>
+          <span class="stat-foot">meilleur record</span>
         </article>
         <article class="stat-card">
           <span class="stat-label">Source</span>
@@ -56,7 +83,25 @@
 
         <article class="panel-card game-card">
           <div class="game-head">
-            <h3>Jeu 1 • Flashcards</h3>
+            <h3>Sprint vocab</h3>
+            <button class="btn btn-primary small" id="startSprintBtn">Rejouer</button>
+          </div>
+          <div class="sprint-board">
+            <div class="sprint-stats">
+              <span class="pill">Serie <strong id="sprintStreak">0</strong></span>
+              <span class="pill">Vies <strong id="sprintLives">3</strong></span>
+              <span class="pill">Temps <strong id="sprintSeconds">5</strong>s</span>
+            </div>
+            <div class="sprint-timer"><div class="sprint-timer-fill" id="sprintTimerFill"></div></div>
+            <p class="quiz-question sprint-question" id="sprintQuestion">Appuie sur Rejouer pour commencer.</p>
+            <div class="quiz-options" id="sprintOptions"></div>
+            <p class="quiz-result" id="sprintFeedback">Trouve vite le bon mot en francais.</p>
+          </div>
+        </article>
+
+        <article class="panel-card game-card">
+          <div class="game-head">
+            <h3>Flashcards</h3>
             <button class="btn btn-secondary small" id="nextFlashBtn">Mot suivant</button>
           </div>
           <div class="flashcard" id="flashcard">
@@ -69,36 +114,45 @@
             <button class="btn btn-secondary small" id="knowFlashBtn">Je connais ce mot</button>
           </div>
         </article>
-
-        <article class="panel-card game-card">
-          <div class="game-head">
-            <h3>Jeu 2 • Quiz rapide</h3>
-            <button class="btn btn-secondary small" id="newQuizBtn">Nouvelle question</button>
-          </div>
-          <p class="quiz-question" id="quizQuestion">Lance une question pour commencer.</p>
-          <div class="quiz-options" id="quizOptions"></div>
-          <p class="quiz-result" id="quizResult">Score: <span id="quizScore">0</span> / <span id="quizTotal">0</span></p>
-        </article>
       </section>
 
       <aside class="side-panel">
         <article class="panel-card game-card">
           <div class="game-head">
-            <h3>Jeu 3 • Pack du theme</h3>
-            <button class="btn btn-secondary small" id="newPackBtn">Nouveau pack</button>
+            <h3>Prepositions</h3>
+            <button class="btn btn-secondary small" id="newPrepositionBtn">Nouvelle phrase</button>
           </div>
-          <p class="subhelp" id="packTitle">Le pack s'affichera ici.</p>
-          <div class="chip-wrap" id="packWords"></div>
-          <div class="coach-list" id="packTasks"></div>
+          <p class="quiz-question" id="prepositionQuestion">Choisis la bonne preposition.</p>
+          <div class="quiz-options" id="prepositionOptions"></div>
+          <p class="quiz-result" id="prepositionFeedback">Exemple: aller <strong>a</strong> la fac, etre <strong>en</strong> ville.</p>
+        </article>
+
+        <article class="panel-card game-card">
+          <div class="game-head">
+            <h3>Mission expressions</h3>
+            <button class="btn btn-secondary small" id="newMissionBtn">Nouvelle mission</button>
+          </div>
+          <p class="subhelp" id="missionTitle">Une mini mission orale apparaitra ici.</p>
+          <p class="quiz-question" id="missionQuestion">Choisis une banque puis lance la mission.</p>
+          <div class="chip-wrap" id="missionExpressions"></div>
+          <div class="coach-list" id="missionSteps"></div>
         </article>
 
         <article class="panel-card">
-          <h3>Utilisation en classe</h3>
+          <h3>Mode d'emploi</h3>
           <ul class="clean-list">
-            <li>Flashcards: echauffement rapide.</li>
-            <li>Quiz: competition simple par binome.</li>
-            <li>Pack du theme: parler avec 3 ou 4 mots imposes.</li>
+            <li>1. Fais une serie sur le sprint.</li>
+            <li>2. Fais une phrase de preposition.</li>
+            <li>3. Revois 2 ou 3 mots avec les flashcards.</li>
+            <li>4. Termine avec la mission expressions.</li>
           </ul>
+        </article>
+
+        <article class="panel-card">
+          <h3>Outils bonus</h3>
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="./vocabulaire.html">Vocabulaire</a>
+          </div>
         </article>
       </aside>
     </section>
