@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francais Oral - Koka</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="page-koka">
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link" href="./methode.html">Expressions</a>
+        <a class="nav-link" href="./vocab-games.html">Jeux</a>
+        <a class="nav-link is-active" href="./koka.html">Koka</a>
+      </nav>
+    </header>
+
+    <div class="koka-layout">
+
+      <!-- ── Chat column ─────────────────────────────── -->
+      <div class="chat-container">
+
+        <!-- Chat header -->
+        <div class="chat-header">
+          <div class="koka-header-info">
+            <div class="koka-avatar-wrap">
+              <img src="./assets/koka.jpg" alt="Koka" class="koka-avatar-img">
+              <span class="koka-online-dot" id="kokaOnlineDot"></span>
+            </div>
+            <div>
+              <strong class="koka-header-name">Koka</strong>
+              <span class="koka-header-sub" id="kokaStatus">Coach FR · aide EN · corrections douces</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary small" id="newChatBtn" type="button">
+            Nouvelle conv.
+          </button>
+        </div>
+
+        <!-- Messages scroll area -->
+        <div class="chat-messages-area" id="chatMessages">
+          <!-- Typing indicator (hidden until Koka is typing) -->
+          <div class="msg msg-koka hidden" id="typingIndicator">
+            <div class="msg-avatar">
+              <img src="./assets/koka.jpg" alt="K">
+            </div>
+            <div class="msg-body">
+              <div class="msg-bubble msg-typing">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode bar -->
+        <div class="chat-mode-bar" id="kokaModeSwitch"></div>
+
+        <!-- Input bar -->
+        <form class="chat-bar" id="chatForm">
+          <textarea
+            id="chatInput"
+            class="chat-bar-input"
+            rows="1"
+            placeholder="Ecris en français… (Shift+Enter pour un saut de ligne)"
+          ></textarea>
+          <button class="chat-send-btn" id="sendChatBtn" type="submit" aria-label="Envoyer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- ── Sidebar ──────────────────────────────────── -->
+      <aside class="koka-sidebar">
+
+        <!-- Profile card -->
+        <article class="koka-profile-card">
+          <img class="koka-photo" src="./assets/koka.jpg" alt="Photo de Koka">
+          <div class="koka-profile-copy">
+            <strong>Koka</strong>
+            <p class="subhelp" style="margin:0">Coach FR + aide EN rapide</p>
+          </div>
+          <div class="coach-list">
+            <div class="coach-step"><strong>1.</strong> Ecris une reponse courte en francais.</div>
+            <div class="coach-step"><strong>2.</strong> Choisis le mode qui t'aide le plus.</div>
+            <div class="coach-step"><strong>3.</strong> Reponds encore avec une meilleure phrase.</div>
+          </div>
+        </article>
+
+        <!-- Quick suggestions -->
+        <article class="panel-card">
+          <h3>Pour commencer</h3>
+          <div class="chip-wrap" id="kokaSuggestionChips"></div>
+        </article>
+
+        <!-- Mode help -->
+        <article class="panel-card">
+          <h3>Mode actif</h3>
+          <p class="subhelp" id="kokaModeHelp">Choisis un mode ci-dessus pour changer le comportement de Koka.</p>
+        </article>
+
+        <!-- Tips -->
+        <article class="panel-card">
+          <h3>Bon usage</h3>
+          <ul class="clean-list">
+            <li>Ecris 1 ou 2 phrases — pas besoin d'un paragraphe.</li>
+            <li>Demande une correction ou du vocabulaire.</li>
+            <li>Reessaie avec la version améliorée.</li>
+            <li>Note les mots utiles pour l'oral.</li>
+          </ul>
+        </article>
+
+        <!-- Shortcuts -->
+        <article class="panel-card">
+          <h3>Questions rapides</h3>
+          <div class="chip-wrap" id="kokaQuickPrompts"></div>
+        </article>
+
+      </aside>
+    </div>
+  </main>
+
+  <script src="./topics-data.js"></script>
+  <script src="./content-extensions.js"></script>
+  <script src="./koka.js"></script>
+</body>
+</html>

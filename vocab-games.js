@@ -1,437 +1,425 @@
-const GAME_DATA = window.FrenchClassData;
-const GAME_TOPICS = GAME_DATA.topics;
-const EXPRESSION_BANKS = GAME_DATA.expressionBanks || [];
-const CURRENT_TOPIC_KEY_GAME = "french_class_current_topic";
-const SEEN_KEY_GAME = "french_class_seen_topics";
-const KNOWN_WORDS_KEY = "french_class_known_words";
-const SPRINT_BEST_KEY = "french_class_sprint_best";
-const SPRINT_DURATION = 5000;
+const { shuffle, pick, storeGet, storeSet, clear, el, setText,
+        renderVocab, renderChips, renderCoach,
+        renderAnswerBtns, lockBtns, showCorrect } = window.FrUtils;
+
+const GAME_DATA       = window.FrenchClassData;
+const GAME_TOPICS     = GAME_DATA.topics;
+const GAME_PACKS      = GAME_DATA.globalVocabPacks  || [];
+const EXPRESSION_BANKS = GAME_DATA.expressionBanks  || [];
+
+const CURRENT_TOPIC_KEY = 'french_class_current_topic';
+const SEEN_KEY          = 'french_class_seen_topics';
+const KNOWN_WORDS_KEY   = 'french_class_known_words';
+const SPRINT_BEST_KEY   = 'french_class_sprint_best';
+const SPRINT_MS         = 5000;
+
 const PREPOSITION_QUESTIONS = [
-  { sentence: "Je vais __ la bibliotheque apres les cours.", answer: "a", options: ["a", "de", "chez", "sur"] },
-  { sentence: "On parle souvent __ ce sujet en classe.", answer: "de", options: ["de", "a", "pour", "dans"] },
-  { sentence: "Elle habite __ France depuis un an.", answer: "en", options: ["en", "a", "chez", "sur"] },
-  { sentence: "Je laisse mon sac __ la table.", answer: "sur", options: ["sur", "dans", "chez", "de"] },
-  { sentence: "Il travaille __ un hopital a Paris.", answer: "dans", options: ["dans", "en", "de", "a"] },
-  { sentence: "Nous allons __ Paul ce soir.", answer: "chez", options: ["chez", "dans", "pour", "sur"] },
-  { sentence: "Je fais cet exercice __ progresser en francais.", answer: "pour", options: ["pour", "de", "a", "en"] }
+  { sentence: 'Je vais __ la bibliotheque apres les cours.',    answer: 'a',    options: ['a', 'de', 'chez', 'sur']   },
+  { sentence: 'On parle souvent __ ce sujet en classe.',        answer: 'de',   options: ['de', 'a', 'pour', 'dans']  },
+  { sentence: 'Elle habite __ France depuis un an.',            answer: 'en',   options: ['en', 'a', 'chez', 'sur']   },
+  { sentence: 'Je laisse mon sac __ la table.',                 answer: 'sur',  options: ['sur', 'dans', 'chez', 'de'] },
+  { sentence: 'Il travaille __ un hopital a Paris.',            answer: 'dans', options: ['dans', 'en', 'de', 'a']    },
+  { sentence: 'Nous allons __ Paul ce soir.',                   answer: 'chez', options: ['chez', 'dans', 'pour', 'sur'] },
+  { sentence: 'Je fais cet exercice __ progresser en francais.', answer: 'pour', options: ['pour', 'de', 'a', 'en']   },
+  { sentence: 'Son appartement est __ le troisieme etage.',     answer: 'au',   options: ['au', 'dans', 'sur', 'de']  },
+  { sentence: 'Je rentre __ l\'ecole a 17h.',                   answer: 'de',   options: ['de', 'a', 'en', 'dans']    }
 ];
 
-const gameEls = {
-  poolSelect: document.getElementById("poolSelect"),
-  activePoolLabel: document.getElementById("activePoolLabel"),
-  knownWords: document.getElementById("knownWords"),
-  sprintBest: document.getElementById("sprintBest"),
-  sprintStreak: document.getElementById("sprintStreak"),
-  sprintLives: document.getElementById("sprintLives"),
-  sprintSeconds: document.getElementById("sprintSeconds"),
-  sprintQuestion: document.getElementById("sprintQuestion"),
-  sprintOptions: document.getElementById("sprintOptions"),
-  sprintFeedback: document.getElementById("sprintFeedback"),
-  sprintTimerFill: document.getElementById("sprintTimerFill"),
-  startSprintBtn: document.getElementById("startSprintBtn"),
-  flashMeta: document.getElementById("flashMeta"),
-  flashFront: document.getElementById("flashFront"),
-  flashBack: document.getElementById("flashBack"),
-  revealFlashBtn: document.getElementById("revealFlashBtn"),
-  nextFlashBtn: document.getElementById("nextFlashBtn"),
-  knowFlashBtn: document.getElementById("knowFlashBtn"),
-  newPrepositionBtn: document.getElementById("newPrepositionBtn"),
-  prepositionQuestion: document.getElementById("prepositionQuestion"),
-  prepositionOptions: document.getElementById("prepositionOptions"),
-  prepositionFeedback: document.getElementById("prepositionFeedback"),
-  newMissionBtn: document.getElementById("newMissionBtn"),
-  missionTitle: document.getElementById("missionTitle"),
-  missionQuestion: document.getElementById("missionQuestion"),
-  missionExpressions: document.getElementById("missionExpressions"),
-  missionSteps: document.getElementById("missionSteps")
+// ─── DOM refs ────────────────────────────────────────────────
+const g = {
+  poolSelect:          document.getElementById('poolSelect'),
+  activePoolLabel:     document.getElementById('activePoolLabel'),
+  knownWords:          document.getElementById('knownWords'),
+  knownWordsFlash:     document.getElementById('knownWordsFlash'),
+  sprintBest:          document.getElementById('sprintBest'),
+
+  // Sprint
+  sprintModeSelect:    document.getElementById('sprintModeSelect'),
+  sprintModeLabel:     document.getElementById('sprintModeLabel'),
+  startSprintBtn:      document.getElementById('startSprintBtn'),
+  sprintReady:         document.getElementById('sprintReady'),
+  sprintStreak:        document.getElementById('sprintStreak'),
+  sprintLivesDisplay:  document.getElementById('sprintLivesDisplay'),
+  sprintRound:         document.getElementById('sprintRound'),
+  sprintSeconds:       document.getElementById('sprintSeconds'),
+  sprintTimerFill:     document.getElementById('sprintTimerFill'),
+  sprintQuestion:      document.getElementById('sprintQuestion'),
+  sprintOptions:       document.getElementById('sprintOptions'),
+  sprintFeedback:      document.getElementById('sprintFeedback'),
+
+  // Flashcard
+  flashMeta:           document.getElementById('flashMeta'),
+  flashFront:          document.getElementById('flashFront'),
+  flashBack:           document.getElementById('flashBack'),
+  revealFlashBtn:      document.getElementById('revealFlashBtn'),
+  nextFlashBtn:        document.getElementById('nextFlashBtn'),
+  knowFlashBtn:        document.getElementById('knowFlashBtn'),
+
+  // Prepositions
+  newPrepositionBtn:   document.getElementById('newPrepositionBtn'),
+  prepositionQuestion: document.getElementById('prepositionQuestion'),
+  prepositionOptions:  document.getElementById('prepositionOptions'),
+  prepositionFeedback: document.getElementById('prepositionFeedback'),
+
+  // Mission
+  newMissionBtn:       document.getElementById('newMissionBtn'),
+  missionTitle:        document.getElementById('missionTitle'),
+  missionQuestion:     document.getElementById('missionQuestion'),
+  missionExpressions:  document.getElementById('missionExpressions'),
+  missionSteps:        document.getElementById('missionSteps')
 };
 
-let flashWord = null;
-let sprintStreak = 0;
-let sprintLives = 3;
-let sprintLocked = false;
-let sprintTimer = null;
+// ─── State ────────────────────────────────────────────────────
+let flashWord      = null;
+let sprintStreak   = 0;
+let sprintLives    = 3;
+let sprintRound    = 0;
+let sprintLocked   = false;
+let sprintStarted  = false;
+let sprintTimer    = null;
 let sprintDeadline = 0;
 
-function readJsonValue(key, fallback) {
-  try {
-    return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
-  } catch {
-    return fallback;
-  }
-}
-
-function writeJsonValue(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
-
-function flattenWords(topics) {
-  return topics.flatMap((topic) => ["B1", "B2", "C1"].flatMap((level) =>
-    topic.levels[level].map((item) => {
-      const [fr, en] = item.split("|");
-      return {
-        key: `${topic.id}:${level}:${fr}`,
-        topicId: topic.id,
-        topicTitle: topic.title,
-        category: topic.category,
-        level,
-        fr,
-        en
-      };
+// ─── Pool helpers ─────────────────────────────────────────────
+function flattenSource(source) {
+  return ['B1', 'B2', 'C1'].flatMap(level =>
+    source.levels[level].map(raw => {
+      const [fr, en] = raw.split('|');
+      return { key: `${source.id}:${level}:${fr}`, topicId: source.id,
+               topicTitle: source.title, category: source.category, level, fr, en };
     })
-  ));
+  );
 }
 
-function getPoolTopics() {
-  const mode = gameEls.poolSelect.value;
-  const seen = new Set(readJsonValue(SEEN_KEY_GAME, []));
-  const currentId = localStorage.getItem(CURRENT_TOPIC_KEY_GAME);
+function getPoolSources() {
+  const mode    = g.poolSelect?.value ?? 'all';
+  const seen    = new Set(storeGet(SEEN_KEY, []));
+  const current = localStorage.getItem(CURRENT_TOPIC_KEY);
 
-  if (mode === "current" && currentId) {
-    return GAME_TOPICS.filter((topic) => topic.id === currentId);
+  if (mode === 'current' && current) return GAME_TOPICS.filter(t => t.id === current);
+  if (mode === 'seen') {
+    const s = GAME_TOPICS.filter(t => seen.has(t.id));
+    return s.length ? s : GAME_TOPICS;
   }
-
-  if (mode === "seen") {
-    const seenTopics = GAME_TOPICS.filter((topic) => seen.has(topic.id));
-    return seenTopics.length ? seenTopics : GAME_TOPICS;
-  }
-
   return GAME_TOPICS;
 }
 
-function shuffleItems(list) {
-  const copy = [...list];
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
+function getPoolWords() {
+  return [...flattenSource({ id: 'packs', title: 'Packs', category: 'Packs',
+    levels: { B1: [], B2: [], C1: [] } }),
+    ...flattenSource.call(null, ...GAME_PACKS.map(() => null)) // placeholder
+  ];
+  // Actually build properly:
 }
 
-function getPoolWords() {
-  return flattenWords(getPoolTopics());
+// Fixed version
+function buildPoolWords() {
+  const topics = getPoolSources();
+  const topicWords = topics.flatMap(flattenSource);
+  const packWords  = GAME_PACKS.flatMap(flattenSource);
+  return [...topicWords, ...packWords];
 }
 
 function updatePoolLabel() {
-  const mode = gameEls.poolSelect.value;
-  gameEls.activePoolLabel.textContent =
-    mode === "current" ? "Sujet actuel" : mode === "seen" ? "Sujets vus" : "Tous";
+  const mode = g.poolSelect?.value ?? 'all';
+  const labels = { current: 'Sujet actuel', seen: 'Sujets vus', all: 'Tous' };
+  if (g.activePoolLabel) setText(g.activePoolLabel, labels[mode] ?? 'Tous');
 }
 
-function updateKnownWords() {
-  const known = new Set(readJsonValue(KNOWN_WORDS_KEY, []));
-  gameEls.knownWords.textContent = String(known.size);
+// ─── Known words ──────────────────────────────────────────────
+function getKnown()          { return new Set(storeGet(KNOWN_WORDS_KEY, [])); }
+function markKnown(word)     { const k = getKnown(); k.add(word.key); storeSet(KNOWN_WORDS_KEY, [...k]); updateKnownCount(); }
+function updateKnownCount()  {
+  const n = getKnown().size;
+  if (g.knownWords)      setText(g.knownWords,      String(n));
+  if (g.knownWordsFlash) setText(g.knownWordsFlash, String(n));
 }
 
-function readSprintBest() {
-  return Number(localStorage.getItem(SPRINT_BEST_KEY) || 0);
-}
+// ─── Sprint best ──────────────────────────────────────────────
+function getBest()      { return Number(localStorage.getItem(SPRINT_BEST_KEY) || 0); }
+function saveBest(n)    { localStorage.setItem(SPRINT_BEST_KEY, String(n)); }
+function updateBest()   { if (g.sprintBest) setText(g.sprintBest, String(getBest())); }
 
-function writeSprintBest(value) {
-  localStorage.setItem(SPRINT_BEST_KEY, String(value));
+// ─── Sprint UI helpers ────────────────────────────────────────
+function livesDisplay(n) {
+  return '♥'.repeat(Math.max(0, n)) + '♡'.repeat(Math.max(0, 3 - n));
 }
 
 function updateSprintStats() {
-  gameEls.sprintStreak.textContent = String(sprintStreak);
-  gameEls.sprintLives.textContent = String(sprintLives);
-  gameEls.sprintBest.textContent = String(readSprintBest());
+  if (g.sprintStreak)       setText(g.sprintStreak,       String(sprintStreak));
+  if (g.sprintLivesDisplay) setText(g.sprintLivesDisplay, livesDisplay(sprintLives));
+  if (g.sprintRound)        setText(g.sprintRound,        String(sprintRound));
+  updateBest();
 }
 
-function paintSprintTimer(ratio) {
-  if (!gameEls.sprintTimerFill || !gameEls.sprintSeconds) {
-    return;
-  }
+function getSprintMode() { return g.sprintModeSelect?.value ?? 'mix'; }
 
-  const safeRatio = Math.max(0, Math.min(1, ratio));
-  gameEls.sprintTimerFill.style.width = `${safeRatio * 100}%`;
-  gameEls.sprintSeconds.textContent = String(Math.max(0, Math.ceil((SPRINT_DURATION * safeRatio) / 1000)));
+function updateSprintModeLabel() {
+  const labels = { 'en-fr': 'Anglais → Francais', 'fr-en': 'Francais → Anglais', mix: 'Mixte (FR ↔ EN)' };
+  if (g.sprintModeLabel) setText(g.sprintModeLabel, labels[getSprintMode()] ?? 'Mixte');
 }
 
-function renderExpressionChips(items) {
-  return items.map((item) => {
-    const [fr, en] = item.split("|");
-    return `<span class="chip"><span class="chip-fr">${fr}</span><span class="chip-en">${en}</span></span>`;
-  }).join("");
-}
-
-function markKnown(word) {
-  const known = new Set(readJsonValue(KNOWN_WORDS_KEY, []));
-  known.add(word.key);
-  writeJsonValue(KNOWN_WORDS_KEY, [...known]);
-  updateKnownWords();
-}
-
-function nextFlashcard() {
-  const words = getPoolWords();
-  if (!words.length) {
-    gameEls.flashMeta.textContent = "Aucun mot disponible";
-    gameEls.flashFront.textContent = "Reviens d'abord sur la page des sujets.";
-    gameEls.flashBack.textContent = "";
-    return;
-  }
-
-  flashWord = shuffleItems(words)[0];
-  gameEls.flashMeta.textContent = `${flashWord.topicTitle} • ${flashWord.level}`;
-  gameEls.flashFront.textContent = flashWord.fr;
-  gameEls.flashBack.textContent = "Clique sur Voir la traduction";
-}
-
-function revealFlashcard() {
-  if (!flashWord) {
-    return;
-  }
-  gameEls.flashBack.textContent = flashWord.en;
+function paintTimer(ratio) {
+  if (!g.sprintTimerFill) return;
+  g.sprintTimerFill.style.width = `${Math.max(0, Math.min(1, ratio)) * 100}%`;
+  // Color: green → orange → red
+  const hue = Math.round(ratio * 120); // 120=green, 0=red
+  g.sprintTimerFill.style.background = `hsl(${hue}, 80%, 48%)`;
+  if (g.sprintSeconds) setText(g.sprintSeconds, `${Math.max(0, Math.ceil(SPRINT_MS * ratio / 1000))}s`);
 }
 
 function clearSprintTimer() {
-  if (sprintTimer) {
-    window.clearInterval(sprintTimer);
-    sprintTimer = null;
-  }
+  if (sprintTimer) { clearInterval(sprintTimer); sprintTimer = null; }
+}
+
+function startCountdown(onTimeout) {
+  clearSprintTimer();
+  sprintDeadline = Date.now() + SPRINT_MS;
+  paintTimer(1);
+  sprintTimer = setInterval(() => {
+    const left = sprintDeadline - Date.now();
+    if (left <= 0) { clearSprintTimer(); paintTimer(0); onTimeout(); return; }
+    paintTimer(left / SPRINT_MS);
+  }, 80);
+}
+
+// ─── Sprint game ──────────────────────────────────────────────
+function showSprintReady(msg) {
+  sprintStarted = false;
+  sprintLocked  = true;
+  clearSprintTimer();
+  paintTimer(1);
+  clear(g.sprintOptions);
+  if (g.sprintQuestion)  setText(g.sprintQuestion, '');
+  if (g.sprintFeedback)  setText(g.sprintFeedback, msg ?? '');
+  if (g.sprintReady)     g.sprintReady.classList.remove('hidden');
+  if (g.startSprintBtn)  setText(g.startSprintBtn, sprintRound === 0 ? 'Lancer le sprint' : 'Rejouer');
 }
 
 function finishSprint() {
-  sprintLocked = true;
-  gameEls.sprintFeedback.textContent = `Partie terminee. Serie finale: ${sprintStreak}.`;
+  sprintLocked  = true;
+  sprintStarted = false;
+  showSprintReady(`Partie terminee. Meilleure serie : ${getBest()}.`);
 }
 
-function scheduleNextSprintRound() {
+function scheduleNext() {
   clearSprintTimer();
-  sprintTimer = window.setTimeout(() => {
-    renderSprintRound();
-  }, 650);
-}
-
-function startSprintCountdown(onTimeout) {
-  clearSprintTimer();
-  sprintDeadline = Date.now() + SPRINT_DURATION;
-  paintSprintTimer(1);
-
-  sprintTimer = window.setInterval(() => {
-    const remaining = sprintDeadline - Date.now();
-    if (remaining <= 0) {
-      clearSprintTimer();
-      paintSprintTimer(0);
-      onTimeout();
-      return;
-    }
-
-    paintSprintTimer(remaining / SPRINT_DURATION);
-  }, 100);
+  sprintTimer = setTimeout(renderSprintRound, 700);
 }
 
 function renderSprintRound() {
-  if (!gameEls.sprintQuestion || !gameEls.sprintOptions || sprintLives <= 0) {
-    return;
-  }
-
-  const words = getPoolWords();
+  const words = buildPoolWords();
   if (words.length < 4) {
-    gameEls.sprintQuestion.textContent = "Pas assez de mots pour lancer le sprint.";
-    gameEls.sprintOptions.innerHTML = "";
+    showSprintReady('Pas assez de mots. Choisis une autre banque.');
     return;
   }
 
-  const [correct, ...rest] = shuffleItems(words);
-  const distractors = shuffleItems(rest.filter((word) => word.fr !== correct.fr)).slice(0, 3);
-  const options = shuffleItems([correct, ...distractors]);
+  const [correct, ...rest] = shuffle(words);
+  const mode      = getSprintMode();
+  const direction = mode === 'mix' ? (Math.random() > 0.5 ? 'en-fr' : 'fr-en') : mode;
+  const distractors = shuffle(
+    rest.filter(w => direction === 'en-fr' ? w.fr !== correct.fr : w.en !== correct.en)
+  ).slice(0, 3);
+  const options = shuffle([correct, ...distractors]);
 
-  sprintLocked = false;
-  gameEls.sprintQuestion.textContent = `Comment dit-on "${correct.en}" en francais ?`;
-  gameEls.sprintFeedback.textContent = "Reponds vite pour garder ta serie.";
-  gameEls.sprintOptions.innerHTML = options.map((option) => (
-    `<button class="answer-btn" data-key="${option.key}" data-correct="${option.key === correct.key}">${option.fr}</button>`
-  )).join("");
+  sprintRound += 1;
+  sprintLocked  = false;
+  updateSprintStats();
+  if (g.sprintReady) g.sprintReady.classList.add('hidden');
 
-  startSprintCountdown(() => {
-    if (sprintLocked) {
-      return;
-    }
+  if (g.sprintQuestion) {
+    setText(g.sprintQuestion,
+      direction === 'en-fr'
+        ? `Comment dit-on "${correct.en}" en francais ?`
+        : `What does "${correct.fr}" mean in English?`
+    );
+  }
+  if (g.sprintFeedback) setText(g.sprintFeedback, '');
 
-    sprintLocked = true;
-    sprintLives -= 1;
-    gameEls.sprintFeedback.textContent = sprintLives > 0
-      ? "Temps ecoule. Une vie en moins."
-      : "Temps ecoule. Partie terminee.";
-    updateSprintStats();
-    gameEls.sprintOptions.querySelectorAll(".answer-btn").forEach((other) => {
-      other.disabled = true;
-      if (other.dataset.correct === "true") {
-        other.classList.add("correct");
-      }
-    });
-    if (sprintLives > 0) {
-      scheduleNextSprintRound();
-    } else {
-      finishSprint();
-    }
-  });
-
-  gameEls.sprintOptions.querySelectorAll(".answer-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (sprintLocked) {
-        return;
-      }
-
+  renderAnswerBtns(g.sprintOptions,
+    options.map(o => ({ text: direction === 'en-fr' ? o.fr : o.en, isCorrect: o.key === correct.key })),
+    (btn, isCorrect) => {
+      if (sprintLocked) return;
       sprintLocked = true;
       clearSprintTimer();
-      const isCorrect = button.dataset.correct === "true";
-      if (isCorrect) {
-        sprintStreak += 1;
-        button.classList.add("correct");
-        markKnown(correct);
-        gameEls.sprintFeedback.textContent = "Bien joue. On continue.";
-        if (sprintStreak > readSprintBest()) {
-          writeSprintBest(sprintStreak);
-        }
-        updateSprintStats();
-        scheduleNextSprintRound();
-      } else {
-        sprintLives -= 1;
-        button.classList.add("wrong");
-        gameEls.sprintFeedback.textContent = sprintLives > 0
-          ? "Rate. Une vie en moins."
-          : "Plus de vies.";
-        updateSprintStats();
-        gameEls.sprintOptions.querySelectorAll(".answer-btn").forEach((other) => {
-          other.disabled = true;
-          if (other.dataset.correct === "true") {
-            other.classList.add("correct");
-          }
-        });
-        if (sprintLives > 0) {
-          scheduleNextSprintRound();
-        } else {
-          finishSprint();
-        }
-        return;
-      }
 
-      gameEls.sprintOptions.querySelectorAll(".answer-btn").forEach((other) => {
-        other.disabled = true;
-        if (other.dataset.correct === "true") {
-          other.classList.add("correct");
-        }
-      });
-    });
+      lockBtns(g.sprintOptions);
+      showCorrect(g.sprintOptions);
+
+      if (isCorrect) {
+        btn.classList.add('correct');
+        sprintStreak += 1;
+        markKnown(correct);
+        if (sprintStreak > getBest()) saveBest(sprintStreak);
+        updateSprintStats();
+        if (g.sprintFeedback) setText(g.sprintFeedback, `Correct ! Serie : ${sprintStreak}`);
+        scheduleNext();
+      } else {
+        btn.classList.add('wrong');
+        sprintLives -= 1;
+        updateSprintStats();
+        if (g.sprintFeedback) setText(g.sprintFeedback,
+          sprintLives > 0 ? `Rate. Il restait "${direction === 'en-fr' ? correct.fr : correct.en}".` : 'Plus de vies. Fin du sprint.');
+        if (sprintLives > 0) scheduleNext(); else finishSprint();
+      }
+    }
+  );
+
+  startCountdown(() => {
+    if (sprintLocked) return;
+    sprintLocked = true;
+    sprintLives -= 1;
+    lockBtns(g.sprintOptions);
+    showCorrect(g.sprintOptions);
+    updateSprintStats();
+    if (g.sprintFeedback) setText(g.sprintFeedback,
+      sprintLives > 0 ? 'Temps ecoule. Une vie en moins.' : 'Temps ecoule. Fin du sprint.');
+    if (sprintLives > 0) scheduleNext(); else finishSprint();
   });
 }
 
 function startSprint() {
-  clearSprintTimer();
-  sprintStreak = 0;
-  sprintLives = 3;
+  sprintStreak  = 0;
+  sprintLives   = 3;
+  sprintRound   = 0;
+  sprintStarted = true;
+  sprintLocked  = false;
   updateSprintStats();
-  paintSprintTimer(1);
+  if (g.sprintReady) g.sprintReady.classList.add('hidden');
+  if (g.startSprintBtn) setText(g.startSprintBtn, 'Rejouer');
   renderSprintRound();
 }
 
-function renderPrepositionGame() {
-  if (!gameEls.prepositionQuestion || !gameEls.prepositionOptions || !gameEls.prepositionFeedback) {
+// ─── Flashcard ────────────────────────────────────────────────
+function nextFlashcard() {
+  const words = buildPoolWords();
+  if (!words.length) {
+    if (g.flashFront) setText(g.flashFront, 'Aucun mot disponible.');
+    if (g.flashMeta)  setText(g.flashMeta,  'Reviens sur la page Sujets d\'abord.');
     return;
   }
+  flashWord = pick(shuffle(words));
+  if (g.flashMeta)  setText(g.flashMeta,  `${flashWord.topicTitle} · ${flashWord.level}`);
+  if (g.flashFront) setText(g.flashFront, flashWord.fr);
+  if (g.flashBack) {
+    setText(g.flashBack, '');
+    g.flashBack.classList.add('hidden');
+  }
+}
 
-  const item = shuffleItems(PREPOSITION_QUESTIONS)[0];
-  gameEls.prepositionQuestion.textContent = item.sentence;
-  gameEls.prepositionFeedback.textContent = "Choisis la bonne preposition.";
-  gameEls.prepositionOptions.innerHTML = shuffleItems(item.options).map((option) => (
-    `<button class="answer-btn" data-correct="${option === item.answer}">${option}</button>`
-  )).join("");
+function revealFlashcard() {
+  if (!flashWord || !g.flashBack) return;
+  setText(g.flashBack, flashWord.en);
+  g.flashBack.classList.remove('hidden');
+}
 
-  gameEls.prepositionOptions.querySelectorAll(".answer-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const isCorrect = button.dataset.correct === "true";
-      gameEls.prepositionOptions.querySelectorAll(".answer-btn").forEach((other) => {
-        other.disabled = true;
-        if (other.dataset.correct === "true") {
-          other.classList.add("correct");
-        }
-      });
+// ─── Prepositions ─────────────────────────────────────────────
+function renderPrepositionGame() {
+  if (!g.prepositionQuestion || !g.prepositionOptions) return;
+  const item = pick(shuffle(PREPOSITION_QUESTIONS));
+  setText(g.prepositionQuestion, item.sentence.replace('__', '____'));
+  if (g.prepositionFeedback) setText(g.prepositionFeedback, 'Choisis la bonne preposition.');
 
+  renderAnswerBtns(g.prepositionOptions,
+    shuffle(item.options).map(opt => ({ text: opt, isCorrect: opt === item.answer })),
+    (btn, isCorrect) => {
+      lockBtns(g.prepositionOptions);
+      showCorrect(g.prepositionOptions);
       if (isCorrect) {
-        button.classList.add("correct");
-        gameEls.prepositionFeedback.textContent = "Bien joue. La preposition est correcte.";
+        btn.classList.add('correct');
+        if (g.prepositionFeedback) setText(g.prepositionFeedback, `Bien joue ! "${item.answer}" est correct.`);
       } else {
-        button.classList.add("wrong");
-        gameEls.prepositionFeedback.textContent = `Pas cette fois. La bonne reponse est "${item.answer}".`;
+        btn.classList.add('wrong');
+        if (g.prepositionFeedback) setText(g.prepositionFeedback, `Pas tout a fait. La bonne reponse etait "${item.answer}".`);
       }
+    },
+    'prep-btn'
+  );
+}
+
+// ─── Mission ──────────────────────────────────────────────────
+function pickFromBank(bankId) {
+  const bank = EXPRESSION_BANKS.find(b => b.id === bankId);
+  if (!bank) return null;
+  const [fr] = pick(shuffle(bank.items)).split('|');
+  return fr;
+}
+
+function renderMission() {
+  const sources = getPoolSources();
+  const topic   = pick(shuffle(sources.length ? sources : GAME_TOPICS));
+
+  if (g.missionTitle)    setText(g.missionTitle,    `${topic.title} — reponds en 4 phrases`);
+  if (g.missionQuestion) setText(g.missionQuestion, topic.question);
+
+  const exprs = ['opinion', 'reason', 'example', 'conclusion']
+    .map(pickFromBank)
+    .filter(Boolean);
+
+  if (g.missionExpressions) {
+    clear(g.missionExpressions);
+    exprs.forEach(fr => {
+      const chip = el('span', 'chip');
+      chip.appendChild(el('span', 'chip-fr', fr));
+      g.missionExpressions.appendChild(chip);
+    });
+  }
+
+  if (g.missionSteps) {
+    renderCoach(g.missionSteps, [
+      'Commence avec ton opinion.',
+      'Utilise une raison claire.',
+      'Ajoute un exemple personnel.',
+      'Termine avec une courte conclusion.'
+    ]);
+  }
+}
+
+// ─── Tabs ─────────────────────────────────────────────────────
+function initTabs() {
+  const tabBtns   = document.querySelectorAll('.game-tab');
+  const tabPanels = document.querySelectorAll('.game-tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      tabBtns.forEach(b => b.classList.toggle('is-active', b.dataset.tab === target));
+      tabPanels.forEach(p => p.classList.toggle('is-active', p.id === `tab-${target}`));
     });
   });
 }
 
-function pickExpressionFromBank(bankId) {
-  const bank = EXPRESSION_BANKS.find((item) => item.id === bankId);
-  if (!bank) {
-    return null;
-  }
-  return shuffleItems(bank.items)[0];
-}
-
-function renderMission() {
-  if (!gameEls.missionTitle || !gameEls.missionQuestion || !gameEls.missionExpressions || !gameEls.missionSteps) {
-    return;
-  }
-
-  const topics = getPoolTopics();
-  const topic = topics.length ? shuffleItems(topics)[0] : shuffleItems(GAME_TOPICS)[0];
-  const missionExpressions = [
-    pickExpressionFromBank("opinion"),
-    pickExpressionFromBank("reason"),
-    pickExpressionFromBank("example"),
-    pickExpressionFromBank("conclusion")
-  ].filter(Boolean);
-
-  gameEls.missionTitle.textContent = `${topic.title} • reponds en 4 phrases courtes`;
-  gameEls.missionQuestion.textContent = topic.question;
-  gameEls.missionExpressions.innerHTML = renderExpressionChips(missionExpressions);
-  gameEls.missionSteps.innerHTML = [
-    "1. Commence avec ton opinion.",
-    "2. Utilise une raison claire.",
-    "3. Ajoute un exemple personnel ou scolaire.",
-    "4. Termine avec une petite conclusion."
-  ].map((line) => `<div class="coach-step">${line}</div>`).join("");
-}
-
-function rerenderAllGames() {
+// ─── Init ─────────────────────────────────────────────────────
+function init() {
+  updateKnownCount();
+  updateBest();
   updatePoolLabel();
-  startSprint();
+  updateSprintModeLabel();
+  showSprintReady('Choisis un mode et lance le sprint.');
   nextFlashcard();
   renderPrepositionGame();
   renderMission();
+  initTabs();
 }
 
-if (gameEls.poolSelect) {
-  gameEls.poolSelect.addEventListener("change", rerenderAllGames);
-}
+// ─── Events ───────────────────────────────────────────────────
+g.poolSelect?.addEventListener('change', () => {
+  updatePoolLabel();
+  showSprintReady('Banque changee. Lance un nouveau sprint.');
+  nextFlashcard();
+  renderMission();
+});
 
-if (gameEls.nextFlashBtn) {
-  gameEls.nextFlashBtn.addEventListener("click", nextFlashcard);
-}
+g.startSprintBtn?.addEventListener('click', startSprint);
+g.sprintModeSelect?.addEventListener('change', () => {
+  updateSprintModeLabel();
+  showSprintReady('Mode change. Lance le sprint.');
+});
 
-if (gameEls.revealFlashBtn) {
-  gameEls.revealFlashBtn.addEventListener("click", revealFlashcard);
-}
+g.revealFlashBtn?.addEventListener('click', revealFlashcard);
+g.nextFlashBtn?.addEventListener('click', nextFlashcard);
+g.knowFlashBtn?.addEventListener('click', () => { if (flashWord) markKnown(flashWord); nextFlashcard(); });
 
-if (gameEls.knowFlashBtn) {
-  gameEls.knowFlashBtn.addEventListener("click", () => {
-    if (flashWord) {
-      markKnown(flashWord);
-    }
-  });
-}
+g.newPrepositionBtn?.addEventListener('click', renderPrepositionGame);
+g.newMissionBtn?.addEventListener('click', renderMission);
 
-if (gameEls.startSprintBtn) {
-  gameEls.startSprintBtn.addEventListener("click", startSprint);
-}
-
-if (gameEls.newPrepositionBtn) {
-  gameEls.newPrepositionBtn.addEventListener("click", renderPrepositionGame);
-}
-
-if (gameEls.newMissionBtn) {
-  gameEls.newMissionBtn.addEventListener("click", renderMission);
-}
-
-updateKnownWords();
-updateSprintStats();
-rerenderAllGames();
+init();

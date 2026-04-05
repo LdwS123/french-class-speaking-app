@@ -1,80 +1,110 @@
-const EXPLORER_DATA = window.FrenchClassData;
-const EXPLORER_TOPICS = EXPLORER_DATA.topics;
+const { clear, el, setText, vocabChip, pill } = window.FrUtils;
 
-const explorerEls = {
-  categoryFilter: document.getElementById("categoryFilter"),
-  levelFilter: document.getElementById("levelFilter"),
-  searchInput: document.getElementById("searchInput"),
-  vocabGrid: document.getElementById("vocabGrid"),
-  vocabTotal: document.getElementById("vocabTotal"),
-  categoryCount: document.getElementById("categoryCount")
+const EXPLORER_DATA   = window.FrenchClassData;
+const EXPLORER_TOPICS = EXPLORER_DATA.topics;
+const EXPLORER_PACKS  = EXPLORER_DATA.globalVocabPacks || [];
+
+const xEls = {
+  categoryFilter: document.getElementById('categoryFilter'),
+  levelFilter:    document.getElementById('levelFilter'),
+  searchInput:    document.getElementById('searchInput'),
+  vocabGrid:      document.getElementById('vocabGrid'),
+  vocabTotal:     document.getElementById('vocabTotal'),
+  categoryCount:  document.getElementById('categoryCount'),
 };
 
-function getCategories() {
-  return [...new Set(EXPLORER_TOPICS.map((topic) => topic.category))].sort((a, b) => a.localeCompare(b, "fr"));
+// ─── Data helpers ─────────────────────────────────────────────
+function getAllSources() {
+  return [
+    ...EXPLORER_TOPICS.map(t => ({ ...t, sourceType: 'topic', sourceLabel: t.title })),
+    ...EXPLORER_PACKS.map(p  => ({ ...p, sourceType: 'pack',  sourceLabel: p.title })),
+  ];
 }
 
-function flattenTopicWords(topic) {
-  return ["B1", "B2", "C1"].flatMap((level) =>
-    topic.levels[level].map((item) => {
-      const [fr, en] = item.split("|");
-      return { topic, level, fr, en };
+function flattenSource(source) {
+  return ['B1', 'B2', 'C1'].flatMap(level =>
+    source.levels[level].map(raw => {
+      const [fr, en] = String(raw).split('|');
+      return { source, level, fr: fr?.trim() ?? '', en: en?.trim() ?? '' };
     })
   );
 }
 
-function renderCategoryOptions() {
-  const categories = getCategories();
-  explorerEls.categoryFilter.innerHTML = ['<option value="ALL">Tous les themes</option>']
-    .concat(categories.map((category) => `<option value="${category}">${category}</option>`))
-    .join("");
-  explorerEls.categoryCount.textContent = String(categories.length);
+function getCategories() {
+  return [...new Set(getAllSources().map(s => s.category))].sort((a, b) => a.localeCompare(b, 'fr'));
 }
 
+// ─── Category filter init ─────────────────────────────────────
+function buildCategoryOptions() {
+  const cats = getCategories();
+  clear(xEls.categoryFilter);
+  const defaultOpt = document.createElement('option');
+  defaultOpt.value = 'ALL';
+  defaultOpt.textContent = 'Tous les themes';
+  xEls.categoryFilter.appendChild(defaultOpt);
+  cats.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = cat;
+    xEls.categoryFilter.appendChild(opt);
+  });
+  if (xEls.categoryCount) setText(xEls.categoryCount, String(cats.length));
+}
+
+// ─── Word card ────────────────────────────────────────────────
+function buildWordCard(item) {
+  const card = el('article', 'word-card');
+
+  const top = el('div', 'word-card-top');
+  top.appendChild(pill(item.source.category));
+  top.appendChild(pill(item.level));
+  card.appendChild(top);
+
+  card.appendChild(el('h3', '', item.fr));
+  card.appendChild(el('p', '', item.en));
+
+  const sourceLabel = item.source.sourceType === 'pack'
+    ? `Pack · ${item.source.sourceLabel}`
+    : item.source.sourceLabel;
+  card.appendChild(el('span', 'word-topic', sourceLabel));
+  return card;
+}
+
+// ─── Render grid ──────────────────────────────────────────────
 function renderExplorer() {
-  const category = explorerEls.categoryFilter.value;
-  const level = explorerEls.levelFilter.value;
-  const query = explorerEls.searchInput.value.trim().toLowerCase();
+  const category = xEls.categoryFilter?.value ?? 'ALL';
+  const level    = xEls.levelFilter?.value    ?? 'ALL';
+  const query    = (xEls.searchInput?.value ?? '').trim().toLowerCase();
 
-  const words = EXPLORER_TOPICS
-    .filter((topic) => category === "ALL" || topic.category === category)
-    .flatMap(flattenTopicWords)
-    .filter((item) => level === "ALL" || item.level === level)
-    .filter((item) => {
-      if (!query) {
-        return true;
-      }
-
-      return [
-        item.fr,
-        item.en,
-        item.topic.title,
-        item.topic.category
-      ].some((value) => value.toLowerCase().includes(query));
+  const words = getAllSources()
+    .filter(s => category === 'ALL' || s.category === category)
+    .flatMap(flattenSource)
+    .filter(item => level === 'ALL' || item.level === level)
+    .filter(item => {
+      if (!query) return true;
+      return [item.fr, item.en, item.source.sourceLabel, item.source.category]
+        .some(v => v.toLowerCase().includes(query));
     });
 
-  explorerEls.vocabTotal.textContent = String(words.length);
-  explorerEls.vocabGrid.innerHTML = words.length ? words.map((item) => `
-    <article class="word-card">
-      <div class="word-card-top">
-        <span class="pill">${item.topic.category}</span>
-        <span class="pill">${item.level}</span>
-      </div>
-      <h3>${item.fr}</h3>
-      <p>${item.en}</p>
-      <span class="word-topic">${item.topic.title}</span>
-    </article>
-  `).join("") : `
-    <article class="panel-card empty-state">
-      <h3>Aucun resultat</h3>
-      <p class="subhelp">Essaie un autre mot en francais ou en anglais.</p>
-    </article>
-  `;
+  if (xEls.vocabTotal) setText(xEls.vocabTotal, String(words.length));
+  clear(xEls.vocabGrid);
+
+  if (!words.length) {
+    const empty = el('article', 'panel-card empty-state');
+    empty.appendChild(el('h3', '', 'Aucun resultat'));
+    empty.appendChild(el('p', 'subhelp', 'Essaie un autre mot en francais ou en anglais.'));
+    xEls.vocabGrid.appendChild(empty);
+    return;
+  }
+
+  words.forEach(item => xEls.vocabGrid.appendChild(buildWordCard(item)));
 }
 
-explorerEls.categoryFilter.addEventListener("change", renderExplorer);
-explorerEls.levelFilter.addEventListener("change", renderExplorer);
-explorerEls.searchInput.addEventListener("input", renderExplorer);
+// ─── Events ───────────────────────────────────────────────────
+xEls.categoryFilter?.addEventListener('change', renderExplorer);
+xEls.levelFilter?.addEventListener('change', renderExplorer);
+xEls.searchInput?.addEventListener('input', renderExplorer);
 
-renderCategoryOptions();
+// ─── Init ─────────────────────────────────────────────────────
+buildCategoryOptions();
 renderExplorer();

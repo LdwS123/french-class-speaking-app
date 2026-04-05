@@ -5,6 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Francais Oral - Accueil</title>
   <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* Landing-specific additions */
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .koka-cta {
+      background: linear-gradient(135deg,
+        rgba(0,85,164,0.92) 0%,
+        rgba(21,101,200,0.92) 50%,
+        rgba(239,65,53,0.88) 100%);
+      color: #fff;
+      border-radius: 22px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .koka-cta-copy { flex: 1; min-width: 0; }
+    .koka-cta-copy strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 4px;
+    }
+    .koka-cta-copy p {
+      margin: 0;
+      font-size: 0.88rem;
+      opacity: 0.88;
+      line-height: 1.5;
+    }
+    .koka-cta .btn {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .koka-cta .btn:hover {
+      background: rgba(255,255,255,0.28);
+    }
+    .koka-cta-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.4);
+      flex-shrink: 0;
+    }
+    .landing-grid .feature-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .landing-grid .feature-card .btn.wide {
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body class="page-landing">
   <div class="bg-orb orb-one"></div>
@@ -26,25 +85,28 @@
         <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
         <a class="nav-link" href="./methode.html">Expressions</a>
         <a class="nav-link" href="./vocab-games.html">Jeux</a>
+        <a class="nav-link" href="./koka.html">Koka</a>
       </nav>
     </header>
 
     <section class="hero landing-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Cours de francais oral</span>
-        <div class="flag-line" aria-hidden="true">
-          <span class="flag-blue"></span>
-          <span class="flag-white"></span>
-          <span class="flag-red"></span>
+        <div class="hero-badge-row">
+          <span class="eyebrow">Cours de francais oral</span>
+          <span class="flag-line" aria-hidden="true">
+            <span class="flag-blue"></span>
+            <span class="flag-white"></span>
+            <span class="flag-red"></span>
+          </span>
         </div>
-        <h1>Un vrai site pour ton cours de francais oral</h1>
+        <h1>Tout ce qu'il te faut pour parler en francais</h1>
         <p>
-          Une page = une mission claire. Tu choisis ce dont tu as besoin :
-          un sujet, des mots, des expressions ou un jeu.
+          Un sujet, des mots, des expressions, des jeux et un coach IA. Chaque page a une
+          mission claire — tu choisis ce dont tu as besoin.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="./sujets.html">Commencer</a>
-          <a class="btn btn-secondary" href="./vocabulaire.html">Explorer les mots</a>
+          <a class="btn btn-primary" href="./sujets.html">Commencer maintenant</a>
+          <a class="btn btn-secondary" href="./koka.html">Parler avec Koka</a>
         </div>
         <div class="clarity-strip">
           <div class="clarity-step">
@@ -61,55 +123,63 @@
           </div>
           <div class="clarity-step">
             <strong>4</strong>
-            <span>Finis avec un jeu</span>
+            <span>Discute avec Koka</span>
           </div>
         </div>
       </div>
 
       <div class="hero-stats">
         <article class="stat-card">
-          <span class="stat-label">Pages</span>
-          <strong class="stat-value">5</strong>
-          <span class="stat-foot">pages utiles</span>
-        </article>
-        <article class="stat-card">
           <span class="stat-label">Sujets</span>
-          <strong class="stat-value">37</strong>
+          <strong class="stat-value">61</strong>
           <span class="stat-foot">themes de conversation</span>
         </article>
         <article class="stat-card">
           <span class="stat-label">Vocabulaire</span>
-          <strong class="stat-value">400+</strong>
+          <strong class="stat-value">830+</strong>
           <span class="stat-foot">mots FR + EN a reutiliser</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Pages</span>
+          <strong class="stat-value">6</strong>
+          <span class="stat-foot">outils distincts</span>
         </article>
       </div>
     </section>
 
+    <!-- Koka CTA banner -->
+    <div class="koka-cta">
+      <img src="./assets/koka.jpg" alt="Koka" class="koka-cta-avatar">
+      <div class="koka-cta-copy">
+        <strong>Discuter avec Koka — ton coach oral IA</strong>
+        <p>Koka corrige doucement, explique en anglais si besoin et pose des questions pour que tu continues a parler.</p>
+      </div>
+      <a class="btn small" href="./koka.html">Ouvrir Koka</a>
+    </div>
+
     <section class="landing-grid">
       <article class="feature-card">
         <h2>1. Sujets</h2>
-        <p>Une pioche de conversation avec question, mission, exemples et vocabulaire du theme.</p>
+        <p>Une grande pioche de 61 themes. Tire un sujet et recois la question, la mission, les mots utiles et des exemples de phrases.</p>
         <a class="btn btn-primary wide" href="./sujets.html">Ouvrir la page sujets</a>
       </article>
 
       <article class="feature-card">
         <h2>2. Expressions</h2>
-        <p>Des structures de reponse, des transitions et des mini modeles tres simples.</p>
+        <p>Des structures de reponse, des transitions et des mini modeles simples pour parler naturellement.</p>
         <a class="btn btn-primary wide" href="./methode.html">Voir les expressions</a>
       </article>
 
       <article class="feature-card">
         <h2>3. Jeux</h2>
-        <p>Un sprint de vocabulaire et quelques outils rapides pour memoriser.</p>
+        <p>Un grand sprint de vocabulaire, des flashcards, des prepositions et une mission expressions pour memoriser vite.</p>
         <a class="btn btn-primary wide" href="./vocab-games.html">Lancer les jeux</a>
       </article>
 
       <article class="feature-card">
-        <h2>4. Outils bonus</h2>
-        <p>Si tu veux aller plus loin, ouvre la grande page de vocabulaire du site.</p>
-        <div class="hero-actions">
-          <a class="btn btn-secondary" href="./vocabulaire.html">Vocabulaire</a>
-        </div>
+        <h2>4. Vocabulaire</h2>
+        <p>830+ mots FR/EN avec filtre par theme et par niveau. Cherche en francais ou en anglais.</p>
+        <a class="btn btn-secondary wide" href="./vocabulaire.html">Explorer les mots</a>
       </article>
     </section>
   </main>

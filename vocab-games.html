@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeux de vocabulaire - Francais</title>
+  <title>Jeux - Francais Oral</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body class="page-games">
@@ -26,139 +26,217 @@
         <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
         <a class="nav-link" href="./methode.html">Expressions</a>
         <a class="nav-link is-active" href="./vocab-games.html">Jeux</a>
+        <a class="nav-link" href="./koka.html">Koka</a>
       </nav>
     </header>
 
-    <section class="hero compact">
-      <div class="hero-copy">
-        <span class="eyebrow">Jeux rapides</span>
-        <div class="flag-line" aria-hidden="true">
-          <span class="flag-blue"></span>
-          <span class="flag-white"></span>
-          <span class="flag-red"></span>
-        </div>
-        <h1>Les jeux simples pour revoir</h1>
-        <p>
-          Cette page sert seulement a jouer. Le sprint est le jeu principal, puis tu peux
-          faire un mini-jeu de prepositions et finir avec une mission expressions.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-secondary" href="./sujets.html">Retour aux sujets</a>
-        </div>
+    <!-- Stats bar -->
+    <div class="games-stats-bar">
+      <div class="games-stat">
+        <span class="games-stat-label">Mots connus</span>
+        <strong class="games-stat-value" id="knownWords">0</strong>
       </div>
-      <div class="hero-stats">
-        <article class="stat-card">
-          <span class="stat-label">Mots connus</span>
-          <strong class="stat-value" id="knownWords">0</strong>
-          <span class="stat-foot">reponses reussies enregistrees</span>
-        </article>
-        <article class="stat-card">
-          <span class="stat-label">Serie max</span>
-          <strong class="stat-value" id="sprintBest">0</strong>
-          <span class="stat-foot">meilleur record</span>
-        </article>
-        <article class="stat-card">
-          <span class="stat-label">Source</span>
-          <strong class="stat-value" id="activePoolLabel">Tous</strong>
-          <span class="stat-foot">banque de mots active</span>
-        </article>
+      <div class="games-stat">
+        <span class="games-stat-label">Record serie</span>
+        <strong class="games-stat-value" id="sprintBest">0</strong>
+      </div>
+      <div class="games-stat">
+        <span class="games-stat-label">Source active</span>
+        <strong class="games-stat-value" id="activePoolLabel">Tous</strong>
+      </div>
+      <div class="games-stat games-stat-select">
+        <select id="poolSelect" class="select-box">
+          <option value="all">Tous les sujets</option>
+          <option value="seen">Sujets deja vus</option>
+          <option value="current">Sujet actuel</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tab nav -->
+    <nav class="game-tabs-nav" role="tablist">
+      <button class="game-tab is-active" data-tab="sprint" role="tab">Sprint vocab</button>
+      <button class="game-tab" data-tab="flash"   role="tab">Flashcards</button>
+      <button class="game-tab" data-tab="prep"    role="tab">Prepositions</button>
+      <button class="game-tab" data-tab="mission" role="tab">Mission</button>
+    </nav>
+
+    <!-- ── Tab: Sprint ──────────────────────────────────── -->
+    <section class="game-tab-panel is-active" id="tab-sprint" role="tabpanel">
+      <div class="sprint-layout">
+
+        <div class="sprint-main">
+          <!-- Controls -->
+          <div class="sprint-controls">
+            <div>
+              <label class="sprint-label" for="sprintModeSelect">Direction</label>
+              <select id="sprintModeSelect" class="select-box">
+                <option value="mix">Mixte (FR ↔ EN)</option>
+                <option value="en-fr">Anglais → Francais</option>
+                <option value="fr-en">Francais → Anglais</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="startSprintBtn">Lancer le sprint</button>
+          </div>
+
+          <!-- Game arena -->
+          <div class="sprint-arena">
+            <!-- Timer -->
+            <div class="sprint-timer"><div class="sprint-timer-fill" id="sprintTimerFill"></div></div>
+
+            <!-- Ready state -->
+            <div class="sprint-ready" id="sprintReady">
+              <div class="sprint-ready-icon">🎯</div>
+              <h3>Pret a jouer ?</h3>
+              <p>Choisis le mode puis lance le sprint. Reponds avant que le temps soit ecoule.</p>
+            </div>
+
+            <!-- Question -->
+            <p class="sprint-question" id="sprintQuestion"></p>
+
+            <!-- Options 2×2 -->
+            <div class="sprint-options" id="sprintOptions"></div>
+
+            <!-- Feedback -->
+            <p class="sprint-feedback" id="sprintFeedback"></p>
+          </div>
+        </div>
+
+        <!-- Sidebar stats -->
+        <aside class="sprint-sidebar">
+          <div class="sprint-score-card">
+            <div class="sprint-score-item">
+              <span class="sprint-score-label">Serie</span>
+              <strong class="sprint-score-val" id="sprintStreak">0</strong>
+            </div>
+            <div class="sprint-score-item">
+              <span class="sprint-score-label">Vies</span>
+              <strong class="sprint-score-val" id="sprintLivesDisplay">♥♥♥</strong>
+            </div>
+            <div class="sprint-score-item">
+              <span class="sprint-score-label">Manche</span>
+              <strong class="sprint-score-val" id="sprintRound">0</strong>
+            </div>
+            <div class="sprint-score-item">
+              <span class="sprint-score-label">Temps</span>
+              <strong class="sprint-score-val" id="sprintSeconds">5s</strong>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <h3>Mode</h3>
+            <p class="subhelp" id="sprintModeLabel">Mixte — tu reponds en francais ou en anglais.</p>
+          </div>
+
+          <div class="panel-card">
+            <h3>Regles</h3>
+            <ul class="clean-list">
+              <li>3 vies au depart.</li>
+              <li>Chaque mauvaise reponse = -1 vie.</li>
+              <li>Reponds avant le chrono.</li>
+              <li>Construis la meilleure serie possible.</li>
+            </ul>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="layout games-layout">
-      <section class="topic-panel">
-        <article class="panel-card">
-          <div class="filter-row">
-            <div>
-              <h3>Choisir la banque de mots</h3>
-              <p class="subhelp">Tu peux filtrer les jeux selon tes besoins de classe.</p>
-            </div>
-            <select id="poolSelect" class="select-box">
-              <option value="seen">Sujets deja vus</option>
-              <option value="current">Sujet actuel</option>
-              <option value="all">Tous les sujets</option>
-            </select>
+    <!-- ── Tab: Flashcards ──────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-flash" role="tabpanel">
+      <div class="flash-layout">
+        <div class="flash-main">
+          <div class="flashcard-big" id="flashcard">
+            <div class="flash-meta" id="flashMeta">Clique sur "Mot suivant"</div>
+            <div class="flash-front" id="flashFront">—</div>
+            <div class="flash-back hidden" id="flashBack"></div>
           </div>
-        </article>
+          <div class="flash-actions">
+            <button class="btn btn-primary" id="revealFlashBtn">Voir la traduction</button>
+            <button class="btn btn-secondary" id="knowFlashBtn">Je connais ✓</button>
+            <button class="btn btn-secondary" id="nextFlashBtn">Mot suivant →</button>
+          </div>
+        </div>
 
-        <article class="panel-card game-card">
-          <div class="game-head">
-            <h3>Sprint vocab</h3>
-            <button class="btn btn-primary small" id="startSprintBtn">Rejouer</button>
+        <aside class="flash-sidebar">
+          <div class="panel-card">
+            <h3>Mots connus</h3>
+            <strong class="stat-value" id="knownWordsFlash">0</strong>
+            <p class="subhelp">mots confirmes</p>
           </div>
-          <div class="sprint-board">
-            <div class="sprint-stats">
-              <span class="pill">Serie <strong id="sprintStreak">0</strong></span>
-              <span class="pill">Vies <strong id="sprintLives">3</strong></span>
-              <span class="pill">Temps <strong id="sprintSeconds">5</strong>s</span>
-            </div>
-            <div class="sprint-timer"><div class="sprint-timer-fill" id="sprintTimerFill"></div></div>
-            <p class="quiz-question sprint-question" id="sprintQuestion">Appuie sur Rejouer pour commencer.</p>
-            <div class="quiz-options" id="sprintOptions"></div>
-            <p class="quiz-result" id="sprintFeedback">Trouve vite le bon mot en francais.</p>
+          <div class="panel-card">
+            <h3>Comment jouer</h3>
+            <ul class="clean-list">
+              <li>Regarde le mot francais.</li>
+              <li>Essaie de trouver la traduction.</li>
+              <li>Clique pour voir la reponse.</li>
+              <li>Si tu savais, clique "Je connais".</li>
+            </ul>
           </div>
-        </article>
+        </aside>
+      </div>
+    </section>
 
-        <article class="panel-card game-card">
-          <div class="game-head">
-            <h3>Flashcards</h3>
-            <button class="btn btn-secondary small" id="nextFlashBtn">Mot suivant</button>
-          </div>
-          <div class="flashcard" id="flashcard">
-            <div class="flash-meta" id="flashMeta">Pret</div>
-            <div class="flash-front" id="flashFront">Clique sur "Mot suivant"</div>
-            <div class="flash-back" id="flashBack">La traduction apparaitra ici.</div>
-          </div>
-          <div class="side-actions">
-            <button class="btn btn-primary small" id="revealFlashBtn">Voir la traduction</button>
-            <button class="btn btn-secondary small" id="knowFlashBtn">Je connais ce mot</button>
-          </div>
-        </article>
-      </section>
-
-      <aside class="side-panel">
-        <article class="panel-card game-card">
-          <div class="game-head">
-            <h3>Prepositions</h3>
+    <!-- ── Tab: Prepositions ────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-prep" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>Prepositions</h2>
             <button class="btn btn-secondary small" id="newPrepositionBtn">Nouvelle phrase</button>
           </div>
-          <p class="quiz-question" id="prepositionQuestion">Choisis la bonne preposition.</p>
-          <div class="quiz-options" id="prepositionOptions"></div>
-          <p class="quiz-result" id="prepositionFeedback">Exemple: aller <strong>a</strong> la fac, etre <strong>en</strong> ville.</p>
-        </article>
+          <p class="mini-game-hint">Complete la phrase avec la bonne preposition.</p>
+          <p class="quiz-question" id="prepositionQuestion">Chargement...</p>
+          <div class="prep-options" id="prepositionOptions"></div>
+          <p class="quiz-result" id="prepositionFeedback"></p>
+        </div>
 
-        <article class="panel-card game-card">
-          <div class="game-head">
-            <h3>Mission expressions</h3>
+        <div class="panel-card mini-game-tip">
+          <h3>Aide-memoire</h3>
+          <ul class="clean-list">
+            <li><strong>a</strong> — aller a la fac, a Paris</li>
+            <li><strong>de</strong> — parler de, venir de</li>
+            <li><strong>en</strong> — en France, en avance</li>
+            <li><strong>dans</strong> — dans l'ecole, dans la ville</li>
+            <li><strong>chez</strong> — chez moi, chez Paul</li>
+            <li><strong>sur</strong> — sur la table, sur le sujet</li>
+            <li><strong>pour</strong> — pour apprendre, pour toi</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Mission ────────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-mission" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>Mission expression</h2>
             <button class="btn btn-secondary small" id="newMissionBtn">Nouvelle mission</button>
           </div>
-          <p class="subhelp" id="missionTitle">Une mini mission orale apparaitra ici.</p>
-          <p class="quiz-question" id="missionQuestion">Choisis une banque puis lance la mission.</p>
+          <p class="subhelp" id="missionTitle">Reponds en 4 phrases courtes en utilisant ces expressions.</p>
+          <p class="quiz-question" id="missionQuestion">Chargement...</p>
           <div class="chip-wrap" id="missionExpressions"></div>
           <div class="coach-list" id="missionSteps"></div>
-        </article>
+        </div>
 
-        <article class="panel-card">
-          <h3>Mode d'emploi</h3>
+        <div class="panel-card mini-game-tip">
+          <h3>Modele de reponse</h3>
           <ul class="clean-list">
-            <li>1. Fais une serie sur le sprint.</li>
-            <li>2. Fais une phrase de preposition.</li>
-            <li>3. Revois 2 ou 3 mots avec les flashcards.</li>
-            <li>4. Termine avec la mission expressions.</li>
+            <li><strong>1.</strong> Donne ton opinion.</li>
+            <li><strong>2.</strong> Explique pourquoi.</li>
+            <li><strong>3.</strong> Donne un exemple.</li>
+            <li><strong>4.</strong> Conclure simplement.</li>
           </ul>
-        </article>
-
-        <article class="panel-card">
-          <h3>Outils bonus</h3>
-          <div class="hero-actions">
-            <a class="btn btn-secondary" href="./vocabulaire.html">Vocabulaire</a>
-          </div>
-        </article>
-      </aside>
+          <a class="btn btn-secondary wide" href="./koka.html">Continuer avec Koka</a>
+        </div>
+      </div>
     </section>
+
   </main>
 
   <script src="./topics-data.js"></script>
+  <script src="./content-extensions.js"></script>
+  <script src="./utils.js"></script>
   <script src="./vocab-games.js"></script>
 </body>
 </html>
