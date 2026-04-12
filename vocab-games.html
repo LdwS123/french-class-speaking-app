@@ -55,10 +55,13 @@
 
     <!-- Tab nav -->
     <nav class="game-tabs-nav" role="tablist">
-      <button class="game-tab is-active" data-tab="sprint" role="tab">Sprint vocab</button>
-      <button class="game-tab" data-tab="flash"   role="tab">Flashcards</button>
-      <button class="game-tab" data-tab="prep"    role="tab">Prepositions</button>
-      <button class="game-tab" data-tab="mission" role="tab">Mission</button>
+      <button class="game-tab is-active" data-tab="sprint"    role="tab">Sprint vocab</button>
+      <button class="game-tab" data-tab="flash"               role="tab">Flashcards</button>
+      <button class="game-tab" data-tab="prep"                role="tab">Prepositions</button>
+      <button class="game-tab" data-tab="conjugaison"         role="tab">Conjugaison</button>
+      <button class="game-tab" data-tab="intrus"              role="tab">L'intrus</button>
+      <button class="game-tab" data-tab="mission"             role="tab">Mission</button>
+      <button class="game-tab" data-tab="phrase"              role="tab">Construis la phrase</button>
     </nav>
 
     <!-- ── Tab: Sprint ──────────────────────────────────── -->
@@ -76,6 +79,15 @@
                 <option value="fr-en">Francais → Anglais</option>
               </select>
             </div>
+            <div>
+              <label class="sprint-label" for="sprintLevelSelect">Niveau</label>
+              <select id="sprintLevelSelect" class="select-box">
+                <option value="all">Tous (B1–C1)</option>
+                <option value="B1">B1 seulement</option>
+                <option value="B2">B2 seulement</option>
+                <option value="C1">C1 seulement</option>
+              </select>
+            </div>
             <button class="btn btn-primary" id="startSprintBtn">Lancer le sprint</button>
           </div>
 
@@ -88,11 +100,16 @@
             <div class="sprint-ready" id="sprintReady">
               <div class="sprint-ready-icon">🎯</div>
               <h3>Pret a jouer ?</h3>
-              <p>Choisis le mode puis lance le sprint. Reponds avant que le temps soit ecoule.</p>
+              <p>Choisis le mode et le niveau, puis lance le sprint. Reponds avant que le temps soit ecoule.</p>
+              <p class="sprint-ready-tip">Le chrono accelere avec ta serie !</p>
             </div>
 
-            <!-- Question -->
+            <!-- Combo badge -->
+            <div class="sprint-combo hidden" id="sprintCombo"></div>
+
+            <!-- Question + meta -->
             <p class="sprint-question" id="sprintQuestion"></p>
+            <p class="sprint-word-meta" id="sprintWordMeta"></p>
 
             <!-- Options 2×2 -->
             <div class="sprint-options" id="sprintOptions"></div>
@@ -114,12 +131,20 @@
               <strong class="sprint-score-val" id="sprintLivesDisplay">♥♥♥</strong>
             </div>
             <div class="sprint-score-item">
+              <span class="sprint-score-label">Score</span>
+              <strong class="sprint-score-val" id="sprintScore">0/0</strong>
+            </div>
+            <div class="sprint-score-item">
               <span class="sprint-score-label">Manche</span>
               <strong class="sprint-score-val" id="sprintRound">0</strong>
             </div>
             <div class="sprint-score-item">
               <span class="sprint-score-label">Temps</span>
-              <strong class="sprint-score-val" id="sprintSeconds">5s</strong>
+              <strong class="sprint-score-val" id="sprintSeconds">8s</strong>
+            </div>
+            <div class="sprint-score-item">
+              <span class="sprint-score-label">Vitesse</span>
+              <strong class="sprint-score-val sprint-speed" id="sprintSpeedLabel">🟢 Normal</strong>
             </div>
           </div>
 
@@ -132,9 +157,9 @@
             <h3>Regles</h3>
             <ul class="clean-list">
               <li>3 vies au depart.</li>
-              <li>Chaque mauvaise reponse = -1 vie.</li>
-              <li>Reponds avant le chrono.</li>
-              <li>Construis la meilleure serie possible.</li>
+              <li>Mauvaise reponse ou temps ecoule = -1 vie.</li>
+              <li>La serie remet le chrono a zero.</li>
+              <li>Le chrono accelere toutes les 3 bonnes reponses.</li>
             </ul>
           </div>
         </aside>
@@ -188,18 +213,119 @@
           <p class="quiz-question" id="prepositionQuestion">Chargement...</p>
           <div class="prep-options" id="prepositionOptions"></div>
           <p class="quiz-result" id="prepositionFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="prepStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="prepBest">0</strong></span>
+          </div>
         </div>
 
         <div class="panel-card mini-game-tip">
           <h3>Aide-memoire</h3>
           <ul class="clean-list">
-            <li><strong>a</strong> — aller a la fac, a Paris</li>
-            <li><strong>de</strong> — parler de, venir de</li>
-            <li><strong>en</strong> — en France, en avance</li>
+            <li><strong>a / au / aux</strong> — aller a la fac, au marche</li>
+            <li><strong>de / du / des</strong> — parler de, venir du bureau</li>
+            <li><strong>en</strong> — en France, en avion, en retard</li>
             <li><strong>dans</strong> — dans l'ecole, dans la ville</li>
-            <li><strong>chez</strong> — chez moi, chez Paul</li>
-            <li><strong>sur</strong> — sur la table, sur le sujet</li>
-            <li><strong>pour</strong> — pour apprendre, pour toi</li>
+            <li><strong>chez</strong> — chez moi, chez le medecin</li>
+            <li><strong>sur</strong> — sur la table, sur internet</li>
+            <li><strong>pour</strong> — pour apprendre, travailler pour</li>
+            <li><strong>par</strong> — passer par, interesse par</li>
+            <li><strong>avec</strong> — sortir avec, travailler avec</li>
+            <li><strong>devant / derriere</strong> — devant le cafe</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Conjugaison ──────────────────────────── -->
+    <section class="game-tab-panel" id="tab-conjugaison" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>Conjugaison</h2>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <select id="conjugaisonTense" class="select-box small">
+                <option value="all">Tous les temps</option>
+                <option value="present">Présent</option>
+                <option value="passe">Passé composé</option>
+                <option value="imparfait">Imparfait</option>
+              </select>
+              <button class="btn btn-secondary small" id="newConjugaisonBtn">Nouvelle phrase</button>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+            <span class="conj-tense-badge" id="conjugaisonTenseBadge">Présent</span>
+          </div>
+          <p class="quiz-question" id="conjugaisonQuestion">Chargement...</p>
+          <div class="prep-options" id="conjugaisonOptions"></div>
+          <p class="quiz-result" id="conjugaisonFeedback"></p>
+          <p class="conj-hint" id="conjugaisonHint"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="conjugaisonScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="conjugaisonStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="conjugaisonBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Présent — irreguliers</h3>
+          <ul class="clean-list">
+            <li><strong>aller</strong> — vais / vas / va / allons</li>
+            <li><strong>etre</strong> — suis / es / est / sommes</li>
+            <li><strong>avoir</strong> — ai / as / a / avons / ont</li>
+            <li><strong>faire</strong> — fais / fais / fait / font</li>
+            <li><strong>vouloir</strong> — veux / veux / veut / veulent</li>
+          </ul>
+          <h3 style="margin-top:12px">Passé composé</h3>
+          <ul class="clean-list">
+            <li><strong>avoir + p.p.</strong> — j'ai mange, il a pris</li>
+            <li><strong>etre + p.p.</strong> — elle est allee, ils sont venus</li>
+          </ul>
+          <h3 style="margin-top:12px">Imparfait</h3>
+          <ul class="clean-list">
+            <li>Radical = nous (présent) : nous fais<strong>ons</strong></li>
+            <li>Terminaison : -ais, -ais, -ait, -ions, -iez, -aient</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: L'intrus ──────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-intrus" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>L'intrus</h2>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <select id="intrusDifficulty" class="select-box small">
+                <option value="easy">Facile</option>
+                <option value="hard">Difficile</option>
+              </select>
+              <button class="btn btn-secondary small" id="newIntrusBtn">Nouvelle question</button>
+            </div>
+          </div>
+          <p class="mini-game-hint" id="intrusInstruction">Trouve le mot qui ne vient pas du sujet.</p>
+          <div class="prep-options" id="intrusOptions"></div>
+          <p class="quiz-result" id="intrusFeedback"></p>
+          <p class="intrus-source" id="intrusSource"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="intrusScore">0/0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Niveaux de difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> — l'intrus vient d'une categorie completement differente.</li>
+            <li><strong>Difficile</strong> — l'intrus vient du meme domaine, mais d'un autre sujet.</li>
+          </ul>
+          <p class="subhelp" style="margin-top:12px">
+            Apres chaque reponse, tu vois d'ou vient l'intrus.
+          </p>
+          <h3 style="margin-top:12px">Strategie</h3>
+          <ul class="clean-list">
+            <li>Cherche le mot qui semble "hors contexte".</li>
+            <li>En mode Difficile, compare les connotations.</li>
           </ul>
         </div>
       </div>
@@ -213,21 +339,64 @@
             <h2>Mission expression</h2>
             <button class="btn btn-secondary small" id="newMissionBtn">Nouvelle mission</button>
           </div>
-          <p class="subhelp" id="missionTitle">Reponds en 4 phrases courtes en utilisant ces expressions.</p>
-          <p class="quiz-question" id="missionQuestion">Chargement...</p>
+          <div class="mission-timer-wrap">
+            <div class="mission-timer-bar"><div class="sprint-timer-fill" id="missionTimerFill" style="width:100%"></div></div>
+            <strong class="mission-timer-val" id="missionTimer">90s</strong>
+            <button class="btn btn-primary small" id="startMissionBtn">Lancer le chrono</button>
+          </div>
+          <p class="quiz-question mission-question" id="missionQuestion">Chargement...</p>
+          <p class="mini-game-hint" id="missionTitle"></p>
           <div class="chip-wrap" id="missionExpressions"></div>
           <div class="coach-list" id="missionSteps"></div>
         </div>
 
         <div class="panel-card mini-game-tip">
-          <h3>Modele de reponse</h3>
+          <h3>Structure en 5 etapes</h3>
           <ul class="clean-list">
-            <li><strong>1.</strong> Donne ton opinion.</li>
-            <li><strong>2.</strong> Explique pourquoi.</li>
-            <li><strong>3.</strong> Donne un exemple.</li>
-            <li><strong>4.</strong> Conclure simplement.</li>
+            <li><strong>1.</strong> Opinion directe.</li>
+            <li><strong>2.</strong> Raison principale.</li>
+            <li><strong>3.</strong> Exemple concret.</li>
+            <li><strong>4.</strong> Nuance ou comparaison.</li>
+            <li><strong>5.</strong> Conclusion courte.</li>
           </ul>
+          <p class="subhelp" style="margin-top:12px">90 secondes pour repondre a la question. Utilise les expressions proposees !</p>
           <a class="btn btn-secondary wide" href="./koka.html">Continuer avec Koka</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Construis la phrase ────────────────────── -->
+    <section class="game-tab-panel" id="tab-phrase" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>Construis la phrase</h2>
+            <button class="btn btn-secondary small" id="newPhraseBtn">Nouvelle phrase</button>
+          </div>
+          <p class="mini-game-hint" id="phraseHint">Indice...</p>
+          <p class="phrase-translation" id="phraseTranslation"></p>
+          <div class="phrase-drop-zone" id="phraseDropZone">
+            <span class="phrase-placeholder">Clique les mots dans le bon ordre...</span>
+          </div>
+          <div class="phrase-word-bank" id="phraseWordBank"></div>
+          <p class="quiz-result" id="phraseFeedback"></p>
+          <button class="btn btn-primary hidden" id="phraseCheckBtn">Verifier l'ordre</button>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="phraseScore">0/0</strong></span>
+          </div>
+          <h3 style="margin-top:16px">Comment jouer</h3>
+          <ul class="clean-list">
+            <li>Lis la phrase en anglais.</li>
+            <li>Clique les blocs dans le bon ordre francais.</li>
+            <li>Clique un bloc place pour l'enlever.</li>
+            <li>Appuie sur "Verifier" quand tu as tout place.</li>
+          </ul>
+          <p class="subhelp" style="margin-top:12px">
+            Apres validation, la phrase suivante arrive automatiquement.
+          </p>
         </div>
       </div>
     </section>

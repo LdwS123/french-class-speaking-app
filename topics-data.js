@@ -175,6 +175,66 @@ window.FrenchClassData = {
       hint: "Comparaison",
       translation: "Compared with a face-to-face class, online class is more flexible.",
       parts: ["Par rapport a", "un cours en presentiel,", "le cours en ligne", "est plus flexible."]
+    },
+    {
+      hint: "Raison",
+      translation: "The main reason is that young people spend too much time on screens.",
+      parts: ["La raison principale,", "c'est que", "les jeunes passent", "trop de temps sur les ecrans."]
+    },
+    {
+      hint: "Accord",
+      translation: "I agree, because it is a real problem in schools today.",
+      parts: ["Je suis d'accord,", "parce que", "c'est un vrai probleme", "dans les ecoles aujourd'hui."]
+    },
+    {
+      hint: "Conseil",
+      translation: "I would advise reducing screen time to one hour a day.",
+      parts: ["Je conseillerais", "de reduire", "le temps d'ecran", "a une heure par jour."]
+    },
+    {
+      hint: "Probleme + solution",
+      translation: "The problem is stress, but a simple solution is to take breaks.",
+      parts: ["Le probleme, c'est le stress,", "mais une solution simple", "est de faire", "des pauses regulieres."]
+    },
+    {
+      hint: "Donner un chiffre",
+      translation: "More than half of students say they feel a lot of pressure.",
+      parts: ["Plus de la moitie", "des etudiants", "disent ressentir", "beaucoup de pression."]
+    },
+    {
+      hint: "Exemple personnel",
+      translation: "In my case, I prefer to study in a calm and quiet place.",
+      parts: ["Dans mon cas,", "je prefere", "etudier dans", "un endroit calme et tranquille."]
+    },
+    {
+      hint: "Avantage / Inconvenient",
+      translation: "On one hand it saves time, but on the other it can be expensive.",
+      parts: ["D'un cote", "ca fait gagner du temps,", "mais de l'autre", "ca peut couter cher."]
+    },
+    {
+      hint: "Question rhetorique",
+      translation: "But is it really useful to ban phones in class?",
+      parts: ["Mais est-ce vraiment utile", "d'interdire", "les telephones", "en classe ?"]
+    },
+    {
+      hint: "Futur simple",
+      translation: "In ten years, artificial intelligence will change the way we work.",
+      parts: ["Dans dix ans,", "l'intelligence artificielle", "changera la facon", "dont on travaille."]
+    },
+    {
+      hint: "Generalisation",
+      translation: "In general, students who sleep well get better grades.",
+      parts: ["En general,", "les etudiants", "qui dorment bien", "ont de meilleures notes."]
+    },
+    {
+      hint: "Hypothese",
+      translation: "If I could choose, I would work four days a week.",
+      parts: ["Si je pouvais choisir,", "je travaillerais", "quatre jours", "par semaine."]
+    },
+    {
+      hint: "Consequence",
+      translation: "As a result, many young people no longer read books.",
+      parts: ["Par consequent,", "beaucoup de jeunes", "ne lisent plus", "de livres."]
     }
   ],
   topics: [
@@ -954,6 +1014,174 @@ window.FrenchClassData = {
       coach: ["Talk about daily life.", "Name one cause.", "Suggest one solution.", "End with your opinion."],
       accent: "#ff9a73",
       accent2: "#8fdcf0"
+    },
+    {
+      id: "lire-pour-plaisir",
+      category: "Culture",
+      date: "2026",
+      title: "Lire pour le plaisir",
+      lead: "Certains jeunes aiment les livres, d'autres preferent les ecrans. Pourtant, beaucoup disent qu'ils voudraient lire plus, mais n'ont pas le temps ou l'habitude.",
+      question: "Lire pour le plaisir est-il encore important aujourd'hui ?",
+      mission: "Explique ce que la lecture apporte que les ecrans ne donnent pas.",
+      goalEn: "Explain what reading gives you that screens do not.",
+      rules: ["parle d'un livre ou d'un genre", "compare avec les ecrans", "donne un benefice"],
+      starters: ["Quand je lis...", "La lecture aide parce que...", "Les ecrans, c'est bien, mais..."],
+      angles: ["imagination", "concentration", "vocabulaire"],
+      levels: {
+        B1: ["un livre|book", "lire|to read", "une histoire|story", "interessant|interesting"],
+        B2: ["ameliorer son vocabulaire|to improve vocabulary", "se concentrer|to focus", "une bonne habitude|good habit", "un genre litteraire|literary genre"],
+        C1: ["la lecture active|active reading", "un enrichissement personnel|personal enrichment", "une habitude culturelle|cultural habit", "une source d'imagination|source of imagination"]
+      },
+      coach: ["Talk about one book or genre.", "Compare with screens.", "Say one benefit.", "End with your opinion."],
+      accent: "#c9936b",
+      accent2: "#a8e6cf"
+    },
+    {
+      id: "choisir-metier",
+      category: "Avenir",
+      date: "2026",
+      title: "Choisir son metier",
+      lead: "Pour beaucoup de jeunes, choisir un metier est une decision difficile. Faut-il suivre sa passion ou chercher un travail stable ?",
+      question: "Faut-il choisir un metier que l'on aime ou un metier stable ?",
+      mission: "Donne ton avis sur ce qui compte le plus dans le choix d'un metier.",
+      goalEn: "Say what matters most when choosing a career.",
+      rules: ["compare passion et stabilite", "donne un exemple de metier", "donne ton avis personnel"],
+      starters: ["Pour moi, le plus important, c'est...", "Certaines personnes choisissent...", "Je pense qu'on peut..."],
+      angles: ["passion", "securite", "salaire"],
+      levels: {
+        B1: ["un metier|job", "travailler|to work", "aimer|to like", "gagner|to earn"],
+        B2: ["un travail stable|stable job", "suivre sa passion|to follow your passion", "gagner sa vie|to earn a living", "faire un bon choix|to make a good choice"],
+        C1: ["une vocation|vocation", "la stabilite professionnelle|professional stability", "un compromis possible|possible compromise", "un projet de vie|life project"]
+      },
+      coach: ["Talk about passion.", "Talk about stability.", "Give a job example.", "End with your view."],
+      accent: "#ff9b6a",
+      accent2: "#8cc8ff"
+    },
+    {
+      id: "recycler",
+      category: "Environnement",
+      date: "2026",
+      title: "Trier et recycler",
+      lead: "Beaucoup de villes ont mis en place des systemes de tri. Certaines personnes font des efforts, d'autres trouvent cela complique ou inutile.",
+      question: "Trier ses dechets change-t-il vraiment quelque chose ?",
+      mission: "Explique pourquoi le tri peut etre utile et comment commencer.",
+      goalEn: "Explain why sorting waste helps and how to start.",
+      rules: ["parle d'une action concrete", "parle de l'impact", "donne un exemple simple"],
+      starters: ["A la maison, je...", "Trier aide parce que...", "Une premiere etape simple serait de..."],
+      angles: ["impact", "habitude", "responsabilite"],
+      levels: {
+        B1: ["recycler|to recycle", "jeter|to throw away", "une poubelle|bin", "l'environnement|environment"],
+        B2: ["trier ses dechets|to sort waste", "reduire les emballages|to reduce packaging", "une bonne action|good deed", "faire un geste|to make a gesture"],
+        C1: ["la responsabilite collective|collective responsibility", "un impact reel|real impact", "une habitude ecologique|eco-friendly habit", "un effort quotidien|daily effort"]
+      },
+      coach: ["Talk about one action.", "Talk about the impact.", "Use a simple example.", "End with a tip."],
+      accent: "#84d35d",
+      accent2: "#ffe071"
+    },
+    {
+      id: "voyage-etranger",
+      category: "Voyage",
+      date: "2026",
+      title: "Voyager a l'etranger",
+      lead: "Partir a l'etranger permet de decouvrir d'autres cultures et langues. Mais cela demande aussi du temps, de l'argent et de l'organisation.",
+      question: "Voyager a l'etranger est-il utile pour les jeunes ?",
+      mission: "Explique ce qu'on apprend en voyageant qu'on n'apprend pas en classe.",
+      goalEn: "Explain what you learn abroad that you cannot learn in class.",
+      rules: ["parle d'une destination", "parle de la langue ou de la culture", "donne un apprentissage concret"],
+      starters: ["Quand on voyage...", "On decouvre...", "Je pense qu'on apprend mieux..."],
+      angles: ["langue", "culture", "independance"],
+      levels: {
+        B1: ["voyager|to travel", "une culture|culture", "une langue|language", "decouvrir|to discover"],
+        B2: ["gagner en independance|to gain independence", "ouvrir l'esprit|to open your mind", "rencontrer d'autres personnes|to meet other people", "s'adapter|to adapt"],
+        C1: ["une experience formatrice|formative experience", "une ouverture culturelle|cultural openness", "l'autonomie|autonomy", "une perspective nouvelle|new perspective"]
+      },
+      coach: ["Name one destination.", "Talk about language or culture.", "Say what you learn.", "End with your view."],
+      accent: "#ffe071",
+      accent2: "#78d7ff"
+    },
+    {
+      id: "musique-genres",
+      category: "Loisirs",
+      date: "2026",
+      title: "Nos gouts musicaux",
+      lead: "Tout le monde ecoute de la musique, mais pas les memes genres. La musique peut calmer, motiver ou aider a exprimer ses emotions.",
+      question: "Pourquoi la musique est-elle si importante pour les jeunes ?",
+      mission: "Parle de ton genre prefere et de l'effet que la musique a sur toi.",
+      goalEn: "Talk about your favourite genre and how music affects you.",
+      rules: ["parle d'un genre ou d'un artiste", "parle de l'effet de la musique", "compare avec quelqu'un d'autre"],
+      starters: ["J'ecoute surtout...", "La musique m'aide a...", "Selon moi, la musique peut..."],
+      angles: ["emotions", "genre", "moments"],
+      levels: {
+        B1: ["la musique|music", "ecouter|to listen", "une chanson|song", "aimer|to like"],
+        B2: ["un genre musical|music genre", "se detendre|to relax", "exprimer ses emotions|to express emotions", "un artiste favori|favourite artist"],
+        C1: ["une influence culturelle|cultural influence", "la musique comme expression|music as expression", "un impact emotionnel|emotional impact", "un gout musical|musical taste"]
+      },
+      coach: ["Name a genre or artist.", "Say how it affects you.", "Compare with others.", "End with your opinion."],
+      accent: "#b28cff",
+      accent2: "#ffd86f"
+    },
+    {
+      id: "dormir-assez",
+      category: "Sante",
+      date: "2026",
+      title: "Dormir assez",
+      lead: "Beaucoup d'etudiants dorment trop peu. Les cours du matin, les activites le soir et les ecrans la nuit reduisent souvent le temps de sommeil.",
+      question: "Le manque de sommeil est-il un vrai probleme pour les etudiants ?",
+      mission: "Explique les effets du manque de sommeil et propose une bonne routine.",
+      goalEn: "Explain the effects of not sleeping enough and suggest a routine.",
+      rules: ["parle d'un effet concret", "parle d'une cause", "propose une habitude"],
+      starters: ["Quand on ne dort pas assez...", "La cause principale, c'est souvent...", "Une bonne habitude serait de..."],
+      angles: ["concentration", "energie", "sante"],
+      levels: {
+        B1: ["dormir|to sleep", "fatigue|tired", "la nuit|night", "le matin|morning"],
+        B2: ["manquer de sommeil|to lack sleep", "se concentrer|to focus", "aller se coucher tot|to go to bed early", "une routine utile|useful routine"],
+        C1: ["la qualite du sommeil|sleep quality", "un rythme circadien|circadian rhythm", "la fatigue cognitive|cognitive fatigue", "une hygiene de sommeil|sleep hygiene"]
+      },
+      coach: ["Talk about one effect.", "Name one cause.", "Suggest one habit.", "End with advice."],
+      accent: "#7fe7dc",
+      accent2: "#ff8fb2"
+    },
+    {
+      id: "applis-apprendre",
+      category: "Technologie",
+      date: "2026",
+      title: "Les applis pour apprendre",
+      lead: "Des applications comme Duolingo ou Khan Academy permettent d'apprendre des langues, des maths ou de la musique sur son telephone. Certains adorent, d'autres trouvent cela trop superficiel.",
+      question: "Les applications d'apprentissage remplacent-elles vraiment les cours ?",
+      mission: "Donne ton avis sur l'utilite de ces applis pour les etudes.",
+      goalEn: "Say whether learning apps are useful or limited for studying.",
+      rules: ["parle d'une appli ou d'un type d'appli", "parle d'un avantage", "parle d'une limite"],
+      starters: ["Certaines applis aident parce que...", "Mais on ne peut pas...", "Je pense qu'elles sont utiles pour..."],
+      angles: ["pratique", "limites", "motivation"],
+      levels: {
+        B1: ["une appli|app", "apprendre|to learn", "utile|useful", "gratuit|free"],
+        B2: ["progresser rapidement|to progress quickly", "une methode incomplete|incomplete method", "rester motive|to stay motivated", "un complement de cours|classroom supplement"],
+        C1: ["un outil pedagogique|pedagogical tool", "l'apprentissage autonome|autonomous learning", "une profondeur limitee|limited depth", "un complement efficace|effective supplement"]
+      },
+      coach: ["Name one app or type.", "Give one advantage.", "Give one limit.", "End with your view."],
+      accent: "#ffb14b",
+      accent2: "#7bc8ff"
+    },
+    {
+      id: "sport-seul-equipe",
+      category: "Sport",
+      date: "2026",
+      title: "Sport individuel ou collectif",
+      lead: "Certains preferent courir seuls le matin, d'autres adorent jouer en equipe le week-end. Les deux ont leurs avantages selon la personnalite.",
+      question: "Preferes-tu le sport individuel ou le sport collectif ?",
+      mission: "Compare les deux types de sport et explique ce que chacun apporte.",
+      goalEn: "Compare solo and team sport and explain what each one gives you.",
+      rules: ["parle d'un sport precis", "compare les deux", "donne ton avis personnel"],
+      starters: ["Je prefere...", "Le sport collectif permet de...", "Avec le sport individuel, on peut..."],
+      angles: ["motivation", "equipe", "liberte"],
+      levels: {
+        B1: ["un sport|sport", "jouer|to play", "une equipe|team", "seul|alone"],
+        B2: ["se motiver seul|to motivate yourself", "jouer ensemble|to play together", "un esprit d'equipe|team spirit", "choisir son rythme|to choose your pace"],
+        C1: ["la performance individuelle|individual performance", "la cohesion d'equipe|team cohesion", "une motivation intrinsèque|intrinsic motivation", "un objectif personnel|personal goal"]
+      },
+      coach: ["Name one sport.", "Compare the two.", "Say what each gives.", "End with your preference."],
+      accent: "#88a8ff",
+      accent2: "#ffd86f"
     }
   ]
 };
