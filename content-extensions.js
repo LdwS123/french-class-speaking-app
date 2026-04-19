@@ -495,6 +495,405 @@
       coach: ["Talk about chores.", "Suggest one rule.", "Talk about respect.", "End with a practical solution."],
       accent: "#ff9f88",
       accent2: "#90d3ff"
+    },
+    {
+      id: "reseaux-sociaux-bonheur",
+      category: "Societe numerique",
+      date: "2026",
+      title: "Les reseaux sociaux rendent-ils heureux ?",
+      lead: "On passe de plus en plus de temps sur les reseaux. Certains disent que cela amuse et connecte, d'autres pensent que cela rend anxieux.",
+      question: "Les reseaux sociaux rendent-ils vraiment les jeunes heureux ?",
+      mission: "Parle d'un bon cote, d'un mauvais cote et donne un conseil.",
+      goalEn: "Share one upside, one downside and give a simple piece of advice.",
+      rules: ["parle d'un plaisir", "parle d'un risque", "donne un conseil"],
+      starters: ["Sur les reseaux, j'aime...", "Ce qui me derange, c'est...", "Mon conseil serait..."],
+      angles: ["comparaison", "amitie en ligne", "temps d'ecran"],
+      levels: {
+        B1: ["un reseau social|social media", "une photo|photo", "suivre|to follow", "comparer|to compare"],
+        B2: ["passer trop de temps|to spend too much time", "se comparer aux autres|to compare yourself", "un contenu positif|positive content", "une amitie en ligne|online friendship"],
+        C1: ["une dependance emotionnelle|emotional dependency", "un bien-etre numerique|digital well-being", "une identite en ligne|online identity", "une pression sociale|social pressure"]
+      },
+      coach: ["Share one pleasure.", "Share one risk.", "Use a short example.", "End with a healthy habit."],
+      accent: "#f37aa6",
+      accent2: "#7fe2d0"
+    },
+    {
+      id: "intelligence-artificielle-metiers",
+      category: "Technologie",
+      date: "2026",
+      title: "L'IA va-t-elle remplacer certains metiers ?",
+      lead: "L'IA fait deja des traductions, ecrit des textes et aide a coder. Beaucoup de jeunes se demandent quels metiers vont changer ou disparaitre.",
+      question: "Faut-il avoir peur de l'IA pour son futur metier ?",
+      mission: "Choisis un metier, dis ce que l'IA va changer, et propose une competence humaine a garder.",
+      goalEn: "Pick a job, say what AI will change, and name one human skill that stays.",
+      rules: ["nomme un metier", "dis un impact", "donne une competence humaine"],
+      starters: ["Pour le metier de...", "L'IA va surement...", "Ce que l'humain garde, c'est..."],
+      angles: ["traduction", "service client", "creativite"],
+      levels: {
+        B1: ["un metier|job", "remplacer|to replace", "utile|useful", "un ordinateur|computer"],
+        B2: ["automatiser une tache|to automate a task", "perdre son travail|to lose your job", "une competence utile|useful skill", "s'adapter|to adapt"],
+        C1: ["une transformation du marche|market transformation", "une competence humaine|human skill", "une reconversion professionnelle|career change", "un avantage competitif|competitive advantage"]
+      },
+      coach: ["Pick one job.", "Say what AI changes.", "Give a human skill.", "End with advice."],
+      accent: "#7fb9ff",
+      accent2: "#ffc174"
+    },
+    {
+      id: "lire-ou-regarder",
+      category: "Culture",
+      date: "2026",
+      title: "Lire un livre ou regarder l'adaptation",
+      lead: "Beaucoup de films et series sont adaptes de livres. Certains preferent lire d'abord, d'autres foncent sur l'ecran.",
+      question: "Est-il mieux de lire le livre avant de voir l'adaptation ?",
+      mission: "Compare les deux experiences et donne ta preference.",
+      goalEn: "Compare book and film/show, and share your preference.",
+      rules: ["compare deux formats", "parle de l'imagination", "donne un exemple precis"],
+      starters: ["Dans un livre...", "Dans un film...", "Je prefere... parce que..."],
+      angles: ["imagination", "rythme", "fidelite"],
+      levels: {
+        B1: ["un livre|book", "un film|movie", "une serie|series", "imaginer|to imagine"],
+        B2: ["une adaptation|adaptation", "changer l'histoire|to change the story", "prendre son temps|to take your time", "etre fidele|to be faithful"],
+        C1: ["une fidelite a l'oeuvre|faithful to the source", "un rythme narratif|narrative pace", "une liberte creative|creative freedom", "une richesse du texte|richness of the text"]
+      },
+      coach: ["Compare the two.", "Talk about imagination.", "Use a precise example.", "End with your preference."],
+      accent: "#c88fff",
+      accent2: "#ffd67a"
+    },
+    {
+      id: "sommeil-etudiants",
+      category: "Sante",
+      date: "2026",
+      title: "Les etudiants dorment-ils assez ?",
+      lead: "Entre les devoirs, les ecrans et les sorties, beaucoup d'etudiants dorment moins de 7 heures. Cela touche la concentration et l'humeur.",
+      question: "Pourquoi est-il si difficile pour un etudiant de bien dormir ?",
+      mission: "Donne trois causes et une solution simple.",
+      goalEn: "Give three causes and one simple fix.",
+      rules: ["donne trois causes", "parle de la concentration", "propose une solution"],
+      starters: ["Dormir est difficile quand...", "La premiere cause, c'est...", "Une solution simple serait..."],
+      angles: ["ecrans", "stress", "horaires"],
+      levels: {
+        B1: ["dormir|to sleep", "fatigue|tired", "un ecran|screen", "une heure|hour"],
+        B2: ["se coucher tard|to go to bed late", "manquer de sommeil|to lack sleep", "avoir du mal a dormir|to struggle to sleep", "une bonne habitude|good habit"],
+        C1: ["un cycle de sommeil|sleep cycle", "une dette de sommeil|sleep debt", "une routine du soir|evening routine", "un impact sur la concentration|impact on focus"]
+      },
+      coach: ["Give three causes.", "Mention focus.", "Give one fix.", "End with a short rule."],
+      accent: "#8ad1f4",
+      accent2: "#ffb87e"
+    },
+    {
+      id: "cash-ou-carte",
+      category: "Argent",
+      date: "2026",
+      title: "Payer en cash ou en carte",
+      lead: "La carte est partout, mais certaines personnes disent qu'elles depensent trop quand elles ne voient pas l'argent.",
+      question: "Vaut-il mieux payer en cash ou en carte pour son budget ?",
+      mission: "Compare les deux et dis quand chacun est mieux.",
+      goalEn: "Compare cash and card, and say when each is better.",
+      rules: ["compare les deux", "parle du budget", "donne un exemple"],
+      starters: ["En cash, on...", "Avec la carte, on...", "Pour moi, le mieux, c'est..."],
+      angles: ["controle", "rapidite", "securite"],
+      levels: {
+        B1: ["payer|to pay", "une carte|card", "de l'argent|money", "une depense|expense"],
+        B2: ["suivre son budget|to follow your budget", "depenser trop|to overspend", "etre pratique|to be convenient", "perdre de l'argent|to lose money"],
+        C1: ["une consommation impulsive|impulsive spending", "un controle budgetaire|budget control", "une securite financiere|financial security", "un suivi precis|precise tracking"]
+      },
+      coach: ["Compare both.", "Talk about budget.", "Give one example.", "End with your choice."],
+      accent: "#9be08d",
+      accent2: "#ffcc6f"
+    },
+    {
+      id: "sport-en-salle",
+      category: "Sport",
+      date: "2026",
+      title: "S'inscrire a une salle de sport",
+      lead: "Beaucoup de gens prennent un abonnement en janvier puis arretent en fevrier. Est-ce vraiment utile ?",
+      question: "Vaut-il la peine de s'inscrire dans une salle de sport ?",
+      mission: "Parle du prix, de la motivation et propose une alternative.",
+      goalEn: "Talk about cost, motivation and propose one alternative.",
+      rules: ["parle du prix", "parle de la motivation", "propose une alternative"],
+      starters: ["L'abonnement coute...", "Le probleme de motivation...", "Une autre solution serait..."],
+      angles: ["prix", "regularite", "communaute"],
+      levels: {
+        B1: ["le sport|sport", "une salle|gym", "payer|to pay", "s'entrainer|to work out"],
+        B2: ["prendre un abonnement|to take a subscription", "manquer de motivation|to lack motivation", "etre regulier|to be consistent", "gagner du muscle|to build muscle"],
+        C1: ["une routine sportive|fitness routine", "un investissement a long terme|long-term investment", "une assiduite difficile|hard consistency", "un cadre motivant|motivating environment"]
+      },
+      coach: ["Talk about price.", "Talk about regularity.", "Propose an alternative.", "End with your view."],
+      accent: "#ff9f6b",
+      accent2: "#8fd9c2"
+    },
+    {
+      id: "amitie-distance",
+      category: "Relations",
+      date: "2026",
+      title: "Garder ses amis a distance",
+      lead: "Avec les etudes, beaucoup d'etudiants vivent loin de leur famille et des amis d'enfance. Garder le lien demande de l'effort.",
+      question: "Comment rester proche d'un ami quand on vit loin ?",
+      mission: "Donne deux idees concretes pour maintenir l'amitie.",
+      goalEn: "Give two concrete ideas to maintain a long-distance friendship.",
+      rules: ["donne deux idees", "parle de la regularite", "termine avec un conseil"],
+      starters: ["Pour rester proche...", "Une idee qui marche bien...", "Mon meilleur conseil..."],
+      angles: ["appels", "visites", "souvenirs"],
+      levels: {
+        B1: ["un ami|friend", "appeler|to call", "loin|far", "voir|to see"],
+        B2: ["garder contact|to stay in touch", "s'envoyer des messages|to send messages", "prevoir une visite|to plan a visit", "manquer a quelqu'un|to miss someone"],
+        C1: ["entretenir un lien|to maintain a bond", "une amitie durable|lasting friendship", "une distance geographique|geographic distance", "un moment partage|shared moment"]
+      },
+      coach: ["Give two ideas.", "Talk about regularity.", "Use an example.", "End with advice."],
+      accent: "#f4a5ff",
+      accent2: "#9adcff"
+    },
+    {
+      id: "ecologie-etudiant",
+      category: "Environnement",
+      date: "2026",
+      title: "L'ecologie au quotidien",
+      lead: "Trier ses dechets, prendre le velo, manger moins de viande : beaucoup de petits gestes sont possibles, mais ils demandent du temps.",
+      question: "Un etudiant peut-il vraiment agir pour la planete au quotidien ?",
+      mission: "Propose trois gestes simples et explique celui qui est le plus efficace.",
+      goalEn: "Propose three simple actions and say which one matters most.",
+      rules: ["donne trois gestes", "parle de l'impact", "donne ton avis"],
+      starters: ["Un premier geste, c'est...", "Ensuite, on peut...", "Pour moi, le plus utile..."],
+      angles: ["transport", "alimentation", "dechets"],
+      levels: {
+        B1: ["le velo|bike", "trier|to sort", "la planete|planet", "proteger|to protect"],
+        B2: ["reduire ses dechets|to reduce waste", "limiter la voiture|to limit car use", "consommer local|to buy local", "eviter le plastique|to avoid plastic"],
+        C1: ["un impact environnemental|environmental impact", "une consommation responsable|responsible consumption", "une empreinte carbone|carbon footprint", "un changement durable|sustainable change"]
+      },
+      coach: ["Give three actions.", "Explain one impact.", "Share your opinion.", "End clearly."],
+      accent: "#9be48d",
+      accent2: "#7fb9ff"
+    },
+    {
+      id: "fete-nationale",
+      category: "Culture",
+      date: "2026",
+      title: "Feter une fete de son pays a l'etranger",
+      lead: "Quand on vit a l'etranger, fetes et traditions peuvent manquer. Certains organisent un petit repas, d'autres oublient la date.",
+      question: "Faut-il continuer de feter les fetes de son pays quand on vit ailleurs ?",
+      mission: "Parle d'une fete, de ce qui manque, et de ce que tu ferais.",
+      goalEn: "Talk about a holiday, what's missing abroad, and what you would do.",
+      rules: ["nomme une fete", "parle d'une tradition", "donne ton choix"],
+      starters: ["Dans mon pays, on fete...", "Ce qui me manque, c'est...", "Ici, je pourrais..."],
+      angles: ["famille", "nourriture", "identite"],
+      levels: {
+        B1: ["une fete|holiday", "une tradition|tradition", "la famille|family", "manger|to eat"],
+        B2: ["preparer un repas|to prepare a meal", "garder les traditions|to keep traditions", "partager avec des amis|to share with friends", "se sentir chez soi|to feel at home"],
+        C1: ["un heritage culturel|cultural heritage", "une identite personnelle|personal identity", "un rituel annuel|yearly ritual", "une adaptation a l'etranger|adapting abroad"]
+      },
+      coach: ["Name one holiday.", "Mention a tradition.", "Say what's missing.", "End with your plan."],
+      accent: "#ffb47a",
+      accent2: "#b29eff"
+    },
+    {
+      id: "prof-severe",
+      category: "Ecole",
+      date: "2026",
+      title: "Un prof severe ou cool ?",
+      lead: "Certains preferent un prof tres strict qui pousse a travailler, d'autres preferent un prof decontracte qui met a l'aise.",
+      question: "Un prof severe fait-il vraiment mieux progresser ?",
+      mission: "Compare les deux styles et dis lequel a marche pour toi.",
+      goalEn: "Compare strict and relaxed teachers and say which worked for you.",
+      rules: ["compare deux styles", "parle de la motivation", "donne un exemple"],
+      starters: ["Avec un prof severe...", "Avec un prof cool...", "Dans mon cas..."],
+      angles: ["discipline", "confiance", "progres"],
+      levels: {
+        B1: ["un prof|teacher", "severe|strict", "cool|relaxed", "apprendre|to learn"],
+        B2: ["mettre la pression|to put pressure", "mettre a l'aise|to make comfortable", "progresser vite|to progress fast", "manquer de serieux|to lack seriousness"],
+        C1: ["une exigence elevee|high expectations", "un climat bienveillant|supportive climate", "une autorite naturelle|natural authority", "un impact sur la motivation|impact on motivation"]
+      },
+      coach: ["Compare the two.", "Talk about motivation.", "Use an example.", "End with your opinion."],
+      accent: "#ff8ca3",
+      accent2: "#9dd9ff"
+    },
+    {
+      id: "voyage-solo",
+      category: "Voyage",
+      date: "2026",
+      title: "Voyager seul pour la premiere fois",
+      lead: "Voyager seul fait parfois peur, mais aussi grandir. On choisit ses horaires, on rencontre des gens et on sort de sa zone de confort.",
+      question: "Voyager seul est-il une bonne idee pour un jeune ?",
+      mission: "Parle d'un avantage, d'une peur et donne un conseil de securite.",
+      goalEn: "Talk about a benefit, a fear and give one safety tip.",
+      rules: ["parle d'un avantage", "parle d'une peur", "donne un conseil"],
+      starters: ["Voyager seul permet de...", "Ce qui fait peur, c'est...", "Mon conseil, c'est..."],
+      angles: ["autonomie", "securite", "rencontres"],
+      levels: {
+        B1: ["voyager|to travel", "seul|alone", "peur|fear", "decouvrir|to discover"],
+        B2: ["gagner en autonomie|to gain independence", "sortir de sa zone|to leave your comfort zone", "rencontrer des gens|to meet people", "etre prudent|to be careful"],
+        C1: ["un sentiment de liberte|feeling of freedom", "une prise de confiance|confidence boost", "une precaution de securite|safety precaution", "une experience formatrice|formative experience"]
+      },
+      coach: ["Give one upside.", "Name one fear.", "Add a safety tip.", "End with a clear take."],
+      accent: "#8ce0d0",
+      accent2: "#ffb37a"
+    },
+    {
+      id: "apprendre-cuisiner",
+      category: "Vie quotidienne",
+      date: "2026",
+      title: "Apprendre a cuisiner quand on est etudiant",
+      lead: "Cuisiner fait economiser de l'argent et mieux manger, mais beaucoup d'etudiants manquent de temps ou d'envie.",
+      question: "Faut-il absolument apprendre a cuisiner quand on est etudiant ?",
+      mission: "Parle du budget, de la sante et propose un premier plat a essayer.",
+      goalEn: "Talk about budget, health and propose a first dish to try.",
+      rules: ["parle du budget", "parle de la sante", "propose un plat"],
+      starters: ["Cuisiner soi-meme permet de...", "Pour la sante...", "Un plat facile a commencer..."],
+      angles: ["economies", "sante", "motivation"],
+      levels: {
+        B1: ["cuisiner|to cook", "un plat|dish", "facile|easy", "acheter|to buy"],
+        B2: ["preparer un repas|to prepare a meal", "suivre une recette|to follow a recipe", "manger equilibre|to eat balanced", "gagner du temps|to save time"],
+        C1: ["une alimentation equilibree|balanced diet", "une autonomie alimentaire|food self-sufficiency", "un gout du fait-maison|love of homemade", "une gestion du temps|time management"]
+      },
+      coach: ["Talk about money.", "Talk about health.", "Propose one dish.", "End with advice."],
+      accent: "#ffcf6f",
+      accent2: "#9be2a8"
+    },
+    {
+      id: "ecrans-enfants",
+      category: "Societe numerique",
+      date: "2026",
+      title: "Les enfants et les ecrans",
+      lead: "Certains parents donnent tres tot une tablette aux enfants, d'autres attendent plus longtemps. Ce debat divise les familles.",
+      question: "A quel age faut-il donner un ecran a un enfant ?",
+      mission: "Propose un age et justifie avec deux raisons simples.",
+      goalEn: "Suggest an age and defend it with two simple reasons.",
+      rules: ["propose un age", "donne deux raisons", "nuance ta position"],
+      starters: ["Je pense qu'avant... ans...", "La premiere raison, c'est...", "Mais cela depend aussi de..."],
+      angles: ["developpement", "controle parental", "usages educatifs"],
+      levels: {
+        B1: ["un enfant|child", "un ecran|screen", "jouer|to play", "limiter|to limit"],
+        B2: ["passer du temps|to spend time", "trouver un equilibre|to find a balance", "un contenu adapte|suitable content", "etre surveille|to be supervised"],
+        C1: ["un usage encadre|supervised use", "un developpement cognitif|cognitive development", "une exposition precoce|early exposure", "une limite raisonnable|reasonable limit"]
+      },
+      coach: ["Give an age.", "Give two reasons.", "Nuance your view.", "End with advice."],
+      accent: "#7fcaff",
+      accent2: "#ffad8d"
+    },
+    {
+      id: "benevolat",
+      category: "Engagement",
+      date: "2026",
+      title: "Faire du benevolat pendant ses etudes",
+      lead: "Le benevolat peut donner du sens, developper des competences et aider les autres, mais il demande aussi du temps.",
+      question: "Le benevolat vaut-il la peine pendant les etudes ?",
+      mission: "Nomme une cause, parle d'un apprentissage et d'une contrainte.",
+      goalEn: "Name a cause, speak about one lesson learned and one constraint.",
+      rules: ["nomme une cause", "parle d'un apprentissage", "parle d'une contrainte"],
+      starters: ["J'aimerais aider...", "On y apprend...", "Le probleme principal, c'est..."],
+      angles: ["sens", "competences", "temps"],
+      levels: {
+        B1: ["aider|to help", "les autres|others", "une association|organization", "du temps|time"],
+        B2: ["s'engager dans une cause|to commit to a cause", "gagner de l'experience|to gain experience", "manquer de temps|to lack time", "rencontrer des gens|to meet people"],
+        C1: ["un engagement associatif|community engagement", "une competence transversale|transferable skill", "un impact social|social impact", "une gestion du temps|time management"]
+      },
+      coach: ["Name one cause.", "Say what you learn.", "Mention a limit.", "End with your view."],
+      accent: "#e7a6ff",
+      accent2: "#9be8a8"
+    },
+    {
+      id: "musees-jeunes",
+      category: "Culture",
+      date: "2026",
+      title: "Les musees interessent-ils les jeunes ?",
+      lead: "Certains trouvent les musees lents et fatigants, mais d'autres y vont pour des expositions originales ou gratuites.",
+      question: "Comment rendre les musees plus attractifs pour les jeunes ?",
+      mission: "Propose deux idees pour moderniser la visite d'un musee.",
+      goalEn: "Propose two ideas to make museum visits more appealing.",
+      rules: ["donne deux idees", "parle d'un exemple", "utilise un mot culturel"],
+      starters: ["Un musee pourrait...", "Par exemple...", "Les jeunes aimeraient si..."],
+      angles: ["numerique", "gratuit", "interactif"],
+      levels: {
+        B1: ["un musee|museum", "visiter|to visit", "l'art|art", "interessant|interesting"],
+        B2: ["une exposition|exhibition", "attirer les jeunes|to attract young people", "etre gratuit|to be free", "proposer un atelier|to offer a workshop"],
+        C1: ["une mediation culturelle|cultural mediation", "une experience immersive|immersive experience", "un parcours interactif|interactive tour", "une accessibilite elargie|broader access"]
+      },
+      coach: ["Give two ideas.", "Use a concrete example.", "Explain the appeal.", "End with your preference."],
+      accent: "#c99dff",
+      accent2: "#ffc67a"
+    },
+    {
+      id: "verite-ou-mensonge",
+      category: "Ethique",
+      date: "2026",
+      title: "Un petit mensonge peut-il etre utile ?",
+      lead: "Dire la verite est souvent une valeur forte, mais parfois un petit mensonge peut eviter un conflit ou rassurer quelqu'un.",
+      question: "Faut-il toujours dire la verite, meme quand cela blesse ?",
+      mission: "Donne ta position, un cas ou mentir peut aider et une limite claire.",
+      goalEn: "State your view, give a case where lying helps and set a clear limit.",
+      rules: ["donne ta position", "donne un cas concret", "pose une limite"],
+      starters: ["En general, je pense...", "Par exemple, si...", "Mais il y a une limite..."],
+      angles: ["respect", "gentillesse", "honnetete"],
+      levels: {
+        B1: ["mentir|to lie", "la verite|truth", "gentil|kind", "aider|to help"],
+        B2: ["eviter un conflit|to avoid a conflict", "dire la verite|to tell the truth", "rassurer quelqu'un|to reassure someone", "cacher une information|to hide information"],
+        C1: ["une honnetete totale|complete honesty", "un mensonge pieux|white lie", "une nuance morale|moral nuance", "une relation de confiance|relationship of trust"]
+      },
+      coach: ["State your view.", "Give one case.", "Set a limit.", "End with a simple rule."],
+      accent: "#ffa285",
+      accent2: "#a4c8ff"
+    },
+    {
+      id: "uniforme-scolaire",
+      category: "Ecole",
+      date: "2026",
+      title: "L'uniforme scolaire, bonne idee ?",
+      lead: "Dans certains pays, l'uniforme est obligatoire ; dans d'autres, il n'existe pas. Le debat revient souvent en France.",
+      question: "Faut-il mettre un uniforme dans les lycees francais ?",
+      mission: "Donne un pour, un contre et une solution moyenne.",
+      goalEn: "Give one pro, one con and a middle-ground solution.",
+      rules: ["donne un pour", "donne un contre", "propose un compromis"],
+      starters: ["Un avantage, c'est...", "Mais le probleme...", "Un compromis possible..."],
+      angles: ["egalite", "identite", "budget"],
+      levels: {
+        B1: ["un uniforme|uniform", "l'ecole|school", "habiller|to dress", "pareil|the same"],
+        B2: ["reduire les inegalites|to reduce inequality", "limiter la liberte|to limit freedom", "simplifier le matin|to simplify mornings", "exprimer son style|to express your style"],
+        C1: ["un sentiment d'appartenance|sense of belonging", "une uniformisation scolaire|school standardization", "une pression vestimentaire|clothing pressure", "un compromis raisonnable|reasonable compromise"]
+      },
+      coach: ["Give a pro.", "Give a con.", "Propose a middle.", "End with your view."],
+      accent: "#8fb7ff",
+      accent2: "#ffd082"
+    },
+    {
+      id: "applis-dating",
+      category: "Relations",
+      date: "2026",
+      title: "Les applis de rencontre pour les jeunes",
+      lead: "Les applis de rencontre sont tres utilisees, mais beaucoup disent qu'elles sont fatigantes ou superficielles.",
+      question: "Les applis de rencontre aident-elles vraiment a trouver l'amour ?",
+      mission: "Parle d'un bon cote, d'un piege et d'un conseil.",
+      goalEn: "Mention one positive, one pitfall and one piece of advice.",
+      rules: ["parle d'un avantage", "parle d'un piege", "donne un conseil"],
+      starters: ["Ce qui est pratique...", "Mais le piege, c'est...", "Mon conseil serait..."],
+      angles: ["variete", "superficiel", "securite"],
+      levels: {
+        B1: ["rencontrer|to meet", "une appli|app", "ecrire|to write", "un profil|profile"],
+        B2: ["trouver quelqu'un|to find someone", "perdre du temps|to waste time", "etre superficiel|to be superficial", "faire attention|to be careful"],
+        C1: ["une relation serieuse|serious relationship", "une fatigue numerique|digital fatigue", "une consommation affective|emotional consumption", "un profil honnete|honest profile"]
+      },
+      coach: ["Give one upside.", "Name a pitfall.", "Add advice.", "End with your view."],
+      accent: "#ff7faa",
+      accent2: "#a4d0ff"
+    },
+    {
+      id: "meta-cerveau",
+      category: "Sante",
+      date: "2026",
+      title: "Entrainer son cerveau",
+      lead: "Mots croises, lecture, meditation, sport : beaucoup de choses sont presentees comme bonnes pour le cerveau.",
+      question: "Comment bien entrainer son cerveau au quotidien ?",
+      mission: "Nomme deux activites et explique leur effet.",
+      goalEn: "Name two activities and explain their effect on the brain.",
+      rules: ["nomme deux activites", "explique un effet", "propose un petit defi"],
+      starters: ["Une premiere activite...", "Une deuxieme, c'est...", "Je me lancerais..."],
+      angles: ["memoire", "concentration", "stress"],
+      levels: {
+        B1: ["le cerveau|brain", "lire|to read", "jouer|to play", "memoire|memory"],
+        B2: ["ameliorer la memoire|to improve memory", "se concentrer|to focus", "reduire le stress|to reduce stress", "stimuler l'esprit|to stimulate the mind"],
+        C1: ["une plasticite cerebrale|brain plasticity", "une activite cognitive|cognitive activity", "un exercice mental|mental exercise", "une hygiene mentale|mental hygiene"]
+      },
+      coach: ["Name two activities.", "Explain one effect.", "Suggest a challenge.", "End with a tip."],
+      accent: "#a2f0c2",
+      accent2: "#ffbd7a"
     }
   ];
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon profil — Francais Oral</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="page-profile">
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link" href="./methode.html">Expressions</a>
+        <a class="nav-link" href="./vocab-games.html">Jeux</a>
+        <a class="nav-link" href="./verbes.html">Verbes</a>
+        <a class="nav-link is-active" href="./profil.html">Profil</a>
+        <a class="nav-link" href="./koka.html">Koka</a>
+      </nav>
+    </header>
+
+    <section class="profile-hero">
+      <div class="profile-hero-left">
+        <span class="eyebrow">Mon tableau de bord</span>
+        <h1 id="profileTitle">Bonjour !</h1>
+        <p id="profileSubtitle">Tes progres en un coup d'oeil. Reviens chaque jour pour ne rien perdre.</p>
+        <div class="profile-actions">
+          <button class="btn small" data-theme-toggle aria-pressed="false">🌙 Sombre</button>
+          <button class="btn small" data-sound-toggle aria-pressed="true">🔊 Son</button>
+          <button id="profileReset" class="btn btn-secondary small">Tout reinitialiser</button>
+        </div>
+      </div>
+      <div class="profile-hero-right">
+        <div class="profile-rank-card">
+          <div class="profile-rank-icon" id="rankIcon">🌱</div>
+          <div class="profile-rank-meta">
+            <div class="profile-rank-eyebrow">Niveau</div>
+            <div class="profile-rank-title" id="rankTitle">Apprenti</div>
+            <div class="profile-rank-score">
+              <span id="rankXp">0</span> XP
+            </div>
+            <div class="profile-rank-bar">
+              <div class="profile-rank-bar-fill" id="rankBarFill"></div>
+            </div>
+            <div class="profile-rank-foot" id="rankFoot">Encore 50 XP avant le prochain niveau.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-stats-grid">
+      <article class="profile-stat-card">
+        <div class="profile-stat-icon">📚</div>
+        <div class="profile-stat-meta">
+          <div class="profile-stat-value" id="statKnown">0</div>
+          <div class="profile-stat-label">Mots connus</div>
+        </div>
+      </article>
+      <article class="profile-stat-card">
+        <div class="profile-stat-icon">💎</div>
+        <div class="profile-stat-meta">
+          <div class="profile-stat-value" id="statGems">0</div>
+          <div class="profile-stat-label">Gemmes collectees</div>
+        </div>
+      </article>
+      <article class="profile-stat-card">
+        <div class="profile-stat-icon">🏅</div>
+        <div class="profile-stat-meta">
+          <div class="profile-stat-value" id="statBadges">0</div>
+          <div class="profile-stat-label">Badges debloques</div>
+        </div>
+      </article>
+      <article class="profile-stat-card">
+        <div class="profile-stat-icon">🔥</div>
+        <div class="profile-stat-meta">
+          <div class="profile-stat-value" id="statDefis">0</div>
+          <div class="profile-stat-label">Defis du jour faits</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="profile-records">
+      <h2>Mes records par jeu</h2>
+      <div class="profile-records-grid" id="recordsGrid"></div>
+    </section>
+
+    <section class="profile-badges">
+      <div class="profile-badges-head">
+        <h2>Badges</h2>
+        <span class="profile-badges-progress" id="badgesProgress">0 / 0</span>
+      </div>
+      <p class="profile-badges-hint">Chaque badge se debloque automatiquement quand tu atteins son objectif.</p>
+      <div class="profile-badges-grid" id="badgesGrid"></div>
+    </section>
+  </main>
+
+  <script src="./theme-toggle.js"></script>
+  <script src="./sounds.js"></script>
+  <script src="./achievements.js"></script>
+  <script src="./profil.js"></script>
+</body>
+</html>

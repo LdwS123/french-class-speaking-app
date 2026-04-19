@@ -26,6 +26,8 @@
         <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
         <a class="nav-link" href="./methode.html">Expressions</a>
         <a class="nav-link is-active" href="./vocab-games.html">Jeux</a>
+        <a class="nav-link" href="./verbes.html">Verbes</a>
+        <a class="nav-link" href="./profil.html">Profil</a>
         <a class="nav-link" href="./koka.html">Koka</a>
       </nav>
     </header>
@@ -40,9 +42,13 @@
         <span class="games-stat-label">Record serie</span>
         <strong class="games-stat-value" id="sprintBest">0</strong>
       </div>
-      <div class="games-stat">
-        <span class="games-stat-label">Source active</span>
-        <strong class="games-stat-value" id="activePoolLabel">Tous</strong>
+      <div class="games-stat games-stat-difficulty">
+        <span class="games-stat-label">Difficulte</span>
+        <div class="diff-toggle" id="difficultyToggle" role="tablist">
+          <button class="diff-btn is-active" data-diff="easy"   role="tab">Facile</button>
+          <button class="diff-btn"           data-diff="medium" role="tab">Moyen</button>
+          <button class="diff-btn"           data-diff="hard"   role="tab">Difficile</button>
+        </div>
       </div>
       <div class="games-stat games-stat-select">
         <select id="poolSelect" class="select-box">
@@ -54,18 +60,167 @@
     </div>
 
     <!-- Tab nav -->
-    <nav class="game-tabs-nav" role="tablist">
-      <button class="game-tab is-active" data-tab="sprint"    role="tab">Sprint vocab</button>
-      <button class="game-tab" data-tab="flash"               role="tab">Flashcards</button>
-      <button class="game-tab" data-tab="prep"                role="tab">Prepositions</button>
-      <button class="game-tab" data-tab="conjugaison"         role="tab">Conjugaison</button>
-      <button class="game-tab" data-tab="intrus"              role="tab">L'intrus</button>
-      <button class="game-tab" data-tab="mission"             role="tab">Mission</button>
-      <button class="game-tab" data-tab="phrase"              role="tab">Construis la phrase</button>
+    <nav class="game-tabs-nav game-tabs-nav-grid" role="tablist">
+      <button class="game-tab is-active" data-tab="phrasexl"    role="tab">🧱 Phrase XL</button>
+      <button class="game-tab" data-tab="chaine"                role="tab">🔗 Chaine</button>
+      <button class="game-tab" data-tab="gemmes"                role="tab">💎 Gemmes</button>
+      <button class="game-tab" data-tab="sprint"                role="tab">⚡ Sprint vocab</button>
+      <button class="game-tab" data-tab="flash"                 role="tab">🃏 Flashcards</button>
+      <button class="game-tab" data-tab="anagram"               role="tab">🔠 Anagrammes</button>
+      <button class="game-tab" data-tab="memory"                role="tab">🧠 Memory</button>
+      <button class="game-tab" data-tab="pendu"                 role="tab">🎯 Pendu</button>
+      <button class="game-tab" data-tab="dictee"                role="tab">⌨️ Dictee</button>
+      <button class="game-tab" data-tab="vraifaux"              role="tab">✅ Vrai ou faux</button>
+      <button class="game-tab" data-tab="tri"                   role="tab">📦 Tri par theme</button>
+      <button class="game-tab" data-tab="prep"                  role="tab">📍 Prepositions</button>
+      <button class="game-tab" data-tab="conjugaison"           role="tab">📚 Conjugaison</button>
+      <button class="game-tab" data-tab="intrus"                role="tab">🕵️ L'intrus</button>
+      <button class="game-tab" data-tab="phrase"                role="tab">🧩 Construis la phrase</button>
+      <button class="game-tab" data-tab="mission"               role="tab">🎤 Mission</button>
+      <button class="game-tab" data-tab="bingo"                 role="tab">🎱 Bingo prep</button>
+      <button class="game-tab" data-tab="pyramide"              role="tab">🔺 Pyramide</button>
+      <button class="game-tab" data-tab="murmots"               role="tab">🔍 Mur de mots</button>
     </nav>
 
     <!-- ── Tab: Sprint ──────────────────────────────────── -->
-    <section class="game-tab-panel is-active" id="tab-sprint" role="tabpanel">
+    <!-- ── Tab: Phrase XL (flagship preposition game) ───── -->
+    <section class="game-tab-panel is-active" id="tab-phrasexl" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card phrasexl-card">
+          <div class="mini-game-head">
+            <h2>🧱 Phrase XL — prepositions multiples</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+              <span class="pxl-combo-pill" id="pxlCombo">x1</span>
+              <select id="pxlTheme" class="select-box small">
+                <option value="all">Tous les themes</option>
+              </select>
+              <button class="btn btn-secondary small" id="pxlNewBtn">Autre phrase</button>
+            </div>
+          </div>
+          <p class="mini-game-hint" id="pxlHint">Complete chaque trou avec la bonne preposition. 2 bonnes de suite = combo.</p>
+          <div class="pxl-sentence" id="pxlSentence">Chargement...</div>
+          <div class="pxl-banks" id="pxlBanks"></div>
+          <p class="quiz-result" id="pxlFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="pxlScore">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Phrases</span><strong id="pxlDone">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="pxlStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="pxlBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Comment ca marche</h3>
+          <ul class="clean-list">
+            <li>Chaque phrase a <strong>plusieurs trous</strong> (2 a 4).</li>
+            <li>Clique sur une proposition pour remplir le trou actif.</li>
+            <li>Toutes correctes = phrase validee + points.</li>
+            <li>2 phrases d'affilee parfaites = <strong>combo x2</strong>.</li>
+            <li>4 = x3, 6 = x4. Une erreur remet le combo a x1.</li>
+          </ul>
+          <h3 style="margin-top:12px">Scoring</h3>
+          <ul class="clean-list">
+            <li>+2 par trou correct (au 1er essai).</li>
+            <li>+5 bonus si toute la phrase est parfaite.</li>
+            <li>Multiplie par le combo.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Chaine (sentence builder) ───────────────── -->
+    <section class="game-tab-panel" id="tab-chaine" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card chaine-card">
+          <div class="mini-game-head">
+            <h2>🔗 Chaine — construis une phrase</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+              <select id="chaineTheme" class="select-box small"></select>
+              <button class="btn btn-secondary small" id="chaineNewBtn">Redemarrer</button>
+            </div>
+          </div>
+          <p class="mini-game-hint">Clique les briques pour rallonger la phrase. Plus elle est longue, plus tu gagnes.</p>
+          <div class="chaine-sentence" id="chaineSentence"><span class="chaine-placeholder">(ta phrase s'affiche ici)</span></div>
+          <div class="chaine-options" id="chaineOptions"></div>
+          <p class="quiz-result" id="chaineFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Longueur</span><strong id="chaineLen">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Points</span><strong id="chainePoints">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Meilleure phrase</span><strong id="chaineBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>But</h3>
+          <ul class="clean-list">
+            <li>Chaque brique ajoute un morceau a la phrase.</li>
+            <li>Continue tant qu'il y a des options.</li>
+            <li>Finis par une brique <strong>fin</strong> pour valider.</li>
+          </ul>
+          <h3 style="margin-top:12px">Scoring</h3>
+          <ul class="clean-list">
+            <li>+5 points par brique choisie.</li>
+            <li>Bonus : +10 si tu finis par une vraie terminaison.</li>
+            <li>Les phrases longues sont gardees en memoire (record).</li>
+          </ul>
+          <h3 style="margin-top:12px">Pedagogie</h3>
+          <ul class="clean-list">
+            <li>Entraine l'enchainement <em>verbe + preposition + complement</em>.</li>
+            <li>Change de theme pour varier les tournures.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Gemmes (themed collection) ──────────────── -->
+    <section class="game-tab-panel" id="tab-gemmes" role="tabpanel">
+      <div class="gem-hero">
+        <div>
+          <span class="eyebrow">Collection</span>
+          <h2>💎 Collection de gemmes</h2>
+          <p>Reponds juste pour debloquer les gemmes de chaque theme. Complete les 10 collections.</p>
+        </div>
+        <div class="gem-hero-stats">
+          <article class="stat-card mini">
+            <span class="stat-label">Gemmes</span>
+            <strong class="stat-value" id="gemCount">0</strong>
+            <span class="stat-foot">debloquees</span>
+          </article>
+          <article class="stat-card mini">
+            <span class="stat-label">Themes finis</span>
+            <strong class="stat-value" id="gemThemesDone">0 / 10</strong>
+            <span class="stat-foot">collections completes</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="gem-main-grid">
+        <div class="panel-card gem-play-card">
+          <div class="mini-game-head">
+            <h3 id="gemPlayTitle">Choisis un theme →</h3>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-secondary small" id="gemModeBtn">Mode : FR → EN</button>
+              <button class="btn btn-secondary small" id="gemResetBtn" title="Reset ce theme">↺ Reinitialiser</button>
+            </div>
+          </div>
+          <p class="mini-game-hint" id="gemPrompt">Selectionne une collection a droite pour commencer.</p>
+          <div class="gem-answer-grid" id="gemOptions"></div>
+          <p class="quiz-result" id="gemFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="gemStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="gemBest">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Progression</span><strong id="gemProgress">—</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card gem-themes-card">
+          <h3>Themes</h3>
+          <div class="gem-theme-list" id="gemThemeList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-tab-panel" id="tab-sprint" role="tabpanel">
       <div class="sprint-layout">
 
         <div class="sprint-main">
@@ -198,6 +353,272 @@
             </ul>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <!-- ── Tab: Anagrammes ────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-anagram" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🔠 Anagrammes</h2>
+            <button class="btn btn-secondary small" id="newAnagramBtn">Autre mot</button>
+          </div>
+          <p class="mini-game-hint" id="anagramHint">Trouve le mot francais. Indice anglais ci-dessous.</p>
+          <div class="anagram-clue">
+            <span class="anagram-en" id="anagramEn">—</span>
+            <span class="anagram-meta" id="anagramMeta">—</span>
+          </div>
+          <div class="anagram-letters" id="anagramLetters"></div>
+          <div class="anagram-slot" id="anagramSlot"></div>
+          <div class="anagram-actions">
+            <button class="btn btn-secondary small" id="anagramClearBtn">Effacer</button>
+            <button class="btn btn-secondary small" id="anagramHintBtn">💡 Indice</button>
+            <button class="btn btn-primary" id="anagramCheckBtn">Verifier</button>
+          </div>
+          <p class="quiz-result" id="anagramFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="anagramScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="anagramStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="anagramBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Comment jouer</h3>
+          <ul class="clean-list">
+            <li>Les lettres du mot sont melangees.</li>
+            <li>Clique-les dans le bon ordre pour reformer le mot.</li>
+            <li>Clique une lettre placee pour la renvoyer.</li>
+            <li><strong>Indice</strong> : revele la 1ere lettre (-2 au score).</li>
+          </ul>
+          <h3 style="margin-top:12px">Difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> : mots de 4-6 lettres.</li>
+            <li><strong>Moyen</strong> : 6-9 lettres.</li>
+            <li><strong>Difficile</strong> : 8+ lettres, indice anglais cache.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Memory / Paires ─────────────────────────── -->
+    <section class="game-tab-panel" id="tab-memory" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🧠 Memory FR ↔ EN</h2>
+            <button class="btn btn-secondary small" id="newMemoryBtn">🔄 Nouvelle partie</button>
+          </div>
+          <p class="mini-game-hint">Retourne 2 cartes a la fois. Trouve toutes les paires francais-anglais.</p>
+          <div class="memory-meta">
+            <span class="memory-meta-item">Coups : <strong id="memoryMoves">0</strong></span>
+            <span class="memory-meta-item">Paires : <strong id="memoryPairs">0/0</strong></span>
+            <span class="memory-meta-item">Temps : <strong id="memoryTime">0s</strong></span>
+            <span class="memory-meta-item">Record : <strong id="memoryBest">—</strong></span>
+          </div>
+          <div class="memory-grid" id="memoryGrid"></div>
+          <p class="quiz-result" id="memoryFeedback"></p>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Regles</h3>
+          <ul class="clean-list">
+            <li>Clique 2 cartes pour les retourner.</li>
+            <li>Si elles forment une paire FR/EN, elles restent visibles.</li>
+            <li>Sinon, elles se referment.</li>
+            <li>Termine en un minimum de coups !</li>
+          </ul>
+          <h3 style="margin-top:12px">Difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> : 6 paires (12 cartes).</li>
+            <li><strong>Moyen</strong> : 8 paires (16 cartes).</li>
+            <li><strong>Difficile</strong> : 12 paires (24 cartes).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Pendu ───────────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-pendu" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🎯 Pendu</h2>
+            <button class="btn btn-secondary small" id="newPenduBtn">Nouveau mot</button>
+          </div>
+          <p class="mini-game-hint" id="penduClue">Indice anglais</p>
+          <div class="pendu-arena">
+            <div class="pendu-figure">
+              <pre id="penduFigure">  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========</pre>
+            </div>
+            <div class="pendu-side">
+              <div class="pendu-word" id="penduWord">_ _ _ _</div>
+              <div class="pendu-info">
+                <span>Vies : <strong id="penduLives">6</strong></span>
+                <span>Erreurs : <strong id="penduWrong">—</strong></span>
+              </div>
+            </div>
+          </div>
+          <div class="pendu-keyboard" id="penduKeyboard"></div>
+          <p class="quiz-result" id="penduFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Mots gagnes</span><strong id="penduWon">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="penduStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="penduBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Comment jouer</h3>
+          <ul class="clean-list">
+            <li>Devine les lettres du mot francais.</li>
+            <li>Tape une lettre au clavier ou clique-la.</li>
+            <li>6 erreurs = pendu.</li>
+            <li>Indice : la traduction anglaise.</li>
+          </ul>
+          <h3 style="margin-top:12px">Difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> : 8 vies + 2 lettres revelees.</li>
+            <li><strong>Moyen</strong> : 6 vies, mots moyens.</li>
+            <li><strong>Difficile</strong> : 5 vies, mots longs, indice EN cache.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Dictee ──────────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-dictee" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>⌨️ Dictee — tape le mot</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <select id="dicteeDir" class="select-box small">
+                <option value="en-fr">EN → FR (tape le francais)</option>
+                <option value="fr-en">FR → EN (tape l'anglais)</option>
+              </select>
+              <button class="btn btn-secondary small" id="newDicteeBtn">Autre mot</button>
+            </div>
+          </div>
+          <p class="mini-game-hint">Lis le mot et ecris la traduction. Les accents sont tolerants.</p>
+          <div class="dictee-prompt">
+            <span class="dictee-tag" id="dicteeTag">EN</span>
+            <strong class="dictee-word" id="dicteeWord">—</strong>
+            <span class="dictee-meta" id="dicteeMeta">—</span>
+          </div>
+          <form id="dicteeForm" class="type-form" autocomplete="off">
+            <input type="text" id="dicteeInput" class="type-input" placeholder="Tape ta reponse..." />
+            <button class="btn btn-primary" type="submit">Verifier</button>
+          </form>
+          <p class="quiz-result" id="dicteeFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="dicteeScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="dicteeStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="dicteeBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Conseils</h3>
+          <ul class="clean-list">
+            <li>Lis bien le mot avant de taper.</li>
+            <li>Pas besoin d'accents : "etudier" passe pour "étudier".</li>
+            <li>Espaces ignores.</li>
+          </ul>
+          <h3 style="margin-top:12px">Difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> : indice de la 1ere lettre + sujet visible.</li>
+            <li><strong>Moyen</strong> : sujet visible.</li>
+            <li><strong>Difficile</strong> : aucune aide, choix sur tous niveaux.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Vrai ou faux ────────────────────────────── -->
+    <section class="game-tab-panel" id="tab-vraifaux" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>✅ Vrai ou faux ?</h2>
+            <button class="btn btn-secondary small" id="newVraiFauxBtn">Autre mot</button>
+          </div>
+          <p class="mini-game-hint">La traduction proposee est-elle correcte ?</p>
+          <div class="vf-card">
+            <div class="vf-fr" id="vfFr">—</div>
+            <div class="vf-arrow">⇄</div>
+            <div class="vf-en" id="vfEn">—</div>
+          </div>
+          <div class="vf-actions">
+            <button class="btn btn-vf btn-vf-true"  id="vfTrueBtn">✓ Vrai</button>
+            <button class="btn btn-vf btn-vf-false" id="vfFalseBtn">✗ Faux</button>
+          </div>
+          <p class="quiz-result" id="vfFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="vfScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="vfStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="vfBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Regles</h3>
+          <ul class="clean-list">
+            <li>Lis les deux mots.</li>
+            <li>Clique <strong>Vrai</strong> si la traduction est juste.</li>
+            <li>Clique <strong>Faux</strong> si elle ne correspond pas.</li>
+            <li>Raccourcis : touche <kbd>V</kbd> pour Vrai, <kbd>F</kbd> pour Faux.</li>
+          </ul>
+          <h3 style="margin-top:12px">Difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> : faux pieges loin du sens.</li>
+            <li><strong>Moyen</strong> : faux du meme theme.</li>
+            <li><strong>Difficile</strong> : faux tres proches (faux-amis).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Tri par theme ───────────────────────────── -->
+    <section class="game-tab-panel" id="tab-tri" role="tabpanel">
+      <div class="mini-game-layout tri-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>📦 Tri par theme</h2>
+            <button class="btn btn-secondary small" id="newTriBtn">Nouvelle manche</button>
+          </div>
+          <p class="mini-game-hint">Glisse-clique chaque mot dans la bonne categorie.</p>
+          <div class="tri-bank" id="triBank"></div>
+          <div class="tri-categories" id="triCategories"></div>
+          <p class="quiz-result" id="triFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Bons</span><strong id="triCorrect">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Erreurs</span><strong id="triWrong">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Manches</span><strong id="triRounds">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Comment jouer</h3>
+          <ul class="clean-list">
+            <li>Clique un mot dans la banque, puis la categorie correspondante.</li>
+            <li>Mauvaise categorie = mot retourne dans la banque.</li>
+            <li>Termine quand toute la banque est vide.</li>
+          </ul>
+          <h3 style="margin-top:12px">Difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> : 2 themes, 6 mots.</li>
+            <li><strong>Moyen</strong> : 3 themes, 9 mots.</li>
+            <li><strong>Difficile</strong> : 4 themes, 12 mots, themes proches.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -401,11 +822,138 @@
       </div>
     </section>
 
+    <!-- ── Tab: Bingo de prepositions ────────────────── -->
+    <section class="game-tab-panel" id="tab-bingo" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🎱 Bingo des prepositions</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+              <button class="btn btn-secondary small" id="bingoNewBtn">🔄 Nouvelle grille</button>
+              <button class="btn btn-primary small" id="bingoCallBtn">📢 Tirer une phrase</button>
+            </div>
+          </div>
+          <p class="mini-game-hint" id="bingoHint">Tire une phrase, lis-la, et clique la preposition manquante sur ta grille 5×5.</p>
+          <div class="bingo-call" id="bingoCall">Clique "Tirer une phrase" pour commencer.</div>
+          <div class="bingo-grid" id="bingoGrid"></div>
+          <p class="quiz-result" id="bingoFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Cases</span><strong id="bingoMarked">0/25</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Lignes</span><strong id="bingoLines">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Bingos</span><strong id="bingoWins">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Comment jouer</h3>
+          <ul class="clean-list">
+            <li>Une grille 5×5 affiche 25 prepositions.</li>
+            <li>Tire une phrase a trou : lis-la attentivement.</li>
+            <li>Trouve la preposition correcte sur ta grille et clique-la.</li>
+            <li>Clic juste = case marquee. Clic faux = pas de marque.</li>
+            <li>Forme une ligne, colonne ou diagonale = <strong>BINGO !</strong></li>
+          </ul>
+          <h3 style="margin-top:12px">Astuces</h3>
+          <ul class="clean-list">
+            <li>La case du milieu est gratuite ★.</li>
+            <li>Plus tu fais de bingos, plus le record monte.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Pyramide de mots ─────────────────────── -->
+    <section class="game-tab-panel" id="tab-pyramide" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card pyramide-card">
+          <div class="mini-game-head">
+            <h2>🔺 Pyramide de mots</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="pyramide-level-pill" id="pyramideLevel">Niveau 1</span>
+              <button class="btn btn-secondary small" id="pyramideRestartBtn">↺ Recommencer</button>
+            </div>
+          </div>
+          <p class="mini-game-hint">Monte la pyramide ! Chaque niveau ajoute un mot a traduire d'un coup.</p>
+          <div class="pyramide-stack" id="pyramideStack"></div>
+          <div class="pyramide-question">
+            <span class="pyramide-direction" id="pyramideDir">EN → FR</span>
+            <strong class="pyramide-prompt" id="pyramidePrompt">—</strong>
+          </div>
+          <div class="pyramide-answers" id="pyramideAnswers"></div>
+          <p class="quiz-result" id="pyramideFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Etage</span><strong id="pyramideStep">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Vies</span><strong id="pyramideLives">3</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="pyramideScore">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="pyramideBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Regles</h3>
+          <ul class="clean-list">
+            <li>Niveau 1 : 1 mot (4 choix). Niveau 2 : 2 mots. Niveau N : N mots.</li>
+            <li>Chaque mauvaise reponse = -1 vie. 0 vie = la pyramide s'ecroule.</li>
+            <li>Atteins le sommet (niveau 6) pour la victoire totale.</li>
+          </ul>
+          <h3 style="margin-top:12px">Scoring</h3>
+          <ul class="clean-list">
+            <li>+ niveau actuel × 5 par bonne reponse.</li>
+            <li>Niveau 6 termine = +50 bonus.</li>
+            <li>Difficulte globale : niveau de mots (B1/B2/C1).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tab: Mur de mots (word search) ────────────── -->
+    <section class="game-tab-panel" id="tab-murmots" role="tabpanel">
+      <div class="mini-game-layout murmots-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🔍 Mur de mots</h2>
+            <button class="btn btn-secondary small" id="murmotsNewBtn">🔄 Nouvelle grille</button>
+          </div>
+          <p class="mini-game-hint">Trouve les mots caches dans la grille. Clique la 1ere puis la derniere lettre.</p>
+          <div class="murmots-grid" id="murmotsGrid"></div>
+          <p class="quiz-result" id="murmotsFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Trouves</span><strong id="murmotsFound">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Temps</span><strong id="murmotsTime">0s</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="murmotsBest">—</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Mots a chercher</h3>
+          <ul class="clean-list" id="murmotsList">
+            <li>Charge la grille...</li>
+          </ul>
+          <h3 style="margin-top:12px">Comment</h3>
+          <ul class="clean-list">
+            <li>Mots horizontaux, verticaux ou diagonaux.</li>
+            <li>Clique la 1ere lettre, puis la derniere.</li>
+            <li>Trouve-les tous le plus vite possible !</li>
+          </ul>
+          <h3 style="margin-top:12px">Difficulte</h3>
+          <ul class="clean-list">
+            <li><strong>Facile</strong> : grille 8×8, 5 mots, pas de diagonales.</li>
+            <li><strong>Moyen</strong> : 10×10, 7 mots, diagonales.</li>
+            <li><strong>Difficile</strong> : 12×12, 10 mots, diagonales + inverses.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="./topics-data.js"></script>
   <script src="./content-extensions.js"></script>
+  <script src="./theme-gems.js"></script>
   <script src="./utils.js"></script>
+  <script src="./theme-toggle.js"></script>
+  <script src="./sounds.js"></script>
+  <script src="./achievements.js"></script>
   <script src="./vocab-games.js"></script>
 </body>
 </html>

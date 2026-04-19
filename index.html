@@ -59,9 +59,28 @@
     .landing-grid .feature-card {
       display: flex;
       flex-direction: column;
+      position: relative;
     }
     .landing-grid .feature-card .btn.wide {
       margin-top: auto;
+    }
+    .feature-card-verbs {
+      background: linear-gradient(135deg, rgba(0,85,164,0.09), rgba(239,65,53,0.07));
+      border-color: rgba(0, 85, 164, 0.25);
+      box-shadow: 0 6px 24px rgba(0, 85, 164, 0.1);
+    }
+    .feature-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, #0055a4, #ef4135);
+      box-shadow: 0 4px 12px rgba(239, 65, 53, 0.28);
     }
   </style>
 </head>
@@ -85,6 +104,8 @@
         <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
         <a class="nav-link" href="./methode.html">Expressions</a>
         <a class="nav-link" href="./vocab-games.html">Jeux</a>
+        <a class="nav-link" href="./verbes.html">Verbes</a>
+        <a class="nav-link" href="./profil.html">Profil</a>
         <a class="nav-link" href="./koka.html">Koka</a>
       </nav>
     </header>
@@ -131,21 +152,29 @@
       <div class="hero-stats">
         <article class="stat-card">
           <span class="stat-label">Sujets</span>
-          <strong class="stat-value">61</strong>
+          <strong class="stat-value">80+</strong>
           <span class="stat-foot">themes de conversation</span>
         </article>
         <article class="stat-card">
           <span class="stat-label">Vocabulaire</span>
-          <strong class="stat-value">830+</strong>
+          <strong class="stat-value">900+</strong>
           <span class="stat-foot">mots FR + EN a reutiliser</span>
         </article>
         <article class="stat-card">
-          <span class="stat-label">Pages</span>
-          <strong class="stat-value">6</strong>
-          <span class="stat-foot">outils distincts</span>
+          <span class="stat-label">Jeux</span>
+          <strong class="stat-value">15+</strong>
+          <span class="stat-foot">mini-jeux (vocab + verbes)</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Verbes</span>
+          <strong class="stat-value">60+</strong>
+          <span class="stat-foot">conjugues a 10 temps</span>
         </article>
       </div>
     </section>
+
+    <!-- Defi du jour -->
+    <section id="defiJour" class="defi-host"></section>
 
     <!-- Koka CTA banner -->
     <div class="koka-cta">
@@ -172,16 +201,36 @@
 
       <article class="feature-card">
         <h2>3. Jeux</h2>
-        <p>Un grand sprint de vocabulaire, des flashcards, des prepositions et une mission expressions pour memoriser vite.</p>
+        <p>Sprint de vocabulaire, flashcards, prepositions, intrus, phrase a construire et mission expression. 7 jeux.</p>
         <a class="btn btn-primary wide" href="./vocab-games.html">Lancer les jeux</a>
       </article>
 
+      <article class="feature-card feature-card-verbs">
+        <div class="feature-badge">NOUVEAU</div>
+        <h2>4. Verbes 🔥</h2>
+        <p>Une section entiere dediee aux verbes : 40+ verbes conjugues a 5 temps, 8 mini-jeux (roue, blitz, etre/avoir, prepositions, tape la conjugaison...).</p>
+        <a class="btn btn-primary wide" href="./verbes.html">Entrainer les verbes</a>
+      </article>
+
       <article class="feature-card">
-        <h2>4. Vocabulaire</h2>
-        <p>830+ mots FR/EN avec filtre par theme et par niveau. Cherche en francais ou en anglais.</p>
+        <h2>5. Vocabulaire</h2>
+        <p>900+ mots FR/EN avec filtre par theme et par niveau. Cherche en francais ou en anglais.</p>
         <a class="btn btn-secondary wide" href="./vocabulaire.html">Explorer les mots</a>
       </article>
     </section>
+
+    <footer class="site-footer">
+      <div class="footer-tools">
+        <button class="btn small" data-theme-toggle aria-pressed="false">🌙 Sombre</button>
+        <button class="btn small" data-sound-toggle aria-pressed="true">🔊 Son</button>
+        <a class="btn small btn-secondary" href="./profil.html">Mon profil →</a>
+      </div>
+    </footer>
   </main>
+
+  <script src="./theme-toggle.js"></script>
+  <script src="./sounds.js"></script>
+  <script src="./achievements.js"></script>
+  <script src="./defi-jour.js"></script>
 </body>
 </html>

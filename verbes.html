@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verbes - Francais Oral</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="page-games page-verbs">
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <header class="site-nav">
+      <a class="brand" href="./index.html">
+        <span class="flag-line" aria-hidden="true">
+          <span class="flag-blue"></span>
+          <span class="flag-white"></span>
+          <span class="flag-red"></span>
+        </span>
+        <span>Francais Oral</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="./index.html">Accueil</a>
+        <a class="nav-link" href="./sujets.html">Sujets</a>
+        <a class="nav-link" href="./vocabulaire.html">Vocabulaire</a>
+        <a class="nav-link" href="./methode.html">Expressions</a>
+        <a class="nav-link" href="./vocab-games.html">Jeux</a>
+        <a class="nav-link is-active" href="./verbes.html">Verbes</a>
+        <a class="nav-link" href="./profil.html">Profil</a>
+        <a class="nav-link" href="./koka.html">Koka</a>
+      </nav>
+    </header>
+
+    <!-- Bandeau -->
+    <section class="verb-hero">
+      <div class="verb-hero-copy">
+        <span class="eyebrow">Super section verbes</span>
+        <h1>Entraine-toi vraiment sur les verbes</h1>
+        <p>8 mini-jeux, 40+ verbes, 5 temps : present, imparfait, passe compose, futur, conditionnel et subjonctif. Le plus grand boost pour parler sans bloquer.</p>
+        <div class="verb-hero-pills">
+          <span class="pill pill-blue">40+ verbes</span>
+          <span class="pill pill-red">5 temps</span>
+          <span class="pill pill-green">8 jeux</span>
+          <span class="pill pill-amber">auxiliaires</span>
+          <span class="pill pill-violet">prepositions</span>
+        </div>
+      </div>
+      <div class="verb-hero-stats">
+        <article class="stat-card mini">
+          <span class="stat-label">Score du jour</span>
+          <strong class="stat-value" id="vDailyScore">0</strong>
+          <span class="stat-foot">bonnes reponses</span>
+        </article>
+        <article class="stat-card mini">
+          <span class="stat-label">Meilleure serie</span>
+          <strong class="stat-value" id="vBestStreak">0</strong>
+          <span class="stat-foot">tous jeux confondus</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Onglets -->
+    <nav class="game-tabs-nav" role="tablist">
+      <button class="game-tab is-active" data-tab="wheel"     role="tab">Roue des verbes</button>
+      <button class="game-tab"            data-tab="speedconj" role="tab">Conjugaison blitz</button>
+      <button class="game-tab"            data-tab="meaning"  role="tab">Sens du verbe</button>
+      <button class="game-tab"            data-tab="infer"    role="tab">Trouve l'infinitif</button>
+      <button class="game-tab"            data-tab="pp"       role="tab">Participes passes</button>
+      <button class="game-tab"            data-tab="aux"      role="tab">Etre ou Avoir ?</button>
+      <button class="game-tab"            data-tab="prep"     role="tab">Verbe + preposition</button>
+      <button class="game-tab"            data-tab="type"     role="tab">Tape la conjugaison</button>
+    </nav>
+
+    <!-- ── Jeu 1 : Roue des verbes ───────────────────────── -->
+    <section class="game-tab-panel is-active" id="tab-wheel" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🎡 Roue des verbes</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <select id="wheelTense" class="select-box small">
+                <option value="all">Tous les temps</option>
+                <optgroup label="Temps simples">
+                  <option value="present">Present</option>
+                  <option value="imparfait">Imparfait</option>
+                  <option value="futur">Futur simple</option>
+                  <option value="conditionnel">Conditionnel</option>
+                  <option value="subjonctif">Subjonctif present</option>
+                </optgroup>
+                <optgroup label="Temps composes">
+                  <option value="passeCompose">Passe compose</option>
+                  <option value="plusQueParfait">Plus-que-parfait</option>
+                  <option value="futurAnterieur">Futur anterieur</option>
+                  <option value="conditionnelPasse">Conditionnel passe</option>
+                  <option value="subjonctifPasse">Subjonctif passe</option>
+                </optgroup>
+              </select>
+              <select id="wheelGroup" class="select-box small">
+                <option value="all">Tous les groupes</option>
+                <option value="1">1er groupe (-er)</option>
+                <option value="2">2e groupe (-ir)</option>
+                <option value="3">3e groupe (irreg.)</option>
+                <option value="irregular">Irreguliers seuls</option>
+              </select>
+              <button class="btn btn-secondary small" id="wheelSpinBtn">🎲 Tourner la roue</button>
+            </div>
+          </div>
+          <div class="verb-wheel-slot">
+            <div class="verb-wheel-item" id="wheelVerb">—</div>
+            <div class="verb-wheel-item" id="wheelPronoun">—</div>
+            <div class="verb-wheel-item" id="wheelTenseDisplay">—</div>
+          </div>
+          <p class="mini-game-hint">Choisis la bonne forme conjuguee.</p>
+          <div class="prep-options" id="wheelOptions"></div>
+          <p class="quiz-result" id="wheelFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="wheelScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="wheelStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="wheelBest">0</strong></span>
+          </div>
+        </div>
+
+        <div class="panel-card mini-game-tip">
+          <h3>Regles</h3>
+          <ul class="clean-list">
+            <li>La roue choisit un verbe + une personne + un temps.</li>
+            <li>Clique la forme correcte parmi 4 options.</li>
+            <li>Les erreurs viennent d'autres temps ou personnes — fais attention !</li>
+          </ul>
+          <h3 style="margin-top:12px">Astuce</h3>
+          <p class="subhelp">Filtre sur un seul temps pour bien le maitriser avant de passer au mode "Tous".</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jeu 2 : Conjugaison blitz ─────────────────────── -->
+    <section class="game-tab-panel" id="tab-speedconj" role="tabpanel">
+      <div class="sprint-layout">
+        <div class="sprint-main">
+          <div class="sprint-controls">
+            <div>
+              <label class="sprint-label" for="blitzTense">Temps</label>
+              <select id="blitzTense" class="select-box">
+                <option value="all">🎲 Melange (tous)</option>
+                <optgroup label="Temps simples">
+                  <option value="present">Present</option>
+                  <option value="imparfait">Imparfait</option>
+                  <option value="futur">Futur simple</option>
+                  <option value="conditionnel">Conditionnel</option>
+                  <option value="subjonctif">Subjonctif present</option>
+                </optgroup>
+                <optgroup label="Temps composes">
+                  <option value="passeCompose">Passe compose</option>
+                  <option value="plusQueParfait">Plus-que-parfait</option>
+                  <option value="futurAnterieur">Futur anterieur</option>
+                  <option value="conditionnelPasse">Conditionnel passe</option>
+                  <option value="subjonctifPasse">Subjonctif passe</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <label class="sprint-label" for="blitzGroup">Groupe</label>
+              <select id="blitzGroup" class="select-box">
+                <option value="all">Tous</option>
+                <option value="1">1er groupe</option>
+                <option value="2">2e groupe</option>
+                <option value="3">3e / irreg.</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="blitzStartBtn">⚡ Lancer le blitz</button>
+          </div>
+
+          <div class="sprint-arena">
+            <div class="sprint-timer"><div class="sprint-timer-fill" id="blitzTimerFill"></div></div>
+            <div class="sprint-ready" id="blitzReady">
+              <div class="sprint-ready-icon">⚡</div>
+              <h3>Blitz conjugaison</h3>
+              <p>5 secondes par question. Reponds vite, garde tes 3 vies.</p>
+              <p class="sprint-ready-tip">Le chrono accelere avec ta serie !</p>
+            </div>
+            <div class="sprint-combo hidden" id="blitzCombo"></div>
+            <p class="sprint-question" id="blitzQuestion"></p>
+            <p class="sprint-word-meta" id="blitzMeta"></p>
+            <div class="sprint-options" id="blitzOptions"></div>
+            <p class="sprint-feedback" id="blitzFeedback"></p>
+          </div>
+        </div>
+
+        <aside class="sprint-sidebar">
+          <div class="sprint-score-card">
+            <div class="sprint-score-item"><span class="sprint-score-label">Serie</span><strong class="sprint-score-val" id="blitzStreak">0</strong></div>
+            <div class="sprint-score-item"><span class="sprint-score-label">Vies</span><strong class="sprint-score-val" id="blitzLives">♥♥♥</strong></div>
+            <div class="sprint-score-item"><span class="sprint-score-label">Score</span><strong class="sprint-score-val" id="blitzScore">0/0</strong></div>
+            <div class="sprint-score-item"><span class="sprint-score-label">Temps</span><strong class="sprint-score-val" id="blitzSeconds">5s</strong></div>
+          </div>
+          <div class="panel-card">
+            <h3>Regles</h3>
+            <ul class="clean-list">
+              <li>3 vies. Chaque erreur coute une vie.</li>
+              <li>5 secondes par question, -200 ms toutes les 3 bonnes.</li>
+              <li>Le meilleur score se sauvegarde.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── Jeu 3 : Sens du verbe ─────────────────────────── -->
+    <section class="game-tab-panel" id="tab-meaning" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>📖 Sens du verbe</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <select id="meaningDir" class="select-box small">
+                <option value="fr-en">FR → EN</option>
+                <option value="en-fr">EN → FR</option>
+              </select>
+              <button class="btn btn-secondary small" id="meaningNewBtn">Autre verbe</button>
+            </div>
+          </div>
+          <p class="quiz-question" id="meaningQuestion">Chargement...</p>
+          <div class="prep-options" id="meaningOptions"></div>
+          <p class="quiz-result" id="meaningFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="meaningScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="meaningStreak">0</strong></span>
+          </div>
+        </div>
+        <div class="panel-card mini-game-tip">
+          <h3>But</h3>
+          <p class="subhelp">Associer le verbe francais a sa traduction anglaise (ou l'inverse). Utile pour le vocabulaire de base avant la conjugaison.</p>
+          <h3 style="margin-top:12px">Astuce</h3>
+          <ul class="clean-list">
+            <li>Si tu hesites, pense au contexte : parler → to speak, dire → to say.</li>
+            <li>Connaitre = personne/lieu, savoir = fait.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jeu 4 : Trouve l'infinitif ────────────────────── -->
+    <section class="game-tab-panel" id="tab-infer" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🔎 Trouve l'infinitif</h2>
+            <button class="btn btn-secondary small" id="inferNewBtn">Autre forme</button>
+          </div>
+          <p class="mini-game-hint">Voici une forme conjuguee. Quel est le verbe a l'infinitif ?</p>
+          <p class="quiz-question" id="inferQuestion">—</p>
+          <p class="sprint-word-meta" id="inferMeta"></p>
+          <div class="prep-options" id="inferOptions"></div>
+          <p class="quiz-result" id="inferFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="inferScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="inferStreak">0</strong></span>
+          </div>
+        </div>
+        <div class="panel-card mini-game-tip">
+          <h3>Strategie</h3>
+          <ul class="clean-list">
+            <li>Reconnaitre la racine du verbe (fais- → faire, prend- → prendre).</li>
+            <li>Les terminaisons -ais / -ait / -ions indiquent l'imparfait.</li>
+            <li>Les terminaisons en -rai / -ras indiquent le futur.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jeu 5 : Participes passes ─────────────────────── -->
+    <section class="game-tab-panel" id="tab-pp" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>✅ Participes passes</h2>
+            <button class="btn btn-secondary small" id="ppNewBtn">Nouveau verbe</button>
+          </div>
+          <p class="mini-game-hint">Quel est le participe passe de ce verbe ?</p>
+          <p class="quiz-question" id="ppQuestion">—</p>
+          <div class="prep-options" id="ppOptions"></div>
+          <p class="quiz-result" id="ppFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="ppScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="ppStreak">0</strong></span>
+          </div>
+        </div>
+        <div class="panel-card mini-game-tip">
+          <h3>Rappel</h3>
+          <ul class="clean-list">
+            <li>-er → -e : parler → parle, manger → mange</li>
+            <li>-ir → -i : finir → fini, choisir → choisi</li>
+            <li>Irreguliers : prendre → pris, voir → vu, faire → fait, mettre → mis</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jeu 6 : Etre ou Avoir ? ───────────────────────── -->
+    <section class="game-tab-panel" id="tab-aux" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>⚖️ Etre ou Avoir ?</h2>
+            <button class="btn btn-secondary small" id="auxNewBtn">Nouvelle phrase</button>
+          </div>
+          <p class="mini-game-hint">Complete avec le bon auxiliaire au passe compose.</p>
+          <p class="quiz-question" id="auxQuestion">—</p>
+          <div class="prep-options" id="auxOptions"></div>
+          <p class="quiz-result" id="auxFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="auxScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="auxStreak">0</strong></span>
+          </div>
+        </div>
+        <div class="panel-card mini-game-tip">
+          <h3>Les 14 verbes avec ETRE (DR MRS VANDERTRAMPP)</h3>
+          <ul class="clean-list">
+            <li><strong>aller / venir</strong> — aller ↔ venir</li>
+            <li><strong>arriver / partir</strong> — arriver, partir</li>
+            <li><strong>entrer / sortir</strong> — entrer, sortir</li>
+            <li><strong>monter / descendre</strong></li>
+            <li><strong>naitre / mourir</strong></li>
+            <li><strong>tomber / rester</strong></li>
+            <li><strong>retourner / passer</strong></li>
+            <li>+ tous les verbes pronominaux</li>
+          </ul>
+          <p class="subhelp" style="margin-top:8px">Le reste des verbes prend <strong>avoir</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jeu 7 : Verbe + preposition ───────────────────── -->
+    <section class="game-tab-panel" id="tab-prep" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>🔗 Verbe + preposition</h2>
+            <button class="btn btn-secondary small" id="vprepNewBtn">Nouvelle phrase</button>
+          </div>
+          <p class="mini-game-hint">Quelle preposition va avec ce verbe ?</p>
+          <p class="quiz-question" id="vprepQuestion">—</p>
+          <div class="prep-options" id="vprepOptions"></div>
+          <p class="quiz-result" id="vprepFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="vprepScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="vprepStreak">0</strong></span>
+          </div>
+        </div>
+        <div class="panel-card mini-game-tip">
+          <h3>Memo</h3>
+          <ul class="clean-list">
+            <li><strong>parler a</strong> quelqu'un / <strong>parler de</strong> qqch</li>
+            <li><strong>penser a</strong> qqn / <strong>penser de</strong> (avis)</li>
+            <li><strong>commencer a / par</strong> — <strong>finir de / par</strong></li>
+            <li><strong>jouer a</strong> un sport / <strong>jouer de</strong> un instrument</li>
+            <li><strong>essayer de</strong> / <strong>reussir a</strong> / <strong>decider de</strong></li>
+            <li><strong>avoir besoin / envie de</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jeu 8 : Tape la conjugaison ───────────────────── -->
+    <section class="game-tab-panel" id="tab-type" role="tabpanel">
+      <div class="mini-game-layout">
+        <div class="panel-card mini-game-card">
+          <div class="mini-game-head">
+            <h2>⌨️ Tape la conjugaison</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <select id="typeTense" class="select-box small">
+                <optgroup label="Temps simples">
+                  <option value="present">Present</option>
+                  <option value="imparfait">Imparfait</option>
+                  <option value="futur">Futur simple</option>
+                  <option value="conditionnel">Conditionnel</option>
+                  <option value="subjonctif">Subjonctif present</option>
+                </optgroup>
+                <optgroup label="Temps composes">
+                  <option value="passeCompose">Passe compose</option>
+                  <option value="plusQueParfait">Plus-que-parfait</option>
+                  <option value="futurAnterieur">Futur anterieur</option>
+                  <option value="conditionnelPasse">Conditionnel passe</option>
+                  <option value="subjonctifPasse">Subjonctif passe</option>
+                </optgroup>
+              </select>
+              <button class="btn btn-secondary small" id="typeNewBtn">Nouvelle forme</button>
+            </div>
+          </div>
+          <p class="mini-game-hint">Ecris la forme conjuguee (sans accents c'est ok).</p>
+          <div class="type-prompt">
+            <strong id="typePronoun">—</strong>
+            <span id="typeVerb">—</span>
+            <span class="conj-tense-badge" id="typeTenseBadge">—</span>
+          </div>
+          <form id="typeForm" class="type-form" autocomplete="off">
+            <input type="text" id="typeInput" class="type-input" placeholder="Tape ta reponse..." />
+            <button class="btn btn-primary" type="submit">Verifier</button>
+          </form>
+          <p class="quiz-result" id="typeFeedback"></p>
+          <div class="mini-score-row">
+            <span class="mini-score-item"><span class="mini-score-label">Score</span><strong id="typeScore">0/0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Serie</span><strong id="typeStreak">0</strong></span>
+            <span class="mini-score-item"><span class="mini-score-label">Record</span><strong id="typeBest">0</strong></span>
+          </div>
+        </div>
+        <div class="panel-card mini-game-tip">
+          <h3>Regles</h3>
+          <ul class="clean-list">
+            <li>Les accents sont tolerants (tu peux ecrire "etais" ou "etais").</li>
+            <li>Espaces en debut/fin ignores.</li>
+            <li>Pronominal : tape "me leve" avec je, "te leves" avec tu.</li>
+          </ul>
+          <h3 style="margin-top:12px">Gain</h3>
+          <p class="subhelp">C'est le jeu le plus dur — il pousse a memoriser precisement la forme.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./topics-data.js"></script>
+  <script src="./content-extensions.js"></script>
+  <script src="./verbs-data.js"></script>
+  <script src="./utils.js"></script>
+  <script src="./theme-toggle.js"></script>
+  <script src="./sounds.js"></script>
+  <script src="./achievements.js"></script>
+  <script src="./verbes.js"></script>
+</body>
+</html>
