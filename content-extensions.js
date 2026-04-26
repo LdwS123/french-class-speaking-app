@@ -39,6 +39,15 @@
           "negocier|to negotiate",
           "ameliorer|to improve",
           "encourager|to encourage"
+        ],
+        C2: [
+          "circonscrire|to delimit precisely",
+          "etayer|to substantiate",
+          "inflechir|to steer subtly",
+          "objecter|to object",
+          "corroborer|to corroborate",
+          "relativiser|to put into perspective",
+          "sous-tendre|to underlie"
         ]
       }
     },
@@ -73,6 +82,15 @@
           "a long terme|in the long term",
           "en pratique|in practice",
           "en revanche|by contrast"
+        ],
+        C2: [
+          "a bien des egards|in many respects",
+          "il n'en demeure pas moins que|nevertheless",
+          "encore faut-il préciser que|one still needs to specify that",
+          "toutes proportions gardees|all things considered",
+          "sans pour autant nier que|without denying that",
+          "a rebours de cette idee|contrary to this idea",
+          "cela appelle une reserve|this calls for a caveat"
         ]
       }
     },
@@ -175,6 +193,630 @@
           "ca change la donne|it changes the game",
           "c'est loin d'etre simple|it is far from simple",
           "ca demande de l'organisation|it requires organization"
+        ],
+        C2: [
+          "ca se defend, mais...|that is defensible, but...",
+          "je ne dirais pas ca aussi nettement|I would not put it that strongly",
+          "il y a un fond de vrai|there is some truth to it",
+          "la question est plus epineuse qu'il n'y parait|the issue is thornier than it seems",
+          "on touche la a un point sensible|that gets to a sensitive point",
+          "je mettrais un bemol|I would add a caveat",
+          "ca merite d'etre replace dans son contexte|it needs to be put into context"
+        ]
+      }
+    },
+    {
+      id: "life-situations-pack",
+      title: "Vie reelle",
+      category: "Situations",
+      levels: {
+        B1: [
+          "je suis desole|I am sorry",
+          "ce n'est pas grave|it is not a big deal",
+          "je peux vous aider ?|can I help you?",
+          "je n'ai pas compris|I did not understand",
+          "vous pouvez repeter ?|can you repeat?",
+          "je suis en retard|I am late",
+          "ca m'arrange|that suits me"
+        ],
+        B2: [
+          "ca m'arrangerait beaucoup|that would really help me",
+          "je comprends la situation|I understand the situation",
+          "on peut trouver une solution|we can find a solution",
+          "je prefere etre honnete|I prefer to be honest",
+          "ce serait possible de...|would it be possible to...",
+          "je vais faire attention|I will be careful",
+          "merci de votre patience|thank you for your patience"
+        ],
+        C1: [
+          "je comprends votre point de vue|I understand your point of view",
+          "je ne voudrais pas vous deranger|I would not want to bother you",
+          "il y a peut-etre un malentendu|there may be a misunderstanding",
+          "on pourrait se mettre d'accord|we could agree on something",
+          "je reconnais que j'aurais pu mieux faire|I admit I could have done better",
+          "je prefere clarifier les choses|I prefer to clarify things",
+          "trouvons un compromis raisonnable|let us find a reasonable compromise"
+        ],
+        C2: [
+          "je mesure bien l'enjeu|I fully appreciate what is at stake",
+          "je ne remets pas cela en cause|I am not calling that into question",
+          "permettez-moi de nuancer ce point|allow me to qualify this point",
+          "je comprends la contrainte, mais...|I understand the constraint, but...",
+          "il serait utile de clarifier le cadre|it would be useful to clarify the framework",
+          "je prefere eviter toute ambiguite|I prefer to avoid any ambiguity",
+          "trouvons un terrain d'entente|let us find common ground"
+        ]
+      }
+    },
+    {
+      id: "c2-precision-pack",
+      title: "C2 precision",
+      category: "C2 avance",
+      levels: {
+        B1: [],
+        B2: [],
+        C1: [],
+        C2: [
+          "une ambivalence|ambivalence",
+          "un parti pris|bias",
+          "une mise en perspective|putting into perspective",
+          "une contradiction apparente|apparent contradiction",
+          "une reserve methodologique|methodological caveat",
+          "un raisonnement fallacieux|flawed reasoning",
+          "une causalite discutable|questionable causality",
+          "une generalisation abusive|overgeneralization",
+          "une posture conciliante|conciliatory stance",
+          "un compromis boiteux|awkward compromise",
+          "une formulation lapidaire|terse wording",
+          "une critique sous-jacente|underlying criticism",
+          "une nuance de taille|major nuance",
+          "un implicite culturel|cultural subtext",
+          "une objection recevable|valid objection",
+          "une conclusion prematuree|premature conclusion",
+          "un angle mort|blind spot",
+          "une lecture reductrice|reductive reading",
+          "un propos a double tranchant|double-edged statement",
+          "une tension latente|latent tension"
+        ]
+      }
+    },
+    {
+      id: "c2-verbes-soutenus",
+      title: "C2 verbes soutenus",
+      category: "C2 verbes",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "exacerber|to exacerbate",
+          "pallier|to make up for",
+          "endiguer|to stem (the tide of)",
+          "entraver|to hinder",
+          "saper|to undermine",
+          "dilapider|to squander",
+          "occulter|to obscure",
+          "edulcorer|to water down",
+          "stigmatiser|to stigmatize",
+          "essuyer|to suffer (a setback)",
+          "deroger a|to depart from",
+          "transcender|to transcend",
+          "se prevaloir de|to lay claim to",
+          "deplorer|to deplore",
+          "fustiger|to lambaste",
+          "preconiser|to recommend strongly",
+          "se garder de|to refrain from",
+          "infirmer|to invalidate",
+          "entrevoir|to glimpse",
+          "se targuer de|to boast of",
+          "subsumer|to subsume",
+          "reverer|to revere",
+          "amenuiser|to whittle down",
+          "appesantir|to weigh down",
+          "s'eriger en|to set oneself up as",
+          "epouser|to embrace (a cause)",
+          "s'enliser|to get bogged down",
+          "ressortir de|to emerge from",
+          "induire|to lead to",
+          "consacrer|to enshrine",
+          "dechoir|to fall from grace",
+          "abjurer|to renounce solemnly",
+          "tergiverser|to prevaricate",
+          "se dessaisir|to relinquish",
+          "imputer a|to attribute to"
+        ]
+      }
+    },
+    {
+      id: "c2-adjectifs-nuances",
+      title: "C2 adjectifs nuances",
+      category: "C2 adjectifs",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "specieux|specious",
+          "pregnant|pervasive",
+          "consubstantiel|consubstantial",
+          "protean|protean",
+          "pusillanime|pusillanimous",
+          "obsequieux|obsequious",
+          "velleitaire|wishful (lacking follow-through)",
+          "indefectible|unwavering",
+          "manicheen|black-and-white",
+          "saillant|salient",
+          "abscons|abstruse",
+          "lapidaire|terse",
+          "grandiloquent|grandiloquent",
+          "iconoclaste|iconoclastic",
+          "subreptice|surreptitious",
+          "fallacieux|fallacious",
+          "tendancieux|biased",
+          "sibyllin|cryptic",
+          "edifiant|enlightening (often ironic)",
+          "draconien|draconian",
+          "dirimant|deal-breaking",
+          "epars|scattered",
+          "deletere|harmful (subtly)",
+          "consequent|substantial",
+          "redhibitoire|disqualifying",
+          "indubitable|indubitable",
+          "feutre|muted",
+          "corrosif|biting (of criticism)",
+          "tutelaire|guardian (of an authority)",
+          "incisif|incisive",
+          "patibulaire|sinister-looking",
+          "circonspect|circumspect",
+          "obvie|obvious (literary)",
+          "outrancier|over-the-top",
+          "feroce|fierce"
+        ]
+      }
+    },
+    {
+      id: "c2-noms-abstraits",
+      title: "C2 concepts abstraits",
+      category: "C2 abstrait",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une teleologie|teleology",
+          "un epiphenomene|epiphenomenon",
+          "un solipsisme|solipsism",
+          "une reification|reification",
+          "une heuristique|heuristic",
+          "une aporie|impasse (logical)",
+          "un arbitraire|arbitrariness",
+          "un sophisme|sophistry",
+          "une transcendance|transcendence",
+          "une immanence|immanence",
+          "un determinisme|determinism",
+          "une contingence|contingency",
+          "une dialectique|dialectic",
+          "un paradigme|paradigm",
+          "un truisme|truism",
+          "une allegorie|allegory",
+          "un postulat|postulate",
+          "un axiome|axiom",
+          "une casuistique|case-by-case ethics",
+          "une exegese|exegesis",
+          "une herme­neutique|hermeneutics",
+          "une typologie|typology",
+          "une dichotomie|dichotomy",
+          "une trichotomie|trichotomy",
+          "une singularite|singularity",
+          "une normativite|normativity",
+          "une performativite|performativity",
+          "une intentionnalite|intentionality",
+          "une factualite|factuality",
+          "un substrat|substratum",
+          "un ethos|ethos",
+          "un pathos|pathos",
+          "une corollaire|corollary",
+          "une prolepse|preemptive rebuttal",
+          "une antinomie|antinomy"
+        ]
+      }
+    },
+    {
+      id: "c2-locutions-rhetoriques",
+      title: "C2 locutions rhetoriques",
+      category: "C2 rhetorique",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "force est de constater que|one must concede that",
+          "il n'echappera a personne que|nobody can fail to see that",
+          "loin s'en faut|far from it",
+          "tant s'en faut|far from it (formal)",
+          "a tout le moins|at the very least",
+          "pour autant que je sache|as far as I know",
+          "n'en deplaise a|with all due respect to",
+          "quoi qu'il en soit|be that as it may",
+          "a y regarder de pres|on closer inspection",
+          "il importe de souligner que|it is crucial to underscore that",
+          "le cas echeant|where applicable",
+          "mutatis mutandis|mutatis mutandis",
+          "a l'aune de|in light of",
+          "a contre-courant|against the grain",
+          "en dernier ressort|as a last resort",
+          "tout bien considere|all things considered",
+          "a quelques nuances pres|with a few caveats",
+          "sous reserve d'inventaire|pending verification",
+          "en tout etat de cause|in any event",
+          "ce faisant|in doing so",
+          "a ceci pres que|except that",
+          "pour peu que|provided that",
+          "dut-il en couter|whatever the cost",
+          "sauf erreur de ma part|unless I am mistaken",
+          "il y a fort a parier que|the odds strongly favor that",
+          "si tant est que|if indeed",
+          "aussi paradoxal que cela puisse paraitre|paradoxical as it may seem",
+          "a tout prendre|all in all",
+          "a defaut de mieux|for want of a better option",
+          "a charge pour lui de|with the burden on him to",
+          "pour ne rien dire de|to say nothing of",
+          "il serait reducteur de penser que|it would be simplistic to think that",
+          "rien ne saurait justifier que|nothing could justify that",
+          "il n'est pas exclu que|it is not out of the question that",
+          "tout porte a croire que|everything suggests that"
+        ]
+      }
+    },
+    {
+      id: "c2-societe-politique",
+      title: "C2 societe et politique",
+      category: "C2 societe",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une coercition|coercion",
+          "une ingerence|interference",
+          "une probite|integrity",
+          "une dechirure du tissu social|social fabric tear",
+          "un clientelisme|clientelism",
+          "une demagogie|demagogy",
+          "une tribune|op-ed",
+          "un suffrage|vote",
+          "une circonscription|electoral district",
+          "une cooptation|co-opting",
+          "un fait du prince|arbitrary decree",
+          "un pouvoir regalien|sovereign power",
+          "une assemblee constituante|constituent assembly",
+          "une motion de censure|no-confidence motion",
+          "une legitimite contestee|contested legitimacy",
+          "une rupture du contrat social|social contract breakdown",
+          "un electorat volatil|volatile electorate",
+          "une cohesion nationale|national cohesion",
+          "une fracture territoriale|territorial divide",
+          "un repli identitaire|identity-based withdrawal",
+          "une dynamique sociale|social dynamic",
+          "une mobilite ascendante|upward mobility",
+          "une elite dirigeante|ruling elite",
+          "un consensus mou|tepid consensus",
+          "une classe moyenne fragilisee|squeezed middle class",
+          "un dessaisissement democratique|democratic disempowerment",
+          "une legifere par decret|to govern by decree",
+          "une defiance institutionnelle|institutional distrust",
+          "une partition du territoire|territorial split",
+          "une revendication legitime|legitimate claim",
+          "un cap politique|political course",
+          "un electorat captif|captive electorate",
+          "une equation politique|political balancing act",
+          "un grand soir|revolutionary night",
+          "un projet de societe|societal project"
+        ]
+      }
+    },
+    {
+      id: "c2-economie-finance",
+      title: "C2 economie et finance",
+      category: "C2 economie",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une depreciation monetaire|currency depreciation",
+          "un effet d'aubaine|windfall effect",
+          "une politique accommodante|accommodative policy",
+          "un retournement conjoncturel|cyclical downturn",
+          "une desinflation|disinflation",
+          "une stagflation|stagflation",
+          "un assouplissement quantitatif|quantitative easing",
+          "un ralentissement structurel|structural slowdown",
+          "une bulle speculative|speculative bubble",
+          "une fuite des capitaux|capital flight",
+          "une trajectoire budgetaire|fiscal trajectory",
+          "un endettement souverain|sovereign debt",
+          "une optimisation fiscale|tax optimisation",
+          "un effet d'eviction|crowding-out effect",
+          "une rente de situation|positional rent",
+          "une externalite negative|negative externality",
+          "une asymetrie d'information|information asymmetry",
+          "un alea moral|moral hazard",
+          "une concurrence pure et parfaite|perfect competition",
+          "un oligopole de fait|de facto oligopoly",
+          "une chaine de valeur|value chain",
+          "une integration verticale|vertical integration",
+          "une rentabilite operationnelle|operating profitability",
+          "une marge brute|gross margin",
+          "un horizon d'investissement|investment horizon",
+          "une volatilite des cours|price volatility",
+          "un creancier prioritaire|senior creditor",
+          "un effet de levier|leverage effect",
+          "une defaillance de marche|market failure",
+          "une croissance atone|sluggish growth",
+          "une recession technique|technical recession",
+          "un rebond mecanique|mechanical rebound",
+          "un acquis social|social entitlement",
+          "une trappe a liquidite|liquidity trap",
+          "une prime de risque|risk premium"
+        ]
+      }
+    },
+    {
+      id: "c2-droit-justice",
+      title: "C2 droit et justice",
+      category: "C2 droit",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une jurisprudence constante|settled case law",
+          "un attendu|whereas-clause",
+          "une mise en demeure|formal notice",
+          "une nullite absolue|absolute nullity",
+          "un fait generateur|triggering event",
+          "une opposabilite|enforceability against third parties",
+          "une presomption irrefragable|conclusive presumption",
+          "une charge de la preuve|burden of proof",
+          "un droit acquis|vested right",
+          "une exception d'inconstitutionnalite|constitutionality challenge",
+          "un recours pour exces de pouvoir|action for misuse of authority",
+          "une liberte fondamentale|fundamental freedom",
+          "une atteinte caracterisee|characterised infringement",
+          "une mesure conservatoire|protective measure",
+          "un demembrement de propriete|division of ownership",
+          "une saisine|referral",
+          "un dol|fraudulent misrepresentation",
+          "une cause illicite|unlawful purpose",
+          "une novation|novation",
+          "une prescription extinctive|extinctive prescription",
+          "un cas fortuit|act of God",
+          "une force majeure|force majeure",
+          "une exoneration de responsabilite|liability waiver",
+          "une clause leonine|unconscionable clause",
+          "un mandat ad litem|litigation mandate",
+          "une voie de fait|administrative tort",
+          "une motivation des decisions|reasoning of judgments",
+          "un controle de proportionnalite|proportionality review",
+          "une reserve d'interpretation|interpretive caveat",
+          "un debat contradictoire|adversarial hearing",
+          "une transaction extrajudiciaire|out-of-court settlement",
+          "une responsabilite delictuelle|tort liability",
+          "un preavis raisonnable|reasonable notice",
+          "une clause resolutoire|termination clause",
+          "une mise en cause|implication of a party"
+        ]
+      }
+    },
+    {
+      id: "c2-litterature-arts",
+      title: "C2 litterature et arts",
+      category: "C2 litterature",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une mise en abyme|story-within-a-story",
+          "un narrateur omniscient|omniscient narrator",
+          "une focalisation interne|internal focalisation",
+          "un anti-heros|antihero",
+          "un denouement|denouement",
+          "une intrigue secondaire|subplot",
+          "un poncif|cliche",
+          "une preciosite|preciosity",
+          "un bovarysme|bovarysm",
+          "un pastiche|pastiche",
+          "une parodie|parody",
+          "un palimpseste|palimpsest",
+          "une eponymie|eponymy",
+          "un hapax|hapax (single occurrence)",
+          "un solecisme|solecism",
+          "une catachrese|catachresis",
+          "une hypotypose|vivid description",
+          "une prosopopee|prosopopoeia",
+          "un chiasme|chiasmus",
+          "une oxymore|oxymoron",
+          "un zeugme|zeugma",
+          "une syllepse|syllepsis",
+          "un calembour|pun",
+          "un alexandrin|alexandrine",
+          "un decasyllabe|decasyllable",
+          "une enjambement|enjambment",
+          "une cesure|caesura",
+          "une diegese|diegesis",
+          "une verite romanesque|novelistic truth",
+          "un courant naturaliste|naturalist movement",
+          "une avant-garde|avant-garde",
+          "une posterite litteraire|literary legacy",
+          "un imaginaire collectif|collective imagination",
+          "une rhetorique de l'aveu|rhetoric of confession",
+          "une fresque sociale|social fresco"
+        ]
+      }
+    },
+    {
+      id: "c2-psychologie-emotions",
+      title: "C2 psychologie et emotions",
+      category: "C2 psychologie",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une dissonance cognitive|cognitive dissonance",
+          "un biais de confirmation|confirmation bias",
+          "une rumination mentale|mental rumination",
+          "une charge mentale|mental load",
+          "un syndrome de l'imposteur|impostor syndrome",
+          "une projection inconsciente|unconscious projection",
+          "un mecanisme de defense|defense mechanism",
+          "une resilience psychique|psychological resilience",
+          "une emprise affective|emotional control",
+          "une sideration|stunned shock",
+          "une catharsis|catharsis",
+          "une ambivalence affective|emotional ambivalence",
+          "un transfert|transference",
+          "un contre-transfert|countertransference",
+          "un refoulement|repression",
+          "une sublimation|sublimation",
+          "une formation reactionnelle|reaction formation",
+          "un acting out|acting out",
+          "une compulsion de repetition|repetition compulsion",
+          "un deuil pathologique|complicated grief",
+          "une hypervigilance|hypervigilance",
+          "une dysphorie|dysphoria",
+          "une anhedonie|anhedonia",
+          "une akrasie|weakness of will",
+          "un sentiment d'imposture|feeling of fraudulence",
+          "une crise existentielle|existential crisis",
+          "une lassitude profonde|deep weariness",
+          "une affliction sourde|muted distress",
+          "une jubilation contenue|contained jubilation",
+          "une amertume tenace|enduring bitterness",
+          "un desabusement|disenchantment",
+          "une soif de reconnaissance|craving for recognition",
+          "une alienation|alienation",
+          "une intentionnalite refoulee|repressed intent",
+          "une vacuite existentielle|existential emptiness"
+        ]
+      }
+    },
+    {
+      id: "c2-sciences-philosophie",
+      title: "C2 sciences et philosophie",
+      category: "C2 sciences",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une falsifiabilite|falsifiability",
+          "un protocole experimental|experimental protocol",
+          "une variable confondante|confounding variable",
+          "un echantillon representatif|representative sample",
+          "une signification statistique|statistical significance",
+          "une corroboration empirique|empirical corroboration",
+          "un saut epistemologique|epistemological leap",
+          "un paradigme dominant|dominant paradigm",
+          "une rupture epistemique|epistemic break",
+          "une heuristique negative|negative heuristic",
+          "un programme de recherche|research programme",
+          "une induction|induction",
+          "une deduction|deduction",
+          "une abduction|abduction (inference)",
+          "un raisonnement par l'absurde|reductio ad absurdum",
+          "une preuve par recurrence|proof by induction",
+          "une conjecture|conjecture",
+          "une demonstration|formal proof",
+          "une singularite mathematique|mathematical singularity",
+          "une divergence asymptotique|asymptotic divergence",
+          "un attracteur etrange|strange attractor",
+          "un phenomene emergent|emergent phenomenon",
+          "une reduction phenomenologique|phenomenological reduction",
+          "une intentionnalite husserlienne|husserlian intentionality",
+          "un dasein|being-there",
+          "un cogito|cogito",
+          "une noumene|noumenon",
+          "un phenomene|phenomenon",
+          "une eidetique|eidetic analysis",
+          "une teleologie kantienne|kantian teleology",
+          "une heteronomie|heteronomy",
+          "une autonomie morale|moral autonomy",
+          "une volonte generale|general will",
+          "un imperatif categorique|categorical imperative",
+          "une morale deontologique|deontological ethics"
+        ]
+      }
+    },
+    {
+      id: "c2-medias-journalisme",
+      title: "C2 medias et journalisme",
+      category: "C2 medias",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une ligne editoriale|editorial line",
+          "un fait verifie|fact-checked claim",
+          "une source primaire|primary source",
+          "une source corroborante|corroborating source",
+          "une enquete au long cours|long-form investigation",
+          "un conflit d'interets|conflict of interest",
+          "une mise au point|clarification statement",
+          "un droit de reponse|right of reply",
+          "une rectification|correction",
+          "une desintermediation|disintermediation",
+          "une bulle de filtre|filter bubble",
+          "une chambre d'echo|echo chamber",
+          "une infobesite|information overload",
+          "une viralite|virality",
+          "une narration mediatique|media framing",
+          "un cadrage|framing",
+          "une mise a l'agenda|agenda-setting",
+          "une fenetre d'Overton|Overton window",
+          "un effet boule de neige|snowball effect",
+          "une posture editoriale|editorial stance",
+          "une parole experte|expert testimony",
+          "un reportage immersif|immersive report",
+          "une charte deontologique|ethics charter",
+          "un secret des sources|source confidentiality",
+          "une protection des lanceurs d'alerte|whistleblower protection",
+          "une couverture mediatique|media coverage",
+          "un battage mediatique|media hype",
+          "une desinformation orchestree|orchestrated disinformation",
+          "une mesinformation|misinformation",
+          "une rumeur tenace|persistent rumour",
+          "un decryptage|in-depth analysis",
+          "une edition speciale|special edition",
+          "un bandeau d'information|news ticker",
+          "une percee mediatique|media breakthrough",
+          "une editorialisation|editorialisation"
+        ]
+      }
+    },
+    {
+      id: "c2-ecologie-monde",
+      title: "C2 ecologie et geopolitique",
+      category: "C2 monde",
+      levels: {
+        B1: [], B2: [], C1: [],
+        C2: [
+          "une empreinte carbone|carbon footprint",
+          "une transition energetique|energy transition",
+          "une dependance fossile|fossil dependence",
+          "une effondrement de la biodiversite|biodiversity collapse",
+          "un point de bascule|tipping point",
+          "une captation du carbone|carbon capture",
+          "une sobriete energetique|energy sobriety",
+          "une obsolescence programmee|planned obsolescence",
+          "une economie circulaire|circular economy",
+          "une justice climatique|climate justice",
+          "une reparation ecologique|ecological reparations",
+          "une vulnerabilite cotiere|coastal vulnerability",
+          "une montee des eaux|sea-level rise",
+          "une artificialisation des sols|soil artificialisation",
+          "une desertification|desertification",
+          "une preservation des communs|preservation of the commons",
+          "une diplomatie climatique|climate diplomacy",
+          "une multilateralisme|multilateralism",
+          "un soft power|soft power",
+          "un hard power|hard power",
+          "une zone d'influence|sphere of influence",
+          "une desescalade|de-escalation",
+          "une escalade controlee|controlled escalation",
+          "une projection de puissance|power projection",
+          "une dependance strategique|strategic dependence",
+          "une souverainete numerique|digital sovereignty",
+          "une autonomie strategique|strategic autonomy",
+          "une diplomatie discrete|quiet diplomacy",
+          "une normalisation des relations|normalisation of ties",
+          "une rupture diplomatique|diplomatic rupture",
+          "un rapport de force|balance of power",
+          "une coalition ad hoc|ad hoc coalition",
+          "une zone grise|grey zone",
+          "une guerre hybride|hybrid warfare",
+          "une securite collective|collective security"
         ]
       }
     }
@@ -920,7 +1562,20 @@
     ],
     idioms: [
       "Ca me saoule.|It really annoys me.",
-      "Ce n'est pas top.|It is not great."
+      "Ce n'est pas top.|It is not great.",
+      "J'ai eu un blanc.|My mind went blank.",
+      "Ca m'a mis mal a l'aise.|It made me uncomfortable.",
+      "Je suis tombe sur quelqu'un de sympa.|I ran into someone nice.",
+      "Ca m'a pris de court.|It caught me off guard."
+    ],
+    conclusion: [
+      "Au fond, tout depend de la situation.|Deep down, it all depends on the situation.",
+      "C'est pour ca que je choisirais une solution simple.|That is why I would choose a simple solution."
+    ],
+    nuance: [
+      "Je comprends l'idee, mais il faut nuancer.|I understand the idea, but it needs nuance.",
+      "Ce n'est pas noir ou blanc.|It is not black and white.",
+      "Dans certains cas, ca peut se defendre.|In some cases, it can be justified."
     ]
   };
 
@@ -936,6 +1591,36 @@
         "En d'autres termes...|In other words...",
         "Je corrige ma phrase...|Let me correct my sentence...",
         "L'idee, c'est surtout...|The main idea is..."
+      ]
+    },
+    {
+      id: "life",
+      title: "Situations de vie",
+      tip: "Pour repondre poliment, calmer une tension ou demander quelque chose.",
+      items: [
+        "Je comprends, merci de me le dire.|I understand, thanks for telling me.",
+        "Ce serait possible de decaler ?|Would it be possible to move it?",
+        "Je suis desole, je vais faire attention.|I am sorry, I will be careful.",
+        "On peut en parler calmement ?|Can we talk about it calmly?",
+        "Je prefere clarifier avant de continuer.|I prefer to clarify before continuing.",
+        "Trouvons une solution qui arrange tout le monde.|Let's find a solution that works for everyone.",
+        "Je ne voulais pas vous mettre mal a l'aise.|I did not mean to make you uncomfortable.",
+        "Je reconnais que j'aurais du prevenir.|I admit I should have warned you."
+      ]
+    },
+    {
+      id: "c2-argumentation",
+      title: "Argumentation C2",
+      tip: "Pour formuler une pensee plus fine, sans etre trop frontal.",
+      items: [
+        "Il n'en demeure pas moins que...|Nevertheless...",
+        "Cette idee appelle plusieurs reserves.|This idea calls for several caveats.",
+        "Il faut distinguer deux plans.|We need to distinguish two levels.",
+        "Le probleme ne se reduit pas a...|The issue cannot be reduced to...",
+        "Cela dit, l'argument reste recevable.|That said, the argument remains valid.",
+        "On peut difficilement faire abstraction de...|It is hard to ignore...",
+        "Encore faut-il savoir dans quel cadre.|One still needs to know in what framework.",
+        "Je nuancerais cette affirmation.|I would qualify that statement."
       ]
     }
   ];
@@ -1029,6 +1714,42 @@
         "Je vais expliquer autrement.",
         "Je veux changer de sujet.",
         "Je ne veux plus parler."
+      ]
+    },
+    {
+      expression: "J'ai eu un blanc.",
+      answer: "Je n'ai plus trouve mes mots pendant un moment.",
+      options: [
+        "Je n'ai plus trouve mes mots pendant un moment.",
+        "J'ai change de vetements.",
+        "J'ai vu une couleur blanche."
+      ]
+    },
+    {
+      expression: "Ca m'a pris de court.",
+      answer: "Cela m'a surpris et je n'etais pas pret.",
+      options: [
+        "Cela m'a surpris et je n'etais pas pret.",
+        "Cela a dure tres peu de temps.",
+        "Cela m'a aide a courir."
+      ]
+    },
+    {
+      expression: "Ce n'est pas noir ou blanc.",
+      answer: "La situation est nuancee.",
+      options: [
+        "La situation est nuancee.",
+        "Il manque des couleurs.",
+        "La reponse est tres simple."
+      ]
+    },
+    {
+      expression: "Il y a peut-etre un malentendu.",
+      answer: "Quelqu'un a peut-etre mal compris la situation.",
+      options: [
+        "Quelqu'un a peut-etre mal compris la situation.",
+        "Tout le monde est d'accord.",
+        "La discussion est terminee."
       ]
     }
   ];
